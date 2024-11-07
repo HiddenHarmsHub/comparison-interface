@@ -1,0 +1,6 @@
+coverage
+ruff
+curlylint
+pytest
+pytest-mock
+pytest-cov

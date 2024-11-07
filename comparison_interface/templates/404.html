@@ -1,0 +1,15 @@
+
+{% extends "layout.html" %}
+
+{% block page_title %}: {{ error_404_title }}{% endblock %}
+
+{% block content %}
+    <div class="p-5 mb-4">
+        <div class="text-center">
+            <h1>404</h1>
+            <p>{{ error_404_message }}</p>
+            <p><a href="/">{{ error_404_home_link }}</a></p>
+        </div>
+    </div>
+{% endblock %}
+

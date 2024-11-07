@@ -1,0 +1,27 @@
+{% if groups|length < 2 %}
+    <input type="hidden" id="group_ids" name="group_ids" value="{{groups[0].group_id}}">
+{% else %}
+    <div class="form-group row" role="group" aria-labelledby="group-ids-label">
+        <div id="group-ids-label" for="group_ids" class="col-4 col-form-label">{{label}}</div>
+        <div class="col-8">
+            {% if multiple_selection %}
+                <div id="group_ids" class="checkbox-group required">
+                {% for group in groups %}
+                    <div>
+                        <input class="focus-ring" type="checkbox" id="group-{{group.group_id}}" name="group_ids" value="{{group.group_id}}"/>
+                        <label style="display: inline;" for="group-{{group.group_id}}">{{group.display_name}}</label>
+                    </div>
+                {% endfor %}
+                </div>
+                <div style="visibility:hidden; color: #B10100; " id="group-selection-error">{{group_selection_error}}</div>
+            {% else %}
+                <select class="form-control" id="group_ids" name="group_ids" required>
+                    <option disabled selected value></option>
+                    {% for group in groups %}
+                        <option value="{{group.group_id}}">{{group.display_name}}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

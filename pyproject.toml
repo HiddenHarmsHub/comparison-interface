@@ -1,0 +1,48 @@
+[project]
+name = "Comparison Interface V2"
+version = "2.1.0"
+description = "A web interface to facilitate the collection of comparative judgement data."
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+lint = [
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "preserve"
+
+[tool.ruff.lint]
+select = [
+    # Pyflakes
+    "F",
+    # pycodestyle errors
+    "E",
+    # pycodestyle warnings
+    "W",
+    # isort
+    "I",
+    # pydocstyle
+    "D",
+]
+
+ignore = ["D417", "D100", "D104"]
+
+
+[tool.ruff.lint.per-file-ignores]
+# ignore docstrings in test files (following pytest guidelines instead)
+"tests_python/*" = ["D"]
+
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+# uncomment this to see logging in tests (useful for debugging)
+# [tool.pytest.ini_options]
+# log_cli = true
+# log_cli_level = "INFO"

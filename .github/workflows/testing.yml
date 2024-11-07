@@ -1,0 +1,36 @@
+name: testing
+
+on: [push, pull_request]
+
+jobs:
+    pytest:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - name: Install Python 3.9
+          uses: actions/setup-python@v5
+          with: 
+            python-version: "3.9"
+        - name: Install dependencies
+          run: |
+            python -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
+            pip install -r requirements-test.txt
+        - name: Run Pytest
+          run: |
+            source venv/bin/activate
+            pytest -v tests_python
+
+    javascript_tests:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - name: Install Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '22'
+        - name: Install dependencies
+          run: npm i  jest@^29.7.0 jest-environment-jsdom@^29.7.0
+        - name: Run tests
+          run: npx jest -- tests_javascript

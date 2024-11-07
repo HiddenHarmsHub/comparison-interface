@@ -1,0 +1,70 @@
+name: linting
+
+on: [push, pull_request]
+
+jobs:
+    ruff:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - name: Install Python 3.9
+          uses: actions/setup-python@v5
+          with: 
+            python-version: "3.9"
+        - name: Install dependencies
+          run: |
+            python -m venv venv
+            source venv/bin/activate
+            pip install -r requirements-test.txt
+        - name: Run Ruff
+          run: |
+            source venv/bin/activate
+            ruff check .
+            ruff format --check --diff .
+
+    curlylint:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v4
+      - name: Install Python 3.9
+        uses: actions/setup-python@v5
+        with: 
+          python-version: "3.9"
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements-test.txt
+      - name: Run Ruff
+        run: |
+          source venv/bin/activate
+          curlylint --verbose .
+
+    eslint:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: |
+          npm i eslint
+          npm i globals
+          node_modules/eslint/bin/eslint.js comparison_interface/static/js/src/*.js tests_javascript/*.js tests_accessibility/*.js
+
+    stylelint:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: |
+          npm i stylelint-config-standard
+          npm i @stylistic/stylelint-plugin
+          node_modules/stylelint/bin/stylelint.mjs ./comparison_interface/static/css
+      

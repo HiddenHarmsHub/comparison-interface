@@ -1,0 +1,14 @@
+
+{% extends "layout.html" %}
+
+{% block page_title %}: {{ error_500_title }}{% endblock %}
+
+{% block content %}
+    <div class="p-5 mb-4">
+        <div class="text-center">
+            <h1>500</h1>
+            <p>{{ error_500_message }}</p>
+        </div>
+    </div>
+{% endblock %}
+
