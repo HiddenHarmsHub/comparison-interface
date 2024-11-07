@@ -27,6 +27,27 @@ def execute_setup(conf_file):
     return app
 
 
+def execute_setup_with_api(conf_file):
+    app = create_app(
+        {
+            "TESTING": True,
+            "API_ACCESS": True,
+            "API_KEY_FILE": ".tstkyapi",
+            "SQLALCHEMY_DATABASE_URI": 'sqlite:///test_database.db',
+        }
+    )
+    # 1. Validate the website configuration
+    app.logger.info("Setting website configuration")
+    WS.set_configuration_location(app, conf_file)
+    ConfigValidation(app).validate()
+
+    # 2. Configure database
+    app.logger.info("Resetting website database")
+    s = DBSetup(app)
+    s.exec()
+    return app
+
+
 @pytest.fixture()
 def equal_weight_app():
     """Set up the project for testing with equal weights."""
@@ -44,6 +65,25 @@ def equal_weight_client(equal_weight_app):
     """Return the test client for the equal weight app."""
     with equal_weight_app.app_context():
         yield equal_weight_app.test_client()
+
+
+@pytest.fixture()
+def equal_weight_app_api():
+    """Set up the project for testing with equal weights with the api."""
+    app = execute_setup_with_api("../tests_python/test_configurations/config-equal-item-weights.json")
+    yield app
+
+    with app.app_context():
+        db.session.remove()
+        db.drop_all()
+        os.unlink('instance/test_database.db')
+
+
+@pytest.fixture()
+def equal_weight_client_api(equal_weight_app_api):
+    """Return the test client for the equal weight app with the api."""
+    with equal_weight_app_api.app_context():
+        yield equal_weight_app_api.test_client()
 
 
 @pytest.fixture()
@@ -78,6 +118,19 @@ def user_data():
         'group_ids': [1],
     }
     return user_data
+
+
+@pytest.fixture()
+def key_file(equal_weight_app_api):
+    filename = equal_weight_app_api.config['API_KEY_FILE']
+    while os.path.exists(filename):
+        filename = f'{filename}1'
+    with open(filename, mode='w') as key_file:
+        key_file.write('test-key')
+    yield
+
+    with equal_weight_app_api.app_context():
+        os.remove(filename)
 
 
 @pytest.fixture()

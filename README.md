@@ -3,7 +3,7 @@
 
 # Comparison Interface V2
 
-This repository provides a web interface to facilitate the collection of comparative judgement data. It offers a highly configurable interface which only requires a configuration file and a set of image files as input. Data is stored in an SQLite database which is part of the standard python library so not additional database is required. There is no restriction regarding the nature of the items that can be compared in the software but it has been used previously on geospatial datasets to be processed with the [Bayesian Spatial Bradley--Terry model BSBT](https://github.com/rowlandseymour/BSBT).
+This repository provides a web interface to facilitate the collection of comparative judgement data. It offers a highly configurable interface which only requires a configuration file and a set of image files as input. Data is stored in an SQLite database which is part of the standard python library so no additional database is required. There is no restriction regarding the nature of the items that can be compared in the software but it has been used previously on geospatial datasets to be processed with the [Bayesian Spatial Bradley--Terry model BSBT](https://github.com/rowlandseymour/BSBT).
 
 The images presented to the user are selected in different ways depending on the configuration of the system.
 
@@ -257,6 +257,9 @@ This will export the database contents to a zip file containing one .csv file pe
 ```bash
 flask --debug export --format=tsv
 ```
+
+There is also an option to expose the table containing the decisions made by users only (no user details) via a secured api. This is enabled by setting the 'API_ACCESS' variable in the ```configuration/flask.py``` file to ```True```. In addition a ```.apikey``` file needs to be created at the top level of the repository. This should contain the secret key which will be used to authenticate api calls. The file name used to store the key can be changed in the ```configuration/flask.py``` file.
+
 
 ## Testing
 
