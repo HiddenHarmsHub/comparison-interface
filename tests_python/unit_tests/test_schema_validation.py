@@ -41,7 +41,7 @@ def test_behaviour_configuration_for_escape_route_true_with_all_requirements():
         "offerEscapeRouteBetweenCycles": True,
         "cycleLength": 30,
         "maximumCyclesPerUser": 3,
-        "allowTies": False
+        "allowTies": False,
     }
     behaviour_schema = BehaviourConfiguration()
     try:
