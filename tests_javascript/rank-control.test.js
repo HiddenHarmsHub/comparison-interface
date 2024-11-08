@@ -132,6 +132,7 @@ describe('tests for hintItem', () => {
                               '<input type="hidden" id="selected_item_id">' +
                               '<input type="hidden" id="item_1_id" value="1"/>' +
                               '<input type="hidden" id="item_2_id" value="2"/>' +
+                              '<input type="hidden" id="allow-ties" value="true"/>' +
                               '<img id="left-item" class="left-item" aria-checked="false"/>' +
                               '<img id="right-item" class="right-item" aria-checked="false"/>';
     const clickedItem = $('#left-item');
@@ -145,13 +146,14 @@ describe('tests for hintItem', () => {
     expect($('#right-item').attr('aria-checked')).toBe('false');
   });
 
-  test('hintItem makes the right decision when a single item is clicked and one is already selected', () => {
+  test('hintItem makes the right decision when a single item is clicked and one is already selected (ties allowed)', () => {
     /* start with one item selected, select the second item */
     document.body.innerHTML = '<input type="hidden" id="selected_item_indicator" value="HIGHER">' +
                               '<input type="hidden" id="tied_items_indicator" value="EQUAL">' +
                               '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
                               '<input type="hidden" id="selected_item_id">' +
                               '<input type="hidden" id="item_1_id" value="1"/>' +
+                              '<input type="hidden" id="allow-ties" value="true"/>' +
                               '<div class="selected-hint" style="pointer-events:none;">' +
                               '<span class="fs-1 fw-bold bg-white p-1 border border-success text-success">HIGHER</span>' +
                               '</div>' + 
@@ -169,6 +171,31 @@ describe('tests for hintItem', () => {
     expect($('#right-item').attr('aria-checked')).toBe('true');
   });
 
+  test('hintItem makes the right decision when a single item is clicked and one is already selected (no ties allowed)', () => {
+    /* start with one item selected, select the second item */
+    document.body.innerHTML = '<input type="hidden" id="selected_item_indicator" value="HIGHER">' +
+                              '<input type="hidden" id="tied_items_indicator" value="EQUAL">' +
+                              '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
+                              '<input type="hidden" id="selected_item_id">' +
+                              '<input type="hidden" id="item_1_id" value="1"/>' +
+                              '<input type="hidden" id="allow-ties" value="false"/>' +
+                              '<div class="selected-hint" style="pointer-events:none;">' +
+                              '<span class="fs-1 fw-bold bg-white p-1 border border-success text-success">HIGHER</span>' +
+                              '</div>' + 
+                              '<input type="hidden" id="item_2_id" value="2"/>' +
+                              '<img id="left-item" class="left-item selected-item" aria-checked="true"/>' +
+                              '<img id="right-item" class="right-item" aria-checked="false"/>';
+    const clickedItem = $('#right-item');
+    rankControl.hintItem(clickedItem);
+    expect(document.getElementById('selected_item_id').value).toBe('2');
+    expect(document.getElementsByClassName('selected-item').length).toBe(1);
+    expect(document.getElementsByClassName('selection-tied').length).toBe(0);
+    expect(document.getElementsByClassName('selection-skipped').length).toBe(0);
+    expect(document.getElementsByClassName('selected-hint').length).toBe(1);
+    expect($('#left-item').attr('aria-checked')).toBe('false');
+    expect($('#right-item').attr('aria-checked')).toBe('true');
+  });
+
   test('hintItem makes the right decision when a single item is clicked and both are already selected', () => {
     /* start with both items selected, right-item is deselected, left becomes highest */
     document.body.innerHTML = '<input type="hidden" id="selected_item_indicator" value="HIGHER">' +
@@ -177,6 +204,7 @@ describe('tests for hintItem', () => {
                               '<input type="hidden" id="selected_item_id">' +
                               '<input type="hidden" id="item_1_id" value="1"/>' +
                               '<input type="hidden" id="item_2_id" value="2"/>' +
+                              '<input type="hidden" id="allow-ties" value="true"/>' +
                               '<img id="left-item" class="left-item selected-item" aria-checked="true"/>' +
                               '<div class="selected-hint" style="pointer-events:none;">' +
                               '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary">EQUAL</span>' +
@@ -203,6 +231,7 @@ describe('tests for hintItem', () => {
                               '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
                               '<input type="hidden" id="selected_item_id">' +
                               '<input type="hidden" id="item_1_id" value="1"/>' +
+                              '<input type="hidden" id="allow-ties" value="true"/>' +
                               '<div class="selected-hint" style="pointer-events:none;">' +
                               '<span class="fs-1 fw-bold bg-white p-1 border border-success text-success">HIGHER</span>' +
                               '</div>' + 
