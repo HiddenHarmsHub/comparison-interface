@@ -14,6 +14,7 @@
     <input type="hidden" id="comparison_id" name="comparison_id" value="{% if comparison_id %}{{comparison_id}}{% else %}{% endif %}">
     <input type="hidden" id="initial_selected_item_id" name="initial_selected_item_id" value="{% if initial_selected_item_id %}{{initial_selected_item_id}}{% else %}{% endif %}">
     <input type="hidden" id="initial_state" name="initial_state" value="{% if initial_state %}{{initial_state}}{% else %}{% endif %}">
+    <input type="hidden" id="allow-ties" name="allow-ties" value="{{ allow_ties }}">
     <div class="form-group">
       <div class="text-center">
         <p id="instructions" class="judgement-instructions fs-4">{{comparison_instruction_label}}</p>

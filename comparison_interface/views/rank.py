@@ -22,6 +22,8 @@ class Rank(Request):
         """Request get handler."""
         if not self._valid_session():
             return self._redirect('.user_registration')
+        
+        allow_ties = WS.get_behaviour_conf(WS.BEHAVIOUR_ALLOW_TIES, self._app)
 
         use_escape_route = WS.get_behaviour_conf(WS.BEHAVIOUR_ESCAPE_ROUTE, self._app)
 
@@ -94,6 +96,7 @@ class Rank(Request):
                 'comparison_id': comparison_id,
                 'initial_state': current_state,
                 'initial_selected_item_id': selected_item_id,
+                'allow_ties': str(allow_ties).lower(),
             },
         )
 
