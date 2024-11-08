@@ -52,6 +52,19 @@ def equal_weight_client_api(equal_weight_app_api):
         yield equal_weight_app_api.test_client()
 
 
+@pytest.fixture()
+def key_file(equal_weight_app_api):
+    filename = equal_weight_app_api.config['API_KEY_FILE']
+    while os.path.exists(filename):
+        filename = f'{filename}1'
+    with open(filename, mode='w') as key_file:
+        key_file.write('test-key')
+    yield
+
+    with equal_weight_app_api.app_context():
+        os.remove(filename)
+
+
 def test_api_not_available_when_not_configured(equal_weight_client):
     """
     GIVEN a flask app configured for testing and with equal weights and with API_ACCESS set to False

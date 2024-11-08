@@ -81,19 +81,6 @@ def user_data():
 
 
 @pytest.fixture()
-def key_file(equal_weight_app_api):
-    filename = equal_weight_app_api.config['API_KEY_FILE']
-    while os.path.exists(filename):
-        filename = f'{filename}1'
-    with open(filename, mode='w') as key_file:
-        key_file.write('test-key')
-    yield
-
-    with equal_weight_app_api.app_context():
-        os.remove(filename)
-
-
-@pytest.fixture()
 def add_basic_data_custom(custom_weight_client):
     # add a user
     user_data = {
