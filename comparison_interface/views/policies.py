@@ -7,7 +7,7 @@ from .request import Request
 class Policies(Request):
     """Render the policies page.
 
-    This page contains an iframe with a link to a google doc containing the site policies.
+    This page either contains an iframe with a link to a google doc or the html from the location specified.
     """
 
     def get(self, _):
@@ -22,8 +22,8 @@ class Policies(Request):
                 },
             )
         # otherwise we are have html to inject instead
-        site_policies_link = WS.get_behaviour_conf(WS.BEHAVIOUR_SITE_POLICIES_HTML, self._app)
-        with open(os.path.join(self._app.root_path, site_policies_link)) as input_file:
+        site_policies_html = WS.get_behaviour_conf(WS.BEHAVIOUR_SITE_POLICIES_HTML, self._app)
+        with open(os.path.join(self._app.root_path, site_policies_html)) as input_file:
             html_fragment = input_file.read()
 
         return self._render_template(
