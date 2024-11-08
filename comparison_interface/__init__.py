@@ -53,6 +53,12 @@ def create_app(test_config=None):
     # Register the application views
     app.register_blueprint(routes.blueprint)
 
+    # if we have asked for the api blueprint then register this here
+    if "API_ACCESS" in app.config and app.config["API_ACCESS"] is True:
+        import comparison_interface.api as api
+
+        app.register_blueprint(api.blueprint)
+
     # Register function executed before any request
     app.before_request(_before_request)
 
