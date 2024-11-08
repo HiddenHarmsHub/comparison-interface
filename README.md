@@ -163,14 +163,19 @@ This section controls aspects of how the system works.
 
 The ```exportPathLocation``` is required and determines where exported data files are saved when the database is exported.
 
-Three required boolean values determine which links appear in the header of the webpage. If any of these booleans are set to true the corresponding link key is required and this should point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop). The keys and their corresponding links are listed below.
+Three required boolean values determine which links appear in the header of the webpage. If any of these booleans are set to true either the corresponding link key or the corresponding html key is required. If using the link key this should point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop). If using the html key then the HTML fragment should be wrapped in a ```<div>``` and contain the HTML you want to be displayed in the template. The template will take care of the header itself.
+
+The keys and their corresponding link/html keys are listed below.
 
 * renderUserInstructionPage
   * userInstructionLink
+  * userInstructionHtml
 * renderEthicsAgreementPage
   * userEthicsAgreementLink
+  * userEthicsAgreementHtml
 * renderSitePoliciesPage
   * sitePoliciesLink
+  * sitePoliciesHtml
 
 There is also a required boolean key ```renderCookiesFooter```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie footer is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
 

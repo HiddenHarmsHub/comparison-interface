@@ -286,17 +286,29 @@ class BehaviourConfiguration(Schema):
     cycleLength = fields.Integer(required=False)
     maximumCyclesPerUser = fields.Integer(required=False)
     userInstructionLink = fields.URL(required=False, validate=[validate.Length(min=1)])
+    userInstructionHtml = fields.Str(required=False, validate=[validate.Length(min=1, max=100)])
     userEthicsAgreementLink = fields.URL(required=False, validate=[validate.Length(min=1)])
+    userEthicsAgreementHtml = fields.Str(required=False, validate=[validate.Length(min=1, max=100)])
     sitePoliciesLink = fields.URL(required=False, validate=[validate.Length(min=1)])
     sitePoliciesHtml = fields.Str(required=False, validate=[validate.Length(min=1, max=100)])
 
     @post_load
     def _post_load_validation(self, data, **kwargs):
-        if data['renderEthicsAgreementPage'] and 'userEthicsAgreementLink' not in data:
-            raise ValidationError("Field userEthicsAgreementLink is required if renderEthicsAgreementPage is true")
+        if data['renderEthicsAgreementPage'] and (
+            'userEthicsAgreementLink' not in data and 'userEthicsAgreementHtml' not in data
+        ):
+            raise ValidationError(
+                "Either the userEthicsAgreementLink or the userEthicsAgreementHtml field is required if "
+                "renderEthicsAgreementPage is true"
+            )
 
-        if data['renderUserInstructionPage'] and 'userInstructionLink' not in data:
-            raise ValidationError("Field userInstructionLink is required if renderUserInstructionPage is true")
+        if data['renderUserInstructionPage'] and (
+            'userInstructionLink' not in data and 'userInstructionHtml' not in data
+        ):
+            raise ValidationError(
+                "Either the userInstructionLink or the userInstructionHtml field is required if "
+                "renderUserInstructionPage is true"
+            )
 
         if data['renderSitePoliciesPage'] and ('sitePoliciesLink' not in data and 'sitePoliciesHtml' not in data):
             raise ValidationError(
