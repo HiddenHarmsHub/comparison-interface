@@ -5,7 +5,7 @@
         "renderUserInstructionPage":  true,
         "renderEthicsAgreementPage":  true,
         "renderSitePoliciesPage":  true,
-        "renderCookiesFooter":  true,
+        "renderCookieBanner":  true,
         "offerEscapeRouteBetweenCycles": false,
         "cycleLength": 3,
         "maximumCyclesPerUser": 3,

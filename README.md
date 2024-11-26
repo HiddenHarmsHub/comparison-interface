@@ -30,7 +30,7 @@ This version of software expands over the initial application build by Bertrand 
 1. Ethics agreement can be written/formatted in Google docs and then rendered on the website keeping the original look and feel. (optional)
 1. Ethics agreement acceptance can be configured to be mandatory at registration. (This is an optional feature)
 1. Site Policies can be written/formatted in Google docs and then rendered on the website keeping the original look and feel. (optional).
-1. Cookies footer can be render and asked to be accepted by the judge. (optional).
+1. A Cookie banner can be rendered with a button to agree to their use. (optional).
 1. The Website interface will render adequately on mobile devices as well as on larger screens.
 1. The website meets WCAG 2.2 AA accessibility guidelines.
 
@@ -172,7 +172,7 @@ Three required boolean values determine which links appear in the header of the 
 * renderSitePoliciesPage
   * sitePoliciesLink
 
-There is also a required boolean key ```renderCookiesFooter```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie footer is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
+There is also a required boolean key ```renderCookieBanner```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie banner is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
 
 Two further boolean keys are required.
 
