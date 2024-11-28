@@ -1,0 +1,379 @@
+{
+    "behaviourConfiguration": {
+        "exportPathLocation": "../exports",
+        "renderUserItemPreferencePage": false,
+        "renderUserInstructionPage": false,
+        "renderEthicsAgreementPage": false,
+        "renderSitePoliciesPage": false,
+        "renderCookiesFooter": false,
+        "offerEscapeRouteBetweenCycles": true,
+        "cycleLength": 10,
+        "maximumCyclesPerUser": 3
+    },
+    "websiteTextConfiguration": {
+        "rankItemInstructionLabel": "Click on the best image, then click on the blue confirm button."
+    },
+    "userFieldsConfiguration": [
+    ],
+    "comparisonConfiguration": {
+        "weightConfiguration": "equal",
+        "groups": [
+            {
+                "name": "la1",
+                "displayName": "LocalAuthority",
+                "items": [
+                    {
+                        "name": "test_w1",
+                        "displayName": "TW1",
+                        "imageName": "test_w1.png"
+                    },
+                    {
+                        "name": "test_w2",
+                        "displayName": "TW2",
+                        "imageName": "test_w2.png"
+                    },
+                    {
+                        "name": "test_w3",
+                        "displayName": "TW3",
+                        "imageName": "test_w3.png"
+                    },
+                    {
+                        "name": "test_w4",
+                        "displayName": "TW4",
+                        "imageName": "test_w4.png"
+                    },
+                    {
+                        "name": "test_w5",
+                        "displayName": "TW5",
+                        "imageName": "test_w5.png"
+                    },
+                    {
+                        "name": "test_w6",
+                        "displayName": "TW6",
+                        "imageName": "test_w6.png"
+                    },
+                    {
+                        "name": "test_w7",
+                        "displayName": "TW7",
+                        "imageName": "test_w7.png"
+                    },
+                    {
+                        "name": "test_w8",
+                        "displayName": "TW8",
+                        "imageName": "test_w8.png"
+                    },
+                    {
+                        "name": "test_w9",
+                        "displayName": "TW9",
+                        "imageName": "test_w9.png"
+                    },
+                    {
+                        "name": "test_w10",
+                        "displayName": "TW10",
+                        "imageName": "test_w10.png"
+                    },
+                    {
+                        "name": "test_w11",
+                        "displayName": "TW11",
+                        "imageName": "test_w11.png"
+                    },
+                    {
+                        "name": "test_w12",
+                        "displayName": "TW12",
+                        "imageName": "test_w12.png"
+                    },
+                    {
+                        "name": "test_w13",
+                        "displayName": "TW13",
+                        "imageName": "test_w13.png"
+                    },
+                    {
+                        "name": "test_w14",
+                        "displayName": "TW14",
+                        "imageName": "test_w14.png"
+                    },
+                    {
+                        "name": "test_w15",
+                        "displayName": "TW15",
+                        "imageName": "test_w15.png"
+                    },
+                    {
+                        "name": "test_w16",
+                        "displayName": "TW16",
+                        "imageName": "test_w16.png"
+                    },
+                    {
+                        "name": "test_w17",
+                        "displayName": "TW17",
+                        "imageName": "test_w17.png"
+                    },
+                    {
+                        "name": "test_w18",
+                        "displayName": "TW18",
+                        "imageName": "test_w18.png"
+                    },
+                    {
+                        "name": "test_w19",
+                        "displayName": "TW19",
+                        "imageName": "test_w19.png"
+                    },
+                    {
+                        "name": "test_w20",
+                        "displayName": "TW20",
+                        "imageName": "test_w20.png"
+                    },
+                    {
+                        "name": "test_w21",
+                        "displayName": "TW21",
+                        "imageName": "test_w21.png"
+                    },
+                    {
+                        "name": "test_w22",
+                        "displayName": "TW22",
+                        "imageName": "test_w22.png"
+                    },
+                    {
+                        "name": "test_w23",
+                        "displayName": "TW23",
+                        "imageName": "test_w23.png"
+                    },
+                    {
+                        "name": "test_w24",
+                        "displayName": "TW24",
+                        "imageName": "test_w24.png"
+                    },
+                    {
+                        "name": "test_w25",
+                        "displayName": "TW25",
+                        "imageName": "test_w25.png"
+                    },
+                    {
+                        "name": "test_w26",
+                        "displayName": "TW26",
+                        "imageName": "test_w26.png"
+                    },
+                    {
+                        "name": "test_w27",
+                        "displayName": "TW27",
+                        "imageName": "test_w27.png"
+                    },
+                    {
+                        "name": "test_w28",
+                        "displayName": "TW28",
+                        "imageName": "test_w28.png"
+                    },
+                    {
+                        "name": "test_w29",
+                        "displayName": "TW29",
+                        "imageName": "test_w29.png"
+                    },
+                    {
+                        "name": "test_w30",
+                        "displayName": "TW30",
+                        "imageName": "test_w30.png"
+                    },
+                    {
+                        "name": "test_w31",
+                        "displayName": "TW31",
+                        "imageName": "test_w31.png"
+                    },
+                    {
+                        "name": "test_w32",
+                        "displayName": "TW32",
+                        "imageName": "test_w32.png"
+                    },
+                    {
+                        "name": "test_w33",
+                        "displayName": "TW33",
+                        "imageName": "test_w33.png"
+                    },
+                    {
+                        "name": "test_w34",
+                        "displayName": "TW34",
+                        "imageName": "test_w34.png"
+                    },
+                    {
+                        "name": "test_w35",
+                        "displayName": "TW35",
+                        "imageName": "test_w35.png"
+                    },
+                    {
+                        "name": "test_w36",
+                        "displayName": "TW36",
+                        "imageName": "test_w36.png"
+                    },
+                    {
+                        "name": "test_w37",
+                        "displayName": "TW37",
+                        "imageName": "test_w37.png"
+                    },
+                    {
+                        "name": "test_w38",
+                        "displayName": "TW38",
+                        "imageName": "test_w38.png"
+                    },
+                    {
+                        "name": "test_w39",
+                        "displayName": "TW39",
+                        "imageName": "test_w39.png"
+                    },
+                    {
+                        "name": "test_w40",
+                        "displayName": "TW40",
+                        "imageName": "test_w40.png"
+                    },
+                    {
+                        "name": "test_w41",
+                        "displayName": "TW41",
+                        "imageName": "test_w41.png"
+                    },
+                    {
+                        "name": "test_w42",
+                        "displayName": "TW42",
+                        "imageName": "test_w42.png"
+                    },
+                    {
+                        "name": "test_w43",
+                        "displayName": "TW43",
+                        "imageName": "test_w43.png"
+                    },
+                    {
+                        "name": "test_w44",
+                        "displayName": "TW44",
+                        "imageName": "test_w44.png"
+                    },
+                    {
+                        "name": "test_w45",
+                        "displayName": "TW45",
+                        "imageName": "test_w45.png"
+                    },
+                    {
+                        "name": "test_w46",
+                        "displayName": "TW46",
+                        "imageName": "test_w46.png"
+                    },
+                    {
+                        "name": "test_w47",
+                        "displayName": "TW47",
+                        "imageName": "test_w47.png"
+                    },
+                    {
+                        "name": "test_w48",
+                        "displayName": "TW48",
+                        "imageName": "test_w48.png"
+                    },
+                    {
+                        "name": "test_w49",
+                        "displayName": "TW49",
+                        "imageName": "test_w49.png"
+                    },
+                    {
+                        "name": "test_w50",
+                        "displayName": "TW50",
+                        "imageName": "test_w50.png"
+                    },
+                    {
+                        "name": "test_w51",
+                        "displayName": "TW51",
+                        "imageName": "test_w51.png"
+                    },
+                    {
+                        "name": "test_w52",
+                        "displayName": "TW52",
+                        "imageName": "test_w52.png"
+                    },
+                    {
+                        "name": "test_w53",
+                        "displayName": "TW53",
+                        "imageName": "test_w53.png"
+                    },
+                    {
+                        "name": "test_w54",
+                        "displayName": "TW54",
+                        "imageName": "test_w54.png"
+                    },
+                    {
+                        "name": "test_w55",
+                        "displayName": "TW55",
+                        "imageName": "test_w55.png"
+                    },
+                    {
+                        "name": "test_w56",
+                        "displayName": "TW56",
+                        "imageName": "test_w56.png"
+                    },
+                    {
+                        "name": "test_w57",
+                        "displayName": "TW57",
+                        "imageName": "test_w57.png"
+                    },
+                    {
+                        "name": "test_w58",
+                        "displayName": "TW58",
+                        "imageName": "test_w58.png"
+                    },
+                    {
+                        "name": "test_w59",
+                        "displayName": "TW59",
+                        "imageName": "test_w59.png"
+                    },
+                    {
+                        "name": "test_w60",
+                        "displayName": "TW60",
+                        "imageName": "test_w60.png"
+                    },
+                    {
+                        "name": "test_w61",
+                        "displayName": "TW61",
+                        "imageName": "test_w61.png"
+                    },
+                    {
+                        "name": "test_w62",
+                        "displayName": "TW62",
+                        "imageName": "test_w62.png"
+                    },
+                    {
+                        "name": "test_w63",
+                        "displayName": "TW63",
+                        "imageName": "test_w63.png"
+                    },
+                    {
+                        "name": "test_w64",
+                        "displayName": "TW64",
+                        "imageName": "test_w64.png"
+                    },
+                    {
+                        "name": "test_w65",
+                        "displayName": "TW65",
+                        "imageName": "test_w65.png"
+                    },
+                    {
+                        "name": "test_w66",
+                        "displayName": "TW66",
+                        "imageName": "test_w66.png"
+                    },
+                    {
+                        "name": "test_w67",
+                        "displayName": "TW67",
+                        "imageName": "test_w67.png"
+                    },
+                    {
+                        "name": "test_w68",
+                        "displayName": "TW68",
+                        "imageName": "test_w68.png"
+                    },
+                    {
+                        "name": "test_w69",
+                        "displayName": "TW69",
+                        "imageName": "test_w69.png"
+                    },
+                    {
+                        "name": "test_w70",
+                        "displayName": "TW70",
+                        "imageName": "test_w70.png"
+                    }
+                ]
+            }
+        ]
+    }
+}
