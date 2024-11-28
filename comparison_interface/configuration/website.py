@@ -25,6 +25,7 @@ class Settings:
     BEHAVIOUR_ESCAPE_ROUTE = "offerEscapeRouteBetweenCycles"
     BEHAVIOUR_CYCLE_LENGTH = "cycleLength"
     BEHAVIOUR_MAX_CYCLES = "maximumCyclesPerUser"
+    BEHAVIOUR_ALLOW_TIES = "allowTies"
     BEHAVIOUR_USER_INSTRUCTION_LINK = "userInstructionLink"
     BEHAVIOUR_ETHICS_AGREEMENT_LINK = "userEthicsAgreementLink"
     BEHAVIOUR_SITE_POLICIES_LINK = "sitePoliciesLink"

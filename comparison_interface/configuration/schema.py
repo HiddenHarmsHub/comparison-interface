@@ -285,6 +285,7 @@ class BehaviourConfiguration(Schema):
     offerEscapeRouteBetweenCycles = fields.Boolean(required=True)
     cycleLength = fields.Integer(required=False)
     maximumCyclesPerUser = fields.Integer(required=False)
+    allowTies = fields.Boolean(required=True)
     userInstructionLink = fields.URL(required=False, validate=[validate.Length(min=1)])
     userEthicsAgreementLink = fields.URL(required=False, validate=[validate.Length(min=1)])
     sitePoliciesLink = fields.URL(required=False, validate=[validate.Length(min=1)])

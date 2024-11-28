@@ -75,7 +75,7 @@ function checkSelection(event) {
 };
 
 function hintItem(clickedItem) {
-    let itemId, selected;
+    let itemId, selected, allowTies;
     const clickedItem1 = clickedItem.hasClass("left-item");
     const clickedItem2 = clickedItem.hasClass("right-item");
     const item1 = document.getElementById("left-item");
@@ -84,11 +84,17 @@ function hintItem(clickedItem) {
     const isItem2Selected = item2.classList.contains('selected-item');
     const idItem1 = document.getElementById('item_1_id').value;
     const idItem2 = document.getElementById('item_2_id').value;
+    const allowTiesSetting = document.getElementById('allow-ties').value;
 
     // Set the clicked item DOM object
     clickedItem = item1;
     if (clickedItem2) {
         clickedItem = item2;
+    }
+
+    allowTies = true;
+    if (allowTiesSetting == 'false')    {
+        allowTies = false;
     }
 
     // Case 1: No item is already selected. Result: One item is selected
@@ -114,10 +120,11 @@ function hintItem(clickedItem) {
         return;
     }
 
-    // Case 2: Just one item was selected. Result: Tied case.
+    // Case 2: Just one item was selected and ties are allowed. Result: Tied case.
     if (
-        (clickedItem1 && !isItem1Selected && isItem2Selected) ||
-        (clickedItem2 && !isItem2Selected && isItem1Selected)
+        ((clickedItem1 && !isItem1Selected && isItem2Selected) ||
+         (clickedItem2 && !isItem2Selected && isItem1Selected)) &&
+        allowTies === true
     ) {
         // Clean the selected-items class
         cleanVisualHint('selected-item', item1, item2);
@@ -137,7 +144,33 @@ function hintItem(clickedItem) {
         return
     }
 
-    // Case 3: One item was unselected. Result: The other item gets the 'higher' label
+    // Case 3: Just one item was selected and ties are not allowed. Result: One item selected (previously selected
+    // item unselected).
+    if (
+        ((clickedItem1 && !isItem1Selected && isItem2Selected) ||
+         (clickedItem2 && !isItem2Selected && isItem1Selected)) &&
+        allowTies === false
+    ) {
+        // Clean the selected-items class
+        cleanVisualHint('selected-item', item1, item2);
+        cleanVisualHint('selection-tied', item1, item2);
+        cleanVisualHint('selection-skipped', item1, item2);
+        resetAriaChecked(item1, item2);
+
+        addVisualHint('selected-item', clickedItem, 'selected');
+        $(clickedItem).attr('aria-checked', 'true');
+
+        // Set the selected item
+        itemId = idItem1;
+        if (clickedItem2) {
+            itemId = idItem2;
+        }
+        setSelectedItem(itemId);
+
+        return
+    }
+
+    // Case 4: One item was unselected. Result: The other item gets the 'higher' label
     if (isItem1Selected && isItem2Selected) {
         // Clean the tied selection class
         cleanVisualHint('selected-item', item1, item2);
@@ -166,7 +199,7 @@ function hintItem(clickedItem) {
         return;
     }
 
-    // Case 4: The only selected item is unselected. Result: Confirm button is disabled
+    // Case 5: The only selected item is unselected. Result: Confirm button is disabled
     if (
         (clickedItem2 && isItem2Selected && !isItem1Selected) ||
         (clickedItem1 && isItem1Selected && !isItem2Selected)
