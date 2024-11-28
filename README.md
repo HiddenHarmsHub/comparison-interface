@@ -47,7 +47,7 @@ To set up the virtual environment and install the python requirements ensure Vir
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 
 If you are using windows then you may need to change the way the that you activate the virtual environment (the second line in the example above) and instead use one of the following two lines of code depending on the type of shell you are using.
@@ -68,7 +68,7 @@ Flask provides a development webserver which is good enough to evaluate the soft
 
 ### Running the provided examples
 
-This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction.
+This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction,the example files can be found in the examples directory inside the comparison_interface directory.
 
 1. equal item weight options
     * config-equal-item-weights.json
