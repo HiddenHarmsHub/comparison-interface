@@ -281,7 +281,7 @@ class BehaviourConfiguration(Schema):
     renderUserInstructionPage = fields.Boolean(required=True)
     renderEthicsAgreementPage = fields.Boolean(required=True)
     renderSitePoliciesPage = fields.Boolean(required=True)
-    renderCookiesFooter = fields.Boolean(required=True)
+    renderCookieBanner = fields.Boolean(required=True)
     offerEscapeRouteBetweenCycles = fields.Boolean(required=True)
     cycleLength = fields.Integer(required=False)
     maximumCyclesPerUser = fields.Integer(required=False)

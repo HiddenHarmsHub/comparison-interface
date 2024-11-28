@@ -12,7 +12,7 @@
         "userEthicsAgreementLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
         "renderSitePoliciesPage":  true,
         "sitePoliciesLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
-        "renderCookiesFooter":  true
+        "renderCookieBanner":  true
     },
     "userFieldsConfiguration": [
         {

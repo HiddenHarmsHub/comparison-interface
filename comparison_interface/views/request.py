@@ -43,13 +43,13 @@ class Request:
         render_instructions = WS.should_render(WS.BEHAVIOUR_RENDER_USER_INSTRUCTION_PAGE, self._app)
         render_ethics_agreement = WS.should_render(WS.BEHAVIOUR_RENDER_ETHICS_AGREEMENT_PAGE, self._app)
         render_site_policies = WS.should_render(WS.BEHAVIOUR_RENDER_SITE_POLICIES, self._app)
-        render_site_cookies = WS.should_render(WS.BEHAVIOUR_RENDER_COOKIES_FOOTER, self._app)
+        render_site_cookies = WS.should_render(WS.BEHAVIOUR_RENDER_COOKIE_BANNER, self._app)
 
         return {
             'website_title': WS.get_text(WS.WEBSITE_TITLE, self._app),
             'introduction_page_title': WS.get_text(WS.PAGE_TITLE_INTRODUCTION, self._app),
             'ethics_agreement_page_title': WS.get_text(WS.PAGE_TITLE_ETHICS_AGREEMENT, self._app),
-            'policies_page_title': WS.get_text(WS.PAGE_TITLE_COOKIES, self._app),
+            'policies_page_title': WS.get_text(WS.PAGE_TITLE_POLICIES, self._app),
             'user_registration_page_title': WS.get_text(WS.PAGE_TITLE_USER_REGISTRATION, self._app),
             'logout_page_title': WS.get_text(WS.PAGE_TITLE_LOGOUT, self._app),
             'item_preference_page_title': WS.get_text(WS.PAGE_TITLE_ITEM_PREFERENCE, self._app),
@@ -59,7 +59,7 @@ class Request:
             'render_user_instructions': render_instructions,
             'render_user_ethics_agreement': render_ethics_agreement,
             'render_site_policies': render_site_policies,
-            'render_cookies_footer': render_site_cookies,
+            'render_cookie_banner': render_site_cookies,
         }
 
     def _valid_session(self):

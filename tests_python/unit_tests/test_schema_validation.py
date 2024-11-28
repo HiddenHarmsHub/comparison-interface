@@ -19,7 +19,7 @@ def test_behaviour_configuration_for_escape_route_false():
         "renderUserInstructionPage": False,
         "renderEthicsAgreementPage": False,
         "renderSitePoliciesPage": False,
-        "renderCookiesFooter": False,
+        "renderCookieBanner": False,
         "offerEscapeRouteBetweenCycles": False,
         "allowTies": False,
     }
@@ -37,7 +37,7 @@ def test_behaviour_configuration_for_escape_route_true_with_all_requirements():
         "renderUserInstructionPage": False,
         "renderEthicsAgreementPage": False,
         "renderSitePoliciesPage": False,
-        "renderCookiesFooter": False,
+        "renderCookieBanner": False,
         "offerEscapeRouteBetweenCycles": True,
         "cycleLength": 30,
         "maximumCyclesPerUser": 3,
@@ -57,7 +57,7 @@ def test_behaviour_configuration_for_escape_route_true_with_missing_requirements
         "renderUserInstructionPage": False,
         "renderEthicsAgreementPage": False,
         "renderSitePoliciesPage": False,
-        "renderCookiesFooter": False,
+        "renderCookieBanner": False,
         "offerEscapeRouteBetweenCycles": True,
         "cycleLength": 30,
     }
