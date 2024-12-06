@@ -373,7 +373,7 @@ class Configuration(Schema):
             ):
                 raise ValidationError(
                     "If multiple item groups are defined then both userRegistrationGroupQuestionLabel and "
-                    "userRegistrationGroupSelectionErr must be provded in the websiteTextConfiguration section."
+                    "userRegistrationGroupSelectionErr must be provided in the websiteTextConfiguration section."
                 )
 
         return data
