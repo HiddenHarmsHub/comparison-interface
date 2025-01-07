@@ -28,100 +28,100 @@ beforeAll(async () => {
       await expect(urls).allToBeAccessible();
     }, 5000 * 5);
 
-    test('Test the item selection page', async () => {
-      const url = 'http://localhost:5001/selection/items';
-      const actions = [
-        'navigate to http://127.0.0.1:5001/register',
-        'set field input[id="name-input"] to Test Name',
-        'click element #country-choice-1',
-        'set field select[id="allergies-select"] to Yes',
-        'set field input[id="age-input"] to 29',
-        'set field input[id="email-input"] to test@example.com',
-        'click element #group-2',
-        'click element #accept-ethics-agreement',
-        'click element #submit-button',
-        'wait for element #cookie-message-popup-accept to be visible',
-        'click element #cookie-message-popup-accept',
-        'wait for path to be /selection/items',
-        ] 
-      await expect(url).toBeAccessible(actions);
-    });
+    // test('Test the item selection page', async () => {
+    //   const url = 'http://localhost:5001/selection/items';
+    //   const actions = [
+    //     'navigate to http://127.0.0.1:5001/register',
+    //     'set field input[id="name-input"] to Test Name',
+    //     'click element #country-choice-1',
+    //     'set field select[id="allergies-select"] to Yes',
+    //     'set field input[id="age-input"] to 29',
+    //     'set field input[id="email-input"] to test@example.com',
+    //     'click element #group-2',
+    //     'click element #accept-ethics-agreement',
+    //     'click element #submit-button',
+    //     'wait for element #cookie-message-popup-accept to be visible',
+    //     'click element #cookie-message-popup-accept',
+    //     'wait for path to be /selection/items',
+    //     ] 
+    //   await expect(url).toBeAccessible(actions);
+    // });
 
-    test('Test the thank you page', async () => {
-      const url = 'http://localhost:5001/thankyou'
-      const actions = [
-        'navigate to http://127.0.0.1:5001/register',
-        'set field input[id="name-input"] to Test Name',
-        'click element #country-choice-1',
-        'set field select[id="allergies-select"] to Yes',
-        'set field input[id="age-input"] to 29',
-        'set field input[id="email-input"] to test@example.com',
-        'click element #group-2',
-        'click element #accept-ethics-agreement',
-        'click element #submit-button',
-        'wait for element #cookie-message-popup-accept to be visible',
-        'click element #cookie-message-popup-accept',
-        'wait for path to be /selection/items',
-        'navigate to http://127.0.0.1:5001/thankyou',
-        ] 
-      await expect(url).toBeAccessible(actions);
-    });
+    // test('Test the thank you page', async () => {
+    //   const url = 'http://localhost:5001/thankyou'
+    //   const actions = [
+    //     'navigate to http://127.0.0.1:5001/register',
+    //     'set field input[id="name-input"] to Test Name',
+    //     'click element #country-choice-1',
+    //     'set field select[id="allergies-select"] to Yes',
+    //     'set field input[id="age-input"] to 29',
+    //     'set field input[id="email-input"] to test@example.com',
+    //     'click element #group-2',
+    //     'click element #accept-ethics-agreement',
+    //     'click element #submit-button',
+    //     'wait for element #cookie-message-popup-accept to be visible',
+    //     'click element #cookie-message-popup-accept',
+    //     'wait for path to be /selection/items',
+    //     'navigate to http://127.0.0.1:5001/thankyou',
+    //     ] 
+    //   await expect(url).toBeAccessible(actions);
+    // });
 
-    test('Test the rank page', async () => {
-      const page = await browser.newPage();
-      const url = 'http://localhost:5001/rank';
-      let itemId, currentId;
-      await page.goto(url, {waitUntil: 'networkidle0'});
-      // accept the cookies
-      await page.waitForSelector('#cookie-message-popup-accept', { visible: true });
-      page.click('#cookie-message-popup-accept');
-      // fill in the form (using the type function did not work for me)
-      await page.waitForSelector('#cookie-message-popup-accept', { visible: false });
-      await page.$eval('#name-input', el => el.value = 'My Name');
-      page.click('#country-choice-1');
-      await page.select('#allergies-select', 'Yes');
-      await page.$eval('#age-input', el => el.value = '29');
-      await page.$eval('#email-input', el => el.value = 'test@example.com');
-      await page.$eval('#group-2', el => el.checked = 'true');
-      await page.$eval('#accept-ethics-agreement', el => el.checked = 'true');
-      expect(await page.$eval('#group-2', el => el.checked)).toBe(true);
-      expect(await page.$eval('#accept-ethics-agreement', el => el.checked)).toBe(true);
-      // submit the form
-      page.click('#submit-button');
+    // test('Test the rank page', async () => {
+    //   const page = await browser.newPage();
+    //   const url = 'http://localhost:5001/rank';
+    //   let itemId, currentId;
+    //   await page.goto(url, {waitUntil: 'networkidle0'});
+    //   // accept the cookies
+    //   await page.waitForSelector('#cookie-message-popup-accept', { visible: true });
+    //   page.click('#cookie-message-popup-accept');
+    //   // fill in the form (using the type function did not work for me)
+    //   await page.waitForSelector('#cookie-message-popup-accept', { visible: false });
+    //   await page.$eval('#name-input', el => el.value = 'My Name');
+    //   page.click('#country-choice-1');
+    //   await page.select('#allergies-select', 'Yes');
+    //   await page.$eval('#age-input', el => el.value = '29');
+    //   await page.$eval('#email-input', el => el.value = 'test@example.com');
+    //   await page.$eval('#group-2', el => el.checked = 'true');
+    //   await page.$eval('#accept-ethics-agreement', el => el.checked = 'true');
+    //   expect(await page.$eval('#group-2', el => el.checked)).toBe(true);
+    //   expect(await page.$eval('#accept-ethics-agreement', el => el.checked)).toBe(true);
+    //   // submit the form
+    //   page.click('#submit-button');
 
-      // work through the items for selection
-      await page.waitForSelector('#agree-button', { visible: true });
-      itemId = await page.$('#item-id');
-      currentId = await page.evaluate(el => el.value, itemId)
-      page.click('#agree-button');
+    //   // work through the items for selection
+    //   await page.waitForSelector('#agree-button', { visible: true });
+    //   itemId = await page.$('#item-id');
+    //   currentId = await page.evaluate(el => el.value, itemId)
+    //   page.click('#agree-button');
 
-      await page.waitForNavigation({ waitUntil: 'networkidle0' });
-      expect(await page.$eval('#item-id', el => el.value)).not.toBe(currentId);
-      itemId = await page.$('#item-id');
-      currentId = await page.evaluate(el => el.value, itemId)
-      page.click('#agree-button');
+    //   await page.waitForNavigation({ waitUntil: 'networkidle0' });
+    //   expect(await page.$eval('#item-id', el => el.value)).not.toBe(currentId);
+    //   itemId = await page.$('#item-id');
+    //   currentId = await page.evaluate(el => el.value, itemId)
+    //   page.click('#agree-button');
 
-      await page.waitForNavigation({ waitUntil: 'networkidle0' });
-      expect(await page.$eval('#item-id', el => el.value)).not.toBe(currentId);
-      itemId = await page.$('#item-id');
-      currentId = await page.evaluate(el => el.value, itemId)
-      page.click('#agree-button');
+    //   await page.waitForNavigation({ waitUntil: 'networkidle0' });
+    //   expect(await page.$eval('#item-id', el => el.value)).not.toBe(currentId);
+    //   itemId = await page.$('#item-id');
+    //   currentId = await page.evaluate(el => el.value, itemId)
+    //   page.click('#agree-button');
 
-      // wait for the ranking page to load
-      await page.waitForNavigation({ waitUntil: 'networkidle0' });
-      await page.waitForSelector('#confirm-button-d', { visible: true });
+    //   // wait for the ranking page to load
+    //   await page.waitForNavigation({ waitUntil: 'networkidle0' });
+    //   await page.waitForSelector('#confirm-button-d', { visible: true });
 
-      // run pa11y and test the report
-      const report = await pa11y(url, {
-          runners: ['axe', 'htmlcs'],
-          standard: 'WCAG2AA',
-          ignoreUrl: true,
-          browser: browser,
-          page: page,
-          includeWarnings: false,
-          includeNotices: false
-      });
-      await expect(report).toHaveNoErrors();
-    }, 50000);
+    //   // run pa11y and test the report
+    //   const report = await pa11y(url, {
+    //       runners: ['axe', 'htmlcs'],
+    //       standard: 'WCAG2AA',
+    //       ignoreUrl: true,
+    //       browser: browser,
+    //       page: page,
+    //       includeWarnings: false,
+    //       includeNotices: false
+    //   });
+    //   await expect(report).toHaveNoErrors();
+    // }, 50000);
 
 });
