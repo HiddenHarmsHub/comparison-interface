@@ -6,11 +6,12 @@ module.exports = {
     ],
 
     "setupFiles": [
-        "./jquery_setup.js"
+        "<rootDir>/jest_setup_files/jquery_setup.js",
+        "<rootDir>/jest_setup_files/prepare_reporting_directory.js"
     ],
 
     "setupFilesAfterEnv": [
-        "./accessibility_reporting_setup.js"
+        "<rootDir>/jest_setup_files/accessibility_reporting_setup.js"
     ]
 
 }

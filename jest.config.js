@@ -7,11 +7,11 @@ module.exports = {
     ],
 
     "setupFiles": [
-        "./jquery_setup.js"
+        "<rootDir>/jest_setup_files/jquery_setup.js"
     ],
 
     "setupFilesAfterEnv": [
-        "./accessibility_testing_setup.js"
+        "<rootDir>/jest_setup_files/accessibility_testing_setup.js"
     ]
 
 }

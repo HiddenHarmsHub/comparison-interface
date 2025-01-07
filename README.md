@@ -297,13 +297,42 @@ The JavaScript tests are written in Jest. They are run as follows:
 ```bash
 npx jest -- tests_javascript
 ```
+or 
+
+```bash
+npm run test -- tests_javascript
+```
 
 ### Accessibility tests
 
-The accessibility tests are written in Jest and use Pa11y. The flask application must be running at ```http://localhost:5001``` for these tests to run successfully. They are run as follows:
+The accessibility tests are written in Jest and use Pa11y. The flask application must be running at ```http://localhost:5001``` for these tests to run successfully. A specific testing configuration file is required so the flask application should be setup with the following command:
+
+```bash
+flask --debug reset ../tests_python/test_configurations/config-equal-item-weights.json
+```
+
+The tests are run as follows:
 
 ```bash
 npx jest -- tests_accessibility
+```
+
+or 
+
+```bash
+npm run test -- tests_accessibility
+```
+
+To generate full accessibility reports based on your tests you can run 
+
+```bash
+npx jest --config jest.reporting.config.js
+```
+
+or 
+
+```bash 
+npm run pa11y-reports
 ```
 
 ## Cookies used on this website
