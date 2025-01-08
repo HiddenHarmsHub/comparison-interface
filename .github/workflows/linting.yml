@@ -4,6 +4,8 @@ on: [push, pull_request]
 
 jobs:
     ruff:
+        permissions:
+          contents: read
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
@@ -23,6 +25,8 @@ jobs:
             ruff format --check --diff .
 
     curlylint:
+      permissions:
+        contents: read
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v4
@@ -41,6 +45,8 @@ jobs:
           curlylint --verbose .
 
     eslint:
+      permissions:
+        contents: read
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v4
@@ -55,6 +61,8 @@ jobs:
           node_modules/eslint/bin/eslint.js comparison_interface/static/js/src/*.js tests_javascript/*.js tests_accessibility/*.js
 
     stylelint:
+      permissions:
+        contents: read
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v4
