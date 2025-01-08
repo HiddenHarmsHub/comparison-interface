@@ -18,5 +18,7 @@ node_modules
 .ruff_cache
 .apikey
 exports/
+project_configuration
 project_configuration/
 project_html/
+images
