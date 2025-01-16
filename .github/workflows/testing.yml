@@ -4,6 +4,8 @@ on: [push, pull_request]
 
 jobs:
     pytest:
+        permissions:
+            contents: read
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
@@ -23,6 +25,8 @@ jobs:
             pytest -v tests_python
 
     javascript_tests:
+        permissions:
+            contents: read
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
