@@ -331,7 +331,7 @@ We welcome contributions to the project.
 
 ## CI
 
-Please refer to .gitlab-ci.yml for details on the linters and the tests run in the CI workflow.
+Please refer to .github/workflows folder for details on the linters and the tests that run in the CI workflow.
 
 ## Authors and acknowledgment
 
