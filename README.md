@@ -77,6 +77,8 @@ This sequence of commands will allow you setup and run one of the pre-configured
 
 #### Initial setup
 
+rename the `example.flask.py` file in `comparison_interface/configuration/` to `flask.py`.
+
 Open a terminal and run these commands replacing ```[configuration_file_name]``` with the name of the configuration file you want to try.
 
 ```bash
