@@ -122,6 +122,7 @@ Please follow the next step to make a custom configuration for a project.
 #### Steps
 
 1. Replace the contents of the folder ***static/images*** with your own images.
+1. Copy the **example.flask.py** in the **comparison_interface/configuration** directory to **flask.py**, change the secret key and any other settings you want to change.
 1. Copy your configuration file to the folder ***examples/*** or another location within the comparison_interface directory.
 1. Open a terminal and run these commands.
 
