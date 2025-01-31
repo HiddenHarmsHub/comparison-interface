@@ -15,6 +15,15 @@ from .views.thankyou import Thankyou
 blueprint = Blueprint('views', __name__, template_folder='templates')
 
 
+@blueprint.after_request
+def add_no_cache_headers(response):
+    """Add no cache headers to all pages."""
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = 0
+    return response
+
+
 @blueprint.route('/introduction', methods=['GET'])
 def introduction():
     """Handle introduction URL."""
