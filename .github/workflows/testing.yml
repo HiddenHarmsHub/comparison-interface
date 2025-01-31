@@ -22,6 +22,7 @@ jobs:
         - name: Run Pytest
           run: |
             source venv/bin/activate
+            mv comparison_interface/static/example.images/ comparison_interface/static/images/
             pytest -v tests_python
 
     javascript_tests:
