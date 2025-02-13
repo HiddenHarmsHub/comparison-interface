@@ -78,6 +78,7 @@ This sequence of commands will allow you setup and run one of the pre-configured
 #### Initial setup
 
 rename the `example.images` file in `comparison_interface/static/` to `images`.
+rename the `example.flask.py` file in `comparison_interface/configuration/` to `flask.py`.
 
 Open a terminal and run these commands replacing ```[configuration_file_name]``` with the name of the configuration file you want to try.
 
@@ -122,6 +123,7 @@ Please follow the next step to make a custom configuration for a project.
 #### Steps
 
 1. Replace the contents of the folder ***static/images*** with your own images.
+1. Copy the ***example.flask.py*** in the ***comparison_interface/configuration*** directory to ***flask.py***, change the secret key and any other settings you want to change.
 1. Copy your configuration file to the folder ***examples/*** or another location within the comparison_interface directory.
 1. Open a terminal and run these commands.
 

@@ -21,3 +21,4 @@ exports/
 project_configuration/
 project_html/
 comparison_interface/static/images/
+comparison_interface/configuration/flask.py
