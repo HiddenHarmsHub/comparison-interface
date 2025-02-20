@@ -303,6 +303,10 @@ class Settings:
             JSON: Website configuration object
         """
         location = cls.get_configuration_location(app)
+        if os.path.isdir(location):
+            for file in os.listdir(location):
+                if file.lower()[-5:] == ".json":
+                    location = os.path.join(location, file)
         config_data = None
         try:
             with open(location, 'r') as config_file:
