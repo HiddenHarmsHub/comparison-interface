@@ -231,7 +231,7 @@ class Settings:
         if 'csvFile' in conf[cls.CONFIGURATION_COMPARISON]:
             # then we need to get the data from the csv file
             location = cls.get_configuration_location(app)
-            filepath = os.path.join(location, conf)
+            filepath = os.path.join(location, conf[cls.CONFIGURATION_COMPARISON]['csvFile'])
             data = CsvProcessor().create_config_from_csv(filepath)
             return data[key]
         else:
