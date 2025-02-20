@@ -72,9 +72,7 @@ def reset(conf):
     )
     if confirm.strip() == 'yes':
         # 1. Validate the website configuration
-        app.logger.info("Checking config path")
         ConfigValidation(app).check_config_path(conf)
-        app.logger.info("Config path is okay")
         app.logger.info("Setting website configuration")
         WS.set_configuration_location(app, conf)
         ConfigValidation(app).validate()
