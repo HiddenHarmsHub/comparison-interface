@@ -26,7 +26,9 @@ class Item(Schema):
         if not match:
             raise ValidationError(
                 "Name can be only alpha numeric lower case values with underscores or dashes. "
-                "i.e. this_is_a_valid_name"
+                "i.e. this_is_a_valid_name. If you are using a csv file for the comparison configuration then you "
+                "will either need to supply a column with the title 'item name' which complies with the criteria "
+                "above or remove any special characters from the 'item display name' column."
             )
 
     @validates('imageName')
@@ -58,9 +60,7 @@ class Weight(Schema):
         if not match:
             raise ValidationError(
                 "Weight items name can be only alpha numeric lower case values with underscores or dashes. "
-                "i.e. this_is_a_valid_name . If you are using a csv file for the comparison configuration then you "
-                "will either need to supply a column with the title 'item name' which complies with the criteria "
-                "above or remove any special characters from the 'item display name' column."
+                "i.e. this_is_a_valid_name"
             )
 
 
@@ -127,7 +127,7 @@ class Group(Schema):
         if not match:
             raise ValidationError(
                 "Group name can be only alpha numeric lower case values with underscores or dashes. "
-                "i.e. this_is_a_valid_name . If you are using a csv file for the comparison configuration then you "
+                "i.e. this_is_a_valid_name. If you are using a csv file for the comparison configuration then you "
                 "will either need to supply a column with the title 'group name' which complies with the criteria "
                 "above or remove any special characters from the 'group display name' column."
             )
