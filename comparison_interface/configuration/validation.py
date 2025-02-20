@@ -1,8 +1,10 @@
 import os
+from csv import DictReader
 
 from marshmallow import ValidationError
 
-from .csv_validation import CsvValidator
+from .csv_processor import CsvProcessor
+from .schema import ComparisonConfiguration as CompSchema
 from .schema import Configuration as ConfigSchema
 from .website import Settings as WS
 
@@ -23,11 +25,22 @@ class Validation:
         except ValidationError as err:
             self.__app.logger.critical(err)
             exit()
-        #now if we reference a csv file validate that
+        # now if we reference a csv file validate that
         if "csvFile" in conf["comparisonConfiguration"]:
             config_location = WS.get_configuration_location(self.__app)
-            csv_validator = CsvValidator()
-            csv_validator.validate(os.path.join(config_location, conf["comparisonConfiguration"]["csvFile"]))
+            # check the csv file structure is good enough.
+            self.validate_csv_structure(os.path.join(config_location, conf["comparisonConfiguration"]["csvFile"]))
+            self.__app.logger.info("structure of csv file is good")
+            # structure is fine so read the contents and send it to the comparisonConfiguration schema validator
+            config = CsvProcessor().create_config_from_csv(
+                os.path.join(config_location, conf["comparisonConfiguration"]["csvFile"])
+            )
+            schema = CompSchema()
+            try:
+                schema.load(config)
+            except ValidationError as err:
+                self.__app.logger.critical(err)
+                exit()
 
     def check_config_path(self, path):
         """Check that the path provided meets the requirements.
@@ -55,3 +68,18 @@ class Validation:
             if path.lower()[-5:] != ".json":
                 self.__app.logger.critical("If the config path is to a file it must be a .json file.")
                 exit()
+
+    def validate_csv_structure(self, file):
+        """Validate the provided csv file."""
+        with open(file, mode='r') as csv_input:
+            image_data = DictReader(csv_input)
+            image_data.fieldnames = [x.lower() for x in image_data.fieldnames]
+            # required 'Item display name', 'image' everything else can be invented (case doesn't matter)
+            required_keys = ['item display name', 'image']
+            # optional_keys = ['item name', 'group name', 'group display name']
+            for key in required_keys:
+                if key not in image_data.fieldnames:
+                    raise ValidationError(
+                        'The csv file must have columns named "item display  name" and "image" (case does not matter, '
+                        'spaces do). Your file is missing one of these columns.'
+                    )

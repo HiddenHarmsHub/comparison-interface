@@ -58,13 +58,14 @@ class Weight(Schema):
         if not match:
             raise ValidationError(
                 "Weight items name can be only alpha numeric lower case values with underscores or dashes. "
-                "i.e. this_is_a_valid_name"
+                "i.e. this_is_a_valid_name . If you are using a csv file for the comparison configuration then you "
+                "will either need to supply a column with the title 'item name' which complies with the criteria "
+                "above or remove any special characters from the 'item display name' column."
             )
 
 
 class Group(Schema):
     """The schema for a Group."""
-
     name = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     displayName = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     items = fields.List(fields.Nested(Item()), required=True, validate=[validate.Length(min=1, max=1000)])
@@ -126,7 +127,9 @@ class Group(Schema):
         if not match:
             raise ValidationError(
                 "Group name can be only alpha numeric lower case values with underscores or dashes. "
-                "i.e. this_is_a_valid_name"
+                "i.e. this_is_a_valid_name . If you are using a csv file for the comparison configuration then you "
+                "will either need to supply a column with the title 'group name' which complies with the criteria "
+                "above or remove any special characters from the 'group display name' column."
             )
 
 
