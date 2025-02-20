@@ -1,7 +1,7 @@
 from csv import DictReader
 
 
-class CsvProcessor():
+class CsvProcessor:
     """A special validation class to validate a csv file used to upload images."""
 
     def create_config_from_csv(self, file):
@@ -21,17 +21,15 @@ class CsvProcessor():
                     by_group[entry["group name"]] = {
                         "name": entry["group name"],
                         "displayName": entry["group display name"],
-                        "items": []
+                        "items": [],
                     }
                 item = {
                     "name": entry["item name"],
                     "displayName": entry["item display name"],
-                    "imageName": entry["image"]
+                    "imageName": entry["image"],
                 }
                 by_group[entry["group name"]]["items"].append(item)
             groups = []
             for entry in by_group:
                 groups.append(by_group[entry])
         return {"groups": groups, "weightConfiguration": "equal"}
-
-
