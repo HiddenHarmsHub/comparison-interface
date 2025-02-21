@@ -71,15 +71,15 @@ class Validation:
 
     def validate_csv_structure(self, file):
         """Validate the provided csv file."""
-        with open(file, mode='r') as csv_input:
+        with open(file, mode="r") as csv_input:
             image_data = DictReader(csv_input)
             image_data.fieldnames = [x.lower() for x in image_data.fieldnames]
             # required - case doesn't matter
-            required_keys = ['item display name', 'image']
+            required_keys = ["item display name", "image"]
             # optional_keys are 'item name', 'group name', 'group display name'
             for key in required_keys:
                 if key not in image_data.fieldnames:
                     raise ValidationError(
-                        'The csv file must have columns named "item display  name" and "image" (case does not matter, '
-                        'spaces do). Your file is missing one of these columns.'
+                        "The csv file must have columns named 'item display name' and 'image' (case does not matter, "
+                        "spaces do). Your file is missing one of these columns."
                     )

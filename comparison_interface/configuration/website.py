@@ -11,12 +11,12 @@ class Settings:
     configuration = None
 
     # Configuration file key values
-    CONFIGURATION_LOCATION = 'CONFIG_LOC'
+    CONFIGURATION_LOCATION = "CONFIG_LOC"
     # Website configuration sections
-    CONFIGURATION_BEHAVIOUR = 'behaviourConfiguration'
-    CONFIGURATION_COMPARISON = 'comparisonConfiguration'
-    CONFIGURATION_USER_FIELDS = 'userFieldsConfiguration'
-    CONFIGURATION_WEBSITE_TEXT = 'websiteTextConfiguration'
+    CONFIGURATION_BEHAVIOUR = "behaviourConfiguration"
+    CONFIGURATION_COMPARISON = "comparisonConfiguration"
+    CONFIGURATION_USER_FIELDS = "userFieldsConfiguration"
+    CONFIGURATION_WEBSITE_TEXT = "websiteTextConfiguration"
     # Website behaviour configuration keys
     BEHAVIOUR_EXPORT_PATH_LOCATION = "exportPathLocation"
     BEHAVIOUR_RENDER_USER_ITEM_PREFERENCE_PAGE = "renderUserItemPreferencePage"
@@ -35,17 +35,17 @@ class Settings:
     BEHAVIOUR_SITE_POLICIES_LINK = "sitePoliciesLink"
     BEHAVIOUR_SITE_POLICIES_HTML = "sitePoliciesHtml"
     # Group related configuration keys
-    GROUPS = 'groups'
-    GROUP_WEIGHT_CONFIGURATION = 'weightConfiguration'
-    GROUP_NAME = 'name'
-    GROUP_DISPLAY_NAME = 'displayName'
-    GROUP_ITEMS = 'items'
-    GROUP_ITEMS_WEIGHT = 'weight'
+    GROUPS = "groups"
+    GROUP_WEIGHT_CONFIGURATION = "weightConfiguration"
+    GROUP_NAME = "name"
+    GROUP_DISPLAY_NAME = "displayName"
+    GROUP_ITEMS = "items"
+    GROUP_ITEMS_WEIGHT = "weight"
     # Items related configuration keys
-    ITEM_NAME = 'name'
-    ITEM_GROUP_ID = 'group_id'
-    ITEM_DISPLAY_NAME = 'displayName'
-    ITEM_IMAGE_NAME = 'imageName'
+    ITEM_NAME = "name"
+    ITEM_GROUP_ID = "group_id"
+    ITEM_DISPLAY_NAME = "displayName"
+    ITEM_IMAGE_NAME = "imageName"
     # User fields configuration fields
     USER_FIELD_NAME = "name"
     USER_FIELD_DISPLAY_NAME = "displayName"
@@ -54,11 +54,11 @@ class Settings:
     USER_FIELD_MIN_LIMIT = "minLimit"
     USER_FIELD_REQUIRED = "required"
     USER_FIELD_SELECT_OPTION = "option"
-    USER_FIELD_TYPE_TEXT = 'text'
-    USER_FIELD_TYPE_INT = 'int'
-    USER_FIELD_TYPE_DROPDOWN = 'dropdown'
-    USER_FIELD_TYPE_RADIO = 'radio'
-    USER_FIELD_TYPE_EMAIL = 'email'
+    USER_FIELD_TYPE_TEXT = "text"
+    USER_FIELD_TYPE_INT = "int"
+    USER_FIELD_TYPE_DROPDOWN = "dropdown"
+    USER_FIELD_TYPE_RADIO = "radio"
+    USER_FIELD_TYPE_EMAIL = "email"
     # Website labels
     WEBSITE_TITLE = "websiteTitle"
     PAGE_TITLE_LOGOUT = "pageTitleLogout"
