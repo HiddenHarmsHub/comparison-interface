@@ -74,9 +74,9 @@ class Validation:
         with open(file, mode='r') as csv_input:
             image_data = DictReader(csv_input)
             image_data.fieldnames = [x.lower() for x in image_data.fieldnames]
-            # required 'Item display name', 'image' everything else can be invented (case doesn't matter)
+            # required - case doesn't matter
             required_keys = ['item display name', 'image']
-            # optional_keys = ['item name', 'group name', 'group display name']
+            # optional_keys are 'item name', 'group name', 'group display name'
             for key in required_keys:
                 if key not in image_data.fieldnames:
                     raise ValidationError(
