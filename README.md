@@ -124,11 +124,11 @@ Please follow the next step to make a custom configuration for a project.
 
 1. Replace the contents of the folder ***static/images*** with your own images.
 1. Copy the ***example.flask.py*** in the ***comparison_interface/configuration*** directory to ***flask.py***, change the secret key and any other settings you want to change.
-1. Copy your configuration file to the folder ***examples/*** or another location within the comparison_interface directory.
+1. Copy your configuration file (of files if using a csv file for the comparison configuration)to the folder ***examples/*** or another location within the comparison_interface directory.
 1. Open a terminal and run these commands.
 
     ```bash
-    flask --debug setup [path_to_configuration_file]
+    flask --debug setup [path_to_configuration_file_or_directory_if_using_a_csv_file]
     flask --debug run --port=5001
     ```
 
@@ -155,7 +155,7 @@ The configuration file is written in JSON and has four sections.
 1. **behaviourConfiguration** defines the settings to control the behaviour of the system including what links are present in the header
 1. **userFieldsConfiguration** details the questions that the user is asked on the registration page
 1. **websiteTextConfiguration** defines the text that the user sees on the website
-1. **comparisonConfiguration** describes the images bsing used for the project and how they should be selected for comparison
+1. **comparisonConfiguration** describes the images being used for the project and how they should be selected for comparison
 
 When the system is started the configuration file requested will be validated and if there are any problems with the file the error message should help to fix them.
 
@@ -229,11 +229,29 @@ There is also an optional key for all projects ```additionalRegistrationPageText
 
 ### Comparison configuration
 
-This section needs to define all of the images you want to use organised by groups and for weighted item pairs all of the weights.
+This section needs to define all of the images you want to use organised by groups and for weighted item pairs all of the weights. If you are not using weighted pairs this comparison configuration can be provided directly in the JSON or as a csv file. When using a csv file the csv file and the JSON configuration file should be put in the same directory and when running the setup and reset commands the path to the configuration file should instead be to the parent directory containing the two files.
+
+To see how the JSON should be configured please refer to the examples provided.
 
 Refer to **examples/config-equal-item-weights.json** or **examples/config-equal-item-weights-preference.json** to configure a scenario without any weighting for the item pairs and either with or without the item preference stage.
 
 Refer to **examples/config-custom-item-weights.json** to configure a scenario where custom weights will be defined for all item pairs.
+
+If the configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
+
+```json
+"comparisonConfiguration" : {
+        "csvFile": "image-data.csv"
+    }
+```
+
+The csv file must contain a minimum of two columns and up to five columns. The column headers and their content are listed below. The order of the column is not important but the header names are: case is not relevant but the correct wording and spacing must be followed.
+
++ **image** - *required* - The file name of the image.
++ **item display name** - *required* - The string to be used to describe the image in the interface.
++ **item name** - *optional* - A string which identifies the image and only contains lowercase alpha numeric characters, underscored and dashes. This will be generated from item display name if the column is not provided but if there are any characters (with the exception of spaces) in the item display name column then validation errors will be raised.
++ **group display name** - *optional* - A string with identified the group that this image belongs to. If this column is not provided then all of the images will be added to the single default group.
++ **group name** - *optional* - As with the item name this will be automatically generated from the group display name if that column is provided but if validation errors are raised due to special characters then this column may also be required.
 
 ## Reset command
 

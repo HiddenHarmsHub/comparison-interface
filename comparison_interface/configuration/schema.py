@@ -25,7 +25,10 @@ class Item(Schema):
         match = re.match(r'^[a-zA-Z0-9_-]+$', name)
         if not match:
             raise ValidationError(
-                "Name can be only alpha numeric lower case values with underscores or dashes. i.e. this_is_a_valid_name"
+                "Name can be only alpha numeric lower case values with underscores or dashes. "
+                "i.e. this_is_a_valid_name. If you are using a csv file for the comparison configuration then you "
+                "will either need to supply a column with the title 'item name' which complies with the criteria "
+                "above or remove any special characters from the 'item display name' column."
             )
 
     @validates('imageName')
@@ -125,32 +128,48 @@ class Group(Schema):
         if not match:
             raise ValidationError(
                 "Group name can be only alpha numeric lower case values with underscores or dashes. "
-                "i.e. this_is_a_valid_name"
+                "i.e. this_is_a_valid_name. If you are using a csv file for the comparison configuration then you "
+                "will either need to supply a column with the title 'group name' which complies with the criteria "
+                "above or remove any special characters from the 'group display name' column."
             )
 
 
 class ComparisonConfiguration(Schema):
     """The schema for the comparison configuration."""
 
-    weightConfiguration = fields.Str(required=True)
-    groups = fields.List(fields.Nested(Group()), required=True, validate=[validate.Length(min=1, max=100)])
+    csvFile = fields.Str(required=False)
+    weightConfiguration = fields.Str(required=False)
+    groups = fields.List(fields.Nested(Group()), required=False, validate=[validate.Length(min=1, max=100)])
 
     @post_load
     def _post_load_validation(self, data, **kwargs):
-        weight_conf = data['weightConfiguration']
-        groups = data['groups']
-        item_weight_conf = sum([1 if "weight" in g else 0 for g in groups])
+        if 'csvFile' in data:
+            # then we shouldn't have any other keys at all
+            if 'weightConfiguration' in data or 'groups' in data:
+                raise ValidationError(
+                    "If a CSV file is specified then neither the weightConfiguration nor groups keys should be "
+                    "present in the JSON configuration file."
+                )
+        else:
+            if 'weightConfiguration' not in data or 'groups' not in data:
+                raise ValidationError(
+                    "Both the 'weightConfiguration' and 'groups' keys are required if a csv file is not being used "
+                    "for the image configuration."
+                )
+            weight_conf = data['weightConfiguration']
+            groups = data['groups']
+            item_weight_conf = sum([1 if "weight" in g else 0 for g in groups])
 
-        if item_weight_conf != 0 and weight_conf == WebsiteControl.EQUAL_WEIGHT:
-            raise ValidationError(
-                "Custom weight configuration is not allowed when the weight configuration was defined as 'equal'."
-            )
+            if item_weight_conf != 0 and weight_conf == WebsiteControl.EQUAL_WEIGHT:
+                raise ValidationError(
+                    "Custom weight configuration is not allowed when the weight configuration was defined as 'equal'."
+                )
 
-        if item_weight_conf != len(groups) and weight_conf == WebsiteControl.CUSTOM_WEIGHT:
-            raise ValidationError(
-                "Custom weight configuration is required for all groups when the "
-                "weight configuration was defined as 'custom'."
-            )
+            if item_weight_conf != len(groups) and weight_conf == WebsiteControl.CUSTOM_WEIGHT:
+                raise ValidationError(
+                    "Custom weight configuration is required for all groups when the "
+                    "weight configuration was defined as 'custom'."
+                )
 
         return data
 
@@ -349,14 +368,16 @@ class Configuration(Schema):
 
     @post_load
     def _post_load_validation(self, data, **kwargs):
-        # Check that we are not trying to render item preferences it we are using custom weights
-        weight_conf = data['comparisonConfiguration']['weightConfiguration']
         render_item_preference = data['behaviourConfiguration']['renderUserItemPreferencePage']
-        if weight_conf == WebsiteControl.CUSTOM_WEIGHT and render_item_preference:
-            raise ValidationError(
-                "User item preference section cannot be rendered when defining a manual weight configuration. "
-                "Please change renderUserItemPreferencePage to false"
-            )
+
+        if 'weightConfiguration' in data['comparisonConfiguration']:
+            # Check that we are not trying to render item preferences it we are using custom weights
+            weight_conf = data['comparisonConfiguration']['weightConfiguration']
+            if weight_conf == WebsiteControl.CUSTOM_WEIGHT and render_item_preference:
+                raise ValidationError(
+                    "User item preference section cannot be rendered when defining a manual weight configuration. "
+                    "Please change renderUserItemPreferencePage to false"
+                )
 
         # Check that if we want to show the item selection page we have the required text field too
         if render_item_preference and ('itemSelectionQuestionLabel' not in data['websiteTextConfiguration']):
@@ -366,7 +387,7 @@ class Configuration(Schema):
             )
 
         # Check that if we have defined multiple groups then we have the relevant selection/error text available
-        if len(data['comparisonConfiguration']['groups']) > 1:
+        if 'groups' in data['comparisonConfiguration'] and len(data['comparisonConfiguration']['groups']) > 1:
             if (
                 'userRegistrationGroupQuestionLabel' not in data['websiteTextConfiguration']
                 or 'userRegistrationGroupSelectionErr' not in data['websiteTextConfiguration']

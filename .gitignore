@@ -18,7 +18,7 @@ node_modules
 .ruff_cache
 .apikey
 exports/
-project_configuration/
-project_html/
-comparison_interface/static/images/
+comparison_interface/project_configuration
+comparison_interface/project_html
+comparison_interface/static/images
 comparison_interface/configuration/flask.py

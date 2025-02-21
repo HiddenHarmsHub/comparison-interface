@@ -17,7 +17,7 @@ blueprint = Blueprint("commands", __name__, cli_group=None)
 
 
 @blueprint.cli.command("setup")
-@click.argument("conf")
+@click.argument("conf", type=click.Path(file_okay=True, dir_okay=True))
 @with_appcontext
 def setup(conf):
     """Call the methods to set up the application.
@@ -26,10 +26,12 @@ def setup(conf):
     application and start from a clean setup after the initial setup has been completed.
 
     Args:
-        conf (string): Website configuration location
+        conf (string): Website configuration location (either the path to a JSON file or a dir path to a dir containing
+                       one JSON file and one CSV file.)
     """
     # 1. Validate the website configuration
     app = current_app
+    ConfigValidation(app).check_config_path(conf)
     app.logger.info("Setting website configuration")
     WS.set_configuration_location(app, conf)
     ConfigValidation(app).validate()
@@ -70,6 +72,7 @@ def reset(conf):
     )
     if confirm.strip() == 'yes':
         # 1. Validate the website configuration
+        ConfigValidation(app).check_config_path(conf)
         app.logger.info("Setting website configuration")
         WS.set_configuration_location(app, conf)
         ConfigValidation(app).validate()
