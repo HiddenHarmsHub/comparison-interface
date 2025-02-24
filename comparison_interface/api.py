@@ -55,7 +55,7 @@ class Judgements(Request):
             data_list = [item.as_dict() for item in data]
             if len(data_list) > 0:
                 keys = data_list[0].keys()
-                csv_writer = csv.DictWriter(file_buffer, keys, delimiter='\t')
+                csv_writer = csv.DictWriter(file_buffer, keys)
                 csv_writer.writeheader()
                 csv_writer.writerows(data_list)
             file_buffer.seek(0)
@@ -72,7 +72,7 @@ class Items(Request):
             data_list = [item.as_dict() for item in data]
             if len(data_list) > 0:
                 keys = data_list[0].keys()
-                csv_writer = csv.DictWriter(file_buffer, keys, delimiter='\t')
+                csv_writer = csv.DictWriter(file_buffer, keys)
                 csv_writer.writeheader()
                 csv_writer.writerows(data_list)
             file_buffer.seek(0)

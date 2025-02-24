@@ -129,6 +129,6 @@ def test_api_available_when_switched_on_if_key_sent(equal_weight_client_api):
     db.session.commit()
     response = equal_weight_client_api.get("/api/judgements", headers={'x-api-key': 'test-key'})
     assert response.status_code == 200
-    assert b'comparison_id\tuser_id\titem_1_id\titem_2_id\tselected_item_id\tstate\tcreated\tupdated' in response.data
+    assert b'comparison_id,user_id,item_1_id,item_2_id,selected_item_id,state,created,updated' in response.data
     assert b'skipped' in response.data
     assert b'selected' in response.data
