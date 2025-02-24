@@ -5,7 +5,7 @@ from io import BytesIO, StringIO
 from cachetools.func import ttl_cache
 from flask import Blueprint, abort, current_app, request, send_file, session
 
-from .db.models import Comparison
+from .db.models import Comparison, Item
 from .views.request import Request
 
 blueprint = Blueprint('api', __name__)
@@ -46,11 +46,28 @@ def require_api_key(function):
 
 
 class Judgements(Request):
-    """API to get judgements, temporary measure for AI showcase demo."""
+    """API to get judgements."""
 
     def get(self, _):
-        """Get all of the comparisons in the database and return them in csv format as text."""
+        """Get all of the comparisons in the database and return them in tsv format as text."""
         data = Comparison.query.all()
+        with StringIO() as file_buffer:
+            data_list = [item.as_dict() for item in data]
+            if len(data_list) > 0:
+                keys = data_list[0].keys()
+                csv_writer = csv.DictWriter(file_buffer, keys, delimiter='\t')
+                csv_writer.writeheader()
+                csv_writer.writerows(data_list)
+            file_buffer.seek(0)
+            return send_file(BytesIO(file_buffer.read().encode('utf-8')), as_attachment=False, mimetype='text')
+
+
+class Items(Request):
+    """API to get the items (images)."""
+
+    def get(self, _):
+        """Get all of items in the database and return them in tsv format as text."""
+        data = Item.query.all()
         with StringIO() as file_buffer:
             data_list = [item.as_dict() for item in data]
             if len(data_list) > 0:
@@ -67,3 +84,10 @@ class Judgements(Request):
 def api_judgements():
     """Handle api URL to get judgements made."""
     return Request.process(Judgements(current_app, session), request)
+
+
+@blueprint.route('/api/items', methods=['GET'])
+@require_api_key
+def api_items():
+    """Handle api URL to get the items table (for mapping with item ids in judgements table)."""
+    return Request.process(Items(current_app, session), request)
