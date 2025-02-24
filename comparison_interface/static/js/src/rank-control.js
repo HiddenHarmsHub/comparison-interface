@@ -224,20 +224,26 @@ function cleanVisualHint(itemClass, item1, item2) {
 }
 
 function addVisualHint(itemClass, item, type) {
-    let hintElement;
     const selectedItemIndicator = document.getElementById('selected_item_indicator').value;
     const tiedComparisonIndicator = document.getElementById('tied_items_indicator').value;
     const skippedComparisonIndicator = document.getElementById('skipped_items_indicator').value;
-    hintElement = '<div class="selected-hint" style="pointer-events:none;"><span class="fs-1 fw-bold bg-white p-1 border border-success text-success">' + selectedItemIndicator + '</span></div>';
-    if (type == 'tied') {
-        hintElement = '<div class="selected-hint" style="pointer-events:none;"><span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary">' + tiedComparisonIndicator + '</span></div>';
-    } else if (type == 'skipped') {
-        hintElement = '<div class="selected-hint" style="pointer-events:none;"><span class="fs-1 fw-bold bg-white p-1 border border-black">'+ skippedComparisonIndicator + '</span></div>';
-    }
 
+    const div = document.createElement('div');
+    div.setAttribute('class', 'selected-hint');
+    div.setAttribute('style', 'pointer-events:none;');
+    const span = document.createElement('span');
+    span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-success text-success');
+    span.textContent = selectedItemIndicator;
+    if (type == 'tied') {
+        span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-primary text-primary');
+        span.textContent = tiedComparisonIndicator;
+    } else if (type == 'skipped') {
+        span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-black');
+        span.textContent = skippedComparisonIndicator;
+    }
+    div.appendChild(span);
     item.classList.add(itemClass);
-    const element = document.createRange().createContextualFragment(hintElement);
-    item.after(element);
+    item.after(div);
 }
 
 function setSelectedItem(value) {
