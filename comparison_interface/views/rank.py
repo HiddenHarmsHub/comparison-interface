@@ -24,6 +24,8 @@ class Rank(Request):
             return self._redirect('.user_registration')
 
         allow_ties = WS.get_behaviour_conf(WS.BEHAVIOUR_ALLOW_TIES, self._app)
+        allow_skip = WS.get_behaviour_conf(WS.BEHAVIOUR_ALLOW_SKIP, self._app)
+        allow_back = WS.get_behaviour_conf(WS.BEHAVIOUR_ALLOW_BACK, self._app)
 
         use_escape_route = WS.get_behaviour_conf(WS.BEHAVIOUR_ESCAPE_ROUTE, self._app)
 
@@ -71,6 +73,10 @@ class Rank(Request):
                 self._increment_cycle_count()
                 return self._redirect('.thankyou')
 
+        if allow_skip:
+            confirm_button_error_message = WS.get_text(WS.CONFIRM_BUTTON_ERROR_MESSAGE_WITH_SKIP, self._app)
+        else:
+            confirm_button_error_message = WS.get_text(WS.CONFIRM_BUTTON_ERROR_MESSAGE_WITHOUT_SKIP, self._app)
         return self._render_template(
             'pages/rank.html',
             {
@@ -81,7 +87,7 @@ class Rank(Request):
                 'skipped_selection_label': WS.get_text(WS.RANK_ITEM_SKIPPED_SELECTION_INDICATOR_LABEL, self._app),
                 'rejudge_label': WS.get_text(WS.RANK_ITEM_REJUDGE_BUTTON_LABEL, self._app),
                 'confirmed_label': WS.get_text(WS.RANK_ITEM_CONFIRMED_BUTTON_LABEL, self._app),
-                'confirm_button_error_message': WS.get_text(WS.CONFIRM_BUTTON_ERROR_MESSAGE, self._app),
+                'confirm_button_error_message': confirm_button_error_message,
                 'skip_button_error_message': WS.get_text(WS.SKIP_BUTTON_ERROR_MESSAGE, self._app),
                 'skipped_label': WS.get_text(WS.RANK_ITEM_SKIPPED_BUTTON_LABEL, self._app),
                 'comparison_instruction_label': WS.get_text(WS.RANK_ITEM_INSTRUCTION_LABEL, self._app),
@@ -97,6 +103,8 @@ class Rank(Request):
                 'initial_state': current_state,
                 'initial_selected_item_id': selected_item_id,
                 'allow_ties': str(allow_ties).lower(),
+                'allow_skip': allow_skip,
+                'allow_back': allow_back,
             },
         )
 

@@ -305,6 +305,8 @@ class BehaviourConfiguration(Schema):
     cycleLength = fields.Integer(required=False)
     maximumCyclesPerUser = fields.Integer(required=False)
     allowTies = fields.Boolean(required=True)
+    allowSkip = fields.Boolean(required=True)
+    allowBack = fields.Boolean(required=True)
     userInstructionLink = fields.URL(required=False, validate=[validate.Length(min=1)])
     userInstructionHtml = fields.Str(required=False, validate=[validate.Length(min=1, max=100)])
     userEthicsAgreementLink = fields.URL(required=False, validate=[validate.Length(min=1)])

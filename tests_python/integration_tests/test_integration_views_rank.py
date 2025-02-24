@@ -369,7 +369,6 @@ def test_redirect_after_final_cycle_end(mocker, equal_weight_client, equal_weigh
     assert b'id="continue_button"' not in response.data
 
 
-# @pytest.mark.usefixtures('add_basic_data_equal')
 def test_no_escape_route_if_setting_off(mocker, user_data):
     """
     GIVEN a flask app configured for testing and equal weights and basic data
@@ -391,3 +390,83 @@ def test_no_escape_route_if_setting_off(mocker, user_data):
     response = client.get("/rank", follow_redirects=True)
     assert response.status_code == 200
     assert b'Comparison Software: Items Rank' in response.data
+
+
+@pytest.mark.usefixtures('add_basic_data_equal')
+def test_skip_button_if_setting_true(equal_weight_client):
+    """
+    GIVEN a flask application configured for testing and equal weights and basic data loaded and with the setting for
+        allow_skip set to true
+    WHEN a user logs in in and requests the rank page
+    THEN the user sees ranking page and there is a skip button
+    """
+    with equal_weight_client.session_transaction() as session:
+        session['user_id'] = 1
+        session['group_ids'] = [1]
+        session['weight_conf'] = 'equal'
+        session['previous_comparison_id'] = None
+        session['comparison_ids'] = []
+    response = equal_weight_client.get("/rank", follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Comparison Software: Items Rank' in response.data
+    assert b'<button id="skip-button"' in response.data
+
+
+@pytest.mark.usefixtures('add_basic_data_equal')
+def test_no_skip_button_if_setting_false(user_data):
+    """
+    GIVEN a flask application configured for testing and equal weights and basic data loaded and with the setting for
+        allow_skip set to false
+    WHEN a user logs in in and requests the rank page
+    THEN the user sees ranking page but there is no skip button
+    """
+    app = execute_setup("../tests_python/test_configurations/config-equal-item-weights-2.json")
+    client = app.test_client()
+    client.post("/register", data=user_data)
+    response = client.get("/rank", follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Comparison Software: Items Rank' in response.data
+    assert b'<button id="skip-button"' not in response.data
+
+
+@pytest.mark.usefixtures('add_basic_data_equal')
+def test_previous_button_if_setting_true(equal_weight_client):
+    """
+    GIVEN a flask application configured for testing and equal weights and basic data loaded and with the setting for
+        allow_back set to true
+    WHEN a user logs in in and requests the rank page
+    THEN the user sees ranking page and there is a previous button
+    """
+    with equal_weight_client.session_transaction() as session:
+        session['user_id'] = 1
+        session['group_ids'] = [1]
+        session['weight_conf'] = 'equal'
+        session['previous_comparison_id'] = 2
+        session['comparison_ids'] = [1, 2]
+    response = equal_weight_client.get("/rank", follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Comparison Software: Items Rank' in response.data
+    assert b'<button id="previous-button"' in response.data
+
+
+@pytest.mark.usefixtures('add_basic_data_equal')
+def test_no_previous_button_if_setting_false(user_data):
+    """
+    GIVEN a flask application configured for testing and equal weights and basic data loaded and with the setting for
+        allow_back set to false
+    WHEN a user logs in in and requests the rank page
+    THEN the user sees ranking page but there is no previous button
+    """
+    app = execute_setup("../tests_python/test_configurations/config-equal-item-weights-2.json")
+    client = app.test_client()
+    client.post("/register", data=user_data)
+    with client.session_transaction() as session:
+        session['user_id'] = 1
+        session['group_ids'] = [1]
+        session['weight_conf'] = 'equal'
+        session['previous_comparison_id'] = 2
+        session['comparison_ids'] = [1, 2]
+    response = client.get("/rank", follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Comparison Software: Items Rank' in response.data
+    assert b'<button id="previous-button"' not in response.data

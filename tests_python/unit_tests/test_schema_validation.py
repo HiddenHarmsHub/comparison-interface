@@ -32,6 +32,8 @@ def test_behaviour_configuration_for_escape_route_false():
         "renderCookieBanner": False,
         "offerEscapeRouteBetweenCycles": False,
         "allowTies": False,
+        "allowSkip": True,
+        "allowBack": True,
     }
     behaviour_schema = BehaviourConfiguration()
     try:
@@ -57,6 +59,8 @@ def test_behaviour_configuration_for_escape_route_true_with_all_requirements():
         "cycleLength": 30,
         "maximumCyclesPerUser": 3,
         "allowTies": False,
+        "allowSkip": True,
+        "allowBack": True,
     }
     behaviour_schema = BehaviourConfiguration()
     try:
@@ -80,6 +84,9 @@ def test_behaviour_configuration_for_escape_route_true_with_missing_requirements
         "renderCookieBanner": False,
         "offerEscapeRouteBetweenCycles": True,
         "cycleLength": 30,
+        "allowTies": False,
+        "allowSkip": True,
+        "allowBack": True,
     }
     with pytest.raises(ValidationError) as err:
         behaviour_schema = BehaviourConfiguration()

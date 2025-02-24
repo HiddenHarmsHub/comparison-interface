@@ -6,6 +6,8 @@
         "cycleLength": 10,
         "maximumCyclesPerUser": 3,
         "allowTies": true,
+        "allowSkip": true,
+        "allowBack": true,
         "renderUserInstructionPage":  true,
         "userInstructionLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
         "renderEthicsAgreementPage":  true,
