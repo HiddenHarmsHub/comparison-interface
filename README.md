@@ -284,7 +284,7 @@ This will export the database contents to a zip file containing one .csv file pe
 flask --debug export --format=tsv
 ```
 
-There is also an option to expose the table containing the decisions made by users only (no user details) via a secured api. This is enabled by setting the 'API_ACCESS' variable in the ```configuration/flask.py``` file to ```True```. In addition a ```.apikey``` file needs to be created at the top level of the repository. This should contain the secret key which will be used to authenticate api calls. The file name used to store the key can be changed in the ```configuration/flask.py``` file.
+There is also an option to expose the table containing the decisions made by users (no user details) and the table containing the item details via a secured api. This is enabled by setting the 'API_ACCESS' variable in the ```configuration/flask.py``` file to ```True```. In addition a ```.apikey``` file needs to be created at the top level of the repository. This should contain the secret key which will be used to authenticate api calls. The file name used to store the key can be changed in the ```configuration/flask.py``` file.
 
 
 ## Testing

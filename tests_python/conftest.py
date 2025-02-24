@@ -14,7 +14,14 @@ from comparison_interface.db.setup import Setup as DBSetup
 
 
 def execute_setup(conf_file):
-    app = create_app({"TESTING": True, "SQLALCHEMY_DATABASE_URI": 'sqlite:///test_database.db'})
+    app = create_app(
+        {
+            "TESTING": True,
+            "API_ACCESS": False,
+            "LANGUAGE": "en",
+            "SQLALCHEMY_DATABASE_URI": "sqlite:///test_database.db",
+        }
+    )
     # 1. Validate the website configuration
     app.logger.info("Setting website configuration")
     WS.set_configuration_location(app, conf_file)
