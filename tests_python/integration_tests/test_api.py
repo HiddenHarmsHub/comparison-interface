@@ -68,20 +68,24 @@ def key_file(equal_weight_app_api):
 def test_api_not_available_when_not_configured(equal_weight_client):
     """
     GIVEN a flask app configured for testing and with equal weights and with API_ACCESS set to False
-    WHEN the api url is requested
+    WHEN the api urls are requested
     THEN a 404 page is shown
     """
     response = equal_weight_client.get("/api/judgements")
+    assert response.status_code == 404
+    response = equal_weight_client.get("/api/items")
     assert response.status_code == 404
 
 
 def test_api_not_available_when_switched_on_but_no_key(equal_weight_client_api):
     """
     GIVEN a flask app configured for testing and with equal weights and with API_ACCESS set to True but no key file
-    WHEN the api url is requested
+    WHEN the api urls are requested
     THEN a 501 page is shown
     """
     response = equal_weight_client_api.get("/api/judgements")
+    assert response.status_code == 501
+    response = equal_weight_client_api.get("/api/items")
     assert response.status_code == 501
 
 
@@ -94,13 +98,15 @@ def test_api_not_available_when_switched_on_but_no_key_sent(equal_weight_client_
     """
     response = equal_weight_client_api.get("/api/judgements")
     assert response.status_code == 401
+    response = equal_weight_client_api.get("/api/items")
+    assert response.status_code == 401
 
 
 @pytest.mark.usefixtures('key_file')
-def test_api_available_when_switched_on_if_key_sent(equal_weight_client_api):
+def test_judgements_api_available_when_switched_on_if_key_sent(equal_weight_client_api):
     """
     GIVEN a flask app configured for testing, with equal weights, API_ACCESS and a key file
-    WHEN the api url is requested and the api key is provided
+    WHEN the api judgements url is requested and the api key is provided
     THEN a 200 code is received and the comparison data is returned
     """
     comparison_data_list = [
@@ -132,3 +138,16 @@ def test_api_available_when_switched_on_if_key_sent(equal_weight_client_api):
     assert b'comparison_id,user_id,item_1_id,item_2_id,selected_item_id,state,created,updated' in response.data
     assert b'skipped' in response.data
     assert b'selected' in response.data
+
+
+@pytest.mark.usefixtures('key_file')
+def test_items_api_available_when_switched_on_if_key_sent(equal_weight_client_api):
+    """
+    GIVEN a flask app configured for testing, with equal weights, API_ACCESS and a key file
+    WHEN the api items url is requested and the api key is provided
+    THEN a 200 code is received and the comparison data is returned
+    """
+    response = equal_weight_client_api.get("/api/items", headers={'x-api-key': 'test-key'})
+    assert response.status_code == 200
+    assert b'item_id,name,display_name,image_path,created_date' in response.data
+    assert b'1,north_east,North East,item_1.png' in response.data
