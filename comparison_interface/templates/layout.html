@@ -19,7 +19,7 @@
 
   <body>
     {% if render_cookie_banner %}
-      <section id="cookie" aria-labelledby="cookie-header"></section>
+      <section id="cookie-message" aria-labelledby="cookie-title"></section>
     {% endif %}
     <nav class="navbar navbar-expand-md p-2 mb-2 fs-5" style="background-color: lightgray">
       <a class="visually-hidden-focusable rounded-2 p-1 bg-white" href="#main">Skip to main content</a>
@@ -105,7 +105,8 @@
         </div>';
 
             // Add the HTML message to the page
-            document.getElementById('cookie').innerHTML += html_to_inject;
+
+            document.getElementById('cookie-message').innerHTML += html_to_inject;
         }
 
         // Add event listener for 'accept' button to set the cookie and hide the message
