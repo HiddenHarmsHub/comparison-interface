@@ -97,6 +97,7 @@ class Settings:
     ETHICS_AGREEMENT_BACK_BUTTON_LABEL = "ethicsAgreementBackButtonLabel"
     SITE_POLICIES_BACK_BUTTON_LABEL = "sitePoliciesBackButtonLabel"
     SITE_COOKIES_ACCEPT_BUTTON_LABEL = "siteCookiesAcceptButtonLabel"
+    SITE_COOKIES_TITLE = "siteCookiesTitle"
     SITE_COOKIES_TEXT = "siteCookiesText"
     ERROR_500_TITLE = "error500Title"
     ERROR_500_MESSAGE = "error500Message"

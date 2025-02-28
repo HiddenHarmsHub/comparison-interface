@@ -19,7 +19,7 @@
 
   <body>
     {% if render_cookie_banner %}
-      <div id="cookie"></div>
+      <section id="cookie" aria-labelledby="cookie-header"></section>
     {% endif %}
     <nav class="navbar navbar-expand-md p-2 mb-2 fs-5" style="background-color: lightgray">
       <a class="visually-hidden-focusable rounded-2 p-1 bg-white" href="#main">Skip to main content</a>
@@ -29,7 +29,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="navbar-nav  ms-md-auto">
+        <ul class="navbar-nav ms-md-auto">
           {% if render_user_instructions %}
             <li class="nav-item">
               <a class="nav-link focus-ring mx-2" href="{{ url_for('views.introduction') }}">{{introduction_page_title}}</a>
@@ -100,6 +100,7 @@
             // Generate HTML message
             var html_to_inject = '\
         <div id="cookie-message-popup" style="text-align: center; background: #343a40; padding: 1em; color: white;">\
+          <div id="cookie-title">{{site_cookies_title}}</div>\
         {{site_cookies_text|safe}}<button id="cookie-message-popup-accept" style="display: inline-block; background: white; color: black; padding: 0.4em 1.7em; margin-left: 1em; cursor: pointer; vertical-align: middle;">{{site_cookies_accept_button_label}}</button>\
         </div>';
 

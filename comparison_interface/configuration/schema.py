@@ -214,6 +214,7 @@ class WebsiteTextConfiguration(Schema):
     ethicsAgreementBackButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
     sitePoliciesBackButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
     siteCookiesAcceptButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
+    siteCookiesTitle = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
     siteCookiesText = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
     error500Title = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
     error500Message = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
