@@ -1,6 +1,5 @@
 from datetime import datetime, timezone
 
-from numpy.random import choice
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.sql.expression import func
 
@@ -336,7 +335,7 @@ class Rank(Request):
             return None, None
 
         # 2. Select the item pair to compare but respecting the custom weights
-        pair_id = choice(pair_ids, 1, p=pair_weights, replace=False)
+        pair_id = self._app.rng.choice(pair_ids, 1, p=pair_weights, replace=False)
         item_1_id = pairs[pair_id[0]].item_1_id
         item_2_id = pairs[pair_id[0]].item_2_id
 
@@ -373,7 +372,7 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items from the user's item preferences
-        selected_items_id = choice(items_id, 2, replace=False)
+        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]
 
@@ -409,6 +408,6 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items using the user's group preferences
-        selected_items_id = choice(items_id, 2, replace=False)
+        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]
