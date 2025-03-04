@@ -75,6 +75,20 @@ def create_app(test_config=None):
         max_age=WHITENOISE_MAX_AGE,
     )
 
+    # seed the random number generator per process if we are in a uwsgi environment
+    try:
+        from uwsgidecorators import postfork
+    except ModuleNotFoundError:
+        pass
+    else:
+        from numpy.random import seed
+
+        @postfork
+        def _seed_random_number():
+            seed()
+
+        _seed_random_number()
+
     return app
 
 
