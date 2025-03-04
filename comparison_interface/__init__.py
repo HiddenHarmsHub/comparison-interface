@@ -5,6 +5,7 @@ import os
 from datetime import datetime, timedelta, timezone
 
 from flask import Flask, current_app, render_template, session
+from numpy.random import default_rng
 from whitenoise import WhiteNoise
 
 import comparison_interface.routes as routes
@@ -79,13 +80,12 @@ def create_app(test_config=None):
     try:
         from uwsgidecorators import postfork
     except ModuleNotFoundError:
-        pass
+        app.rng = default_rng()
     else:
-        from numpy.random import seed
 
         @postfork
         def _seed_random_number():
-            seed()
+            app.rng = default_rng()
 
         _seed_random_number()
 
