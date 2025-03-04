@@ -19,7 +19,7 @@ def execute_setup(conf_file):
             "TESTING": True,
             "API_ACCESS": False,
             "LANGUAGE": "en",
-            "SQLALCHEMY_DATABASE_URI": 'sqlite:///test_database.db'
+            "SQLALCHEMY_DATABASE_URI": 'sqlite:///test_database.db',
         }
     )
     # 1. Validate the website configuration
