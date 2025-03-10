@@ -352,7 +352,7 @@ class Rank(Request):
             Item: Model Item | None
             Item: Model Item | None
         """
-        # 1. Get the know user items preferences
+        # 1. Get the user's item preferences
         query = (
             db.select(UserItem, Item)
             .join(Item, Item.item_id == UserItem.item_id, isouter=True)
@@ -372,7 +372,10 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items from the user's item preferences
-        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
+        # with a check to make sure the items are unique
+        selected_items_id = [None, None]
+        while selected_items_id[0] == selected_items_id[1]:
+            selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]
 
@@ -408,6 +411,9 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items using the user's group preferences
-        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
+        # with a check to make sure the items are unique
+        selected_items_id = [None, None]
+        while selected_items_id[0] == selected_items_id[1]:
+            selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]
