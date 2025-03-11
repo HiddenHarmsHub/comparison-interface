@@ -49,7 +49,7 @@ class Judgements(Request):
     """API to get judgements."""
 
     def get(self, _):
-        """Get all of the comparisons in the database and return them in tsv format as text."""
+        """Get all of the comparisons in the database and return them in csv format as text."""
         data = Comparison.query.all()
         with StringIO() as file_buffer:
             data_list = [item.as_dict() for item in data]
