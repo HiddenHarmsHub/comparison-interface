@@ -28,6 +28,8 @@ class Settings:
     BEHAVIOUR_CYCLE_LENGTH = "cycleLength"
     BEHAVIOUR_MAX_CYCLES = "maximumCyclesPerUser"
     BEHAVIOUR_ALLOW_TIES = "allowTies"
+    BEHAVIOUR_ALLOW_SKIP = "allowSkip"
+    BEHAVIOUR_ALLOW_BACK = "allowBack"
     BEHAVIOUR_USER_INSTRUCTION_LINK = "userInstructionLink"
     BEHAVIOUR_USER_INSTRUCTION_HTML = "userInstructionHtml"
     BEHAVIOUR_ETHICS_AGREEMENT_LINK = "userEthicsAgreementLink"
@@ -74,6 +76,7 @@ class Settings:
     USER_REGISTRATION_SUMMIT_BUTTON_LABEL = "userRegistrationSummitButtonLabel"
     USER_REGISTRATION_GROUP_SELECTION_ERROR = "userRegistrationGroupSelectionErr"
     USER_REGISTRATION_ETHICS_AGREEMENT_LABEL = "userRegistrationEthicsAgreementLabel"
+    USER_REGISTRATION_ETHICS_AGREEMENT_LINK_TEXT = "userRegistrationEthicsAgreementLinkText"
     ITEM_SELECTION_QUESTION_LABEL = "itemSelectionQuestionLabel"
     ITEM_SELECTION_YES_BUTTON_LABEL = "itemSelectionYesButtonLabel"
     ITEM_SELECTION_NO_BUTTON_LABEL = "itemSelectionNoButtonLabel"
@@ -86,7 +89,8 @@ class Settings:
     RANK_ITEM_REJUDGE_BUTTON_LABEL = "rankItemItemRejudgeButtonLabel"
     RANK_ITEM_CONFIRMED_BUTTON_LABEL = "rankItemConfirmedButtonLabel"
     RANK_ITEM_SKIPPED_BUTTON_LABEL = "rankItemSkippedButtonLabel"
-    CONFIRM_BUTTON_ERROR_MESSAGE = "confirmButtonErrorMessage"
+    CONFIRM_BUTTON_ERROR_MESSAGE_WITH_SKIP = "confirmButtonErrorMessageWithSkip"
+    CONFIRM_BUTTON_ERROR_MESSAGE_WITHOUT_SKIP = "confirmButtonErrorMessageWithoutSkip"
     SKIP_BUTTON_ERROR_MESSAGE = "skipButtonErrorMessage"
     INTRODUCTION_CONTINUE_BUTTON_LABEL = "introductionContinueButtonLabel"
     THANK_YOU_CONTINUE_BUTTON_LABEL = "thankYouContinueButtonLabel"
@@ -97,6 +101,7 @@ class Settings:
     ETHICS_AGREEMENT_BACK_BUTTON_LABEL = "ethicsAgreementBackButtonLabel"
     SITE_POLICIES_BACK_BUTTON_LABEL = "sitePoliciesBackButtonLabel"
     SITE_COOKIES_ACCEPT_BUTTON_LABEL = "siteCookiesAcceptButtonLabel"
+    SITE_COOKIES_TITLE = "siteCookiesTitle"
     SITE_COOKIES_TEXT = "siteCookiesText"
     ERROR_500_TITLE = "error500Title"
     ERROR_500_MESSAGE = "error500Message"
@@ -228,10 +233,10 @@ class Settings:
             string: Configuration value for the requested key
         """
         conf = cls.get_configuration(app)
-        if 'csvFile' in conf[cls.CONFIGURATION_COMPARISON]:
+        if "csvFile" in conf[cls.CONFIGURATION_COMPARISON]:
             # then we need to get the data from the csv file
             location = cls.get_configuration_location(app)
-            filepath = os.path.join(location, conf[cls.CONFIGURATION_COMPARISON]['csvFile'])
+            filepath = os.path.join(location, conf[cls.CONFIGURATION_COMPARISON]["csvFile"])
             data = CsvProcessor().create_config_from_csv(filepath)
             return data[key]
         else:
@@ -302,7 +307,7 @@ class Settings:
             boolean: True when the section should be rendered, False if not.
         """
         render = cls.get_behaviour_conf(section, app)
-        return render == "true" or render == "True" or render == '1' or render is True
+        return render == "true" or render == "True" or render == "1" or render is True
 
     @classmethod
     def _unmarshall(cls, app):

@@ -183,11 +183,15 @@ The keys and their corresponding link/html keys are listed below.
 
 There is also a required boolean key ```renderCookieBanner```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie banner is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
 
-Three further boolean keys are required.
+Five further boolean keys are required.
 
 ```renderUserItemPreferencePage``` determines whether the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
 
 ```allowTies``` determines whether or not the system allows a user to select both images and record a tied result. Set this to true if you want to include ties in your study and to false if you do not.
+
+```allowSkip``` determines whether or not the system allows a user to skip a comparison.
+
+```allowBack``` determines whether or not the system allows a user to go back and check or change a previously made judgement.
 
 ```offerEscapeRouteBetweenCycles``` determines whether a user can continue making judgements indefinitely or if they are offered an opportunity to either logout or continue making judgements after reaching a target number. If this is set to true then two further keys are required. ```cycleLength``` specifies how many comparisons should be made in each cycle and ```maximumCyclesPerUser``` determines how many cycles each user is permitted to complete before no more comparisons will be presented to them.
 
@@ -284,7 +288,7 @@ This will export the database contents to a zip file containing one .csv file pe
 flask --debug export --format=tsv
 ```
 
-There is also an option to expose the table containing the decisions made by users only (no user details) via a secured api. This is enabled by setting the 'API_ACCESS' variable in the ```configuration/flask.py``` file to ```True```. In addition a ```.apikey``` file needs to be created at the top level of the repository. This should contain the secret key which will be used to authenticate api calls. The file name used to store the key can be changed in the ```configuration/flask.py``` file.
+There is also an option to expose the table containing the decisions made by users (no user details) and the table containing the item details via a secured api. This is enabled by setting the 'API_ACCESS' variable in the ```configuration/flask.py``` file to ```True```. In addition a ```.apikey``` file needs to be created at the top level of the repository. This should contain the secret key which will be used to authenticate api calls. The file name used to store the key can be changed in the ```configuration/flask.py``` file.
 
 
 ## Testing

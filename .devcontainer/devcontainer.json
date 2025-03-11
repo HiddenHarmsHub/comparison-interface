@@ -17,7 +17,7 @@
 	"forwardPorts": [5001],
 
 	//Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install -r requirements.txt && pip3 install -r requirements-test.txt && npm install && npx puppeteer browsers install chrome",
+	"postCreateCommand": "./.devcontainer/postCreateCommand.sh",
 
 	// Configure tool-specific properties.
 	"customizations": {
