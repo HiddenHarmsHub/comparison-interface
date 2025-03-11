@@ -55,6 +55,7 @@ class Request:
             'item_preference_page_title': WS.get_text(WS.PAGE_TITLE_ITEM_PREFERENCE, self._app),
             'rank_page_title': WS.get_text(WS.PAGE_TITLE_RANK, self._app),
             'site_cookies_accept_button_label': WS.get_text(WS.SITE_COOKIES_ACCEPT_BUTTON_LABEL, self._app),
+            'site_cookies_title': WS.get_text(WS.SITE_COOKIES_TITLE, self._app),
             'site_cookies_text': WS.get_text(WS.SITE_COOKIES_TEXT, self._app),
             'render_user_instructions': render_instructions,
             'render_user_ethics_agreement': render_ethics_agreement,
