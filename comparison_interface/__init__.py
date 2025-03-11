@@ -5,6 +5,7 @@ import os
 from datetime import datetime, timedelta, timezone
 
 from flask import Flask, current_app, render_template, session
+from numpy.random import default_rng
 from whitenoise import WhiteNoise
 
 import comparison_interface.routes as routes
@@ -74,6 +75,19 @@ def create_app(test_config=None):
         prefix="assets/",
         max_age=WHITENOISE_MAX_AGE,
     )
+
+    # seed the random number generator per process if we are in a uwsgi environment
+    try:
+        from uwsgidecorators import postfork
+    except ModuleNotFoundError:
+        app.rng = default_rng()
+    else:
+
+        @postfork
+        def _seed_random_number():
+            app.rng = default_rng()
+
+        _seed_random_number()
 
     return app
 

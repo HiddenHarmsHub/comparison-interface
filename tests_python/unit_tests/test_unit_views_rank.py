@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest
+from numpy import random
 from sqlalchemy import MetaData, text
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -502,11 +503,13 @@ def test_custom_item_retrieval(mocker, custom_weight_app):
     request._session['previous_comparison_id'] = None
     request._session['comparison_ids'] = []
     ranker = rank.Rank(request, request._session)
-    spy = mocker.spy(rank, 'choice')
-    items = ranker._get_custom_items()
+    mock_rng = mocker.Mock(spec=random.Generator)
+    custom_weight_app.rng = mock_rng
+    ranker._app = custom_weight_app
+    mock_rng.choice.return_value = [4, 8]
+    ranker._get_custom_items()
     # check that we feed the correct data to the random item generator
-    spy.assert_called_once_with([4, 5, 6, 7, 8, 9], 1, p=[0.1, 0.2, 0.2, 0.3, 0.1, 0.1], replace=False)
-    assert len(items) == 2
+    mock_rng.choice.assert_called_once_with([4, 5, 6, 7, 8, 9], 1, p=[0.1, 0.2, 0.2, 0.3, 0.1, 0.1], replace=False)
 
 
 @pytest.mark.usefixtures('add_basic_data_equal')
@@ -523,14 +526,13 @@ def test_preferred_item_retrieval(mocker, equal_weight_app):
     request._session['previous_comparison_id'] = None
     request._session['comparison_ids'] = []
     ranker = rank.Rank(request, request._session)
-    spy = mocker.spy(rank, 'choice')
-    items = ranker._get_preferred_items()
-    # check that we feed the correct ids to the random item generator
-    spy.assert_called_once_with([1, 2, 3, 7, 8, 9], 2, False)
-    # check that we get two items returned from the range
-    assert len(items) == 2
-    assert items[0].item_id in [1, 2, 3, 7, 8, 9]
-    assert items[1].item_id in [1, 2, 3, 7, 8, 9]
+    mock_rng = mocker.Mock(spec=random.Generator)
+    equal_weight_app.rng = mock_rng
+    ranker._app = equal_weight_app
+    mock_rng.choice.return_value = [1, 8]
+    ranker._get_preferred_items()
+    # check that we feed the correct data to the random item generator
+    mock_rng.choice.assert_called_once_with([1, 2, 3, 7, 8, 9], 2, replace=False)
 
 
 @pytest.mark.usefixtures('add_basic_data_equal')
@@ -571,14 +573,13 @@ def test_random_item_retrieval(mocker, equal_weight_app):
     request._session['previous_comparison_id'] = None
     request._session['comparison_ids'] = []
     ranker = rank.Rank(request, request._session)
-    spy = mocker.spy(rank, 'choice')
-    items = ranker._get_random_items()
-    # check that we feed the correct ids to the random item generator
-    spy.assert_called_once_with([1, 2, 3, 4, 5, 6, 7, 8, 9], 2, False)
-    # check that we get two items returned from the range
-    assert len(items) == 2
-    assert items[0].item_id in [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    assert items[1].item_id in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    mock_rng = mocker.Mock(spec=random.Generator)
+    equal_weight_app.rng = mock_rng
+    ranker._app = equal_weight_app
+    mock_rng.choice.return_value = [1, 8]
+    ranker._get_random_items()
+    # check that we feed the correct data to the random item generator
+    mock_rng.choice.assert_called_once_with([1, 2, 3, 4, 5, 6, 7, 8, 9], 2, replace=False)
 
 
 @pytest.mark.usefixtures('add_basic_data_equal')
