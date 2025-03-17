@@ -1,0 +1,9 @@
+title: Comparison interface
+remote_theme: HiddenHarmsHub/jekyll-theme-zendesk-garden@main
+search_enabled: true
+auto_page_title: true
+sidebar:
+    - index
+    - installation
+    - configuration
+    - testing
