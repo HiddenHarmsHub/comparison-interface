@@ -33,7 +33,7 @@ For Power shell:
 
 Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/).
 
-### Running the provided examples
+## Running the provided examples
 
 This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction,the example files can be found in the examples directory inside the comparison_interface directory.
 
@@ -42,7 +42,7 @@ This sequence of commands will allow you setup and run one of the pre-configured
     * config-equal-item-weights-preference.json
 1. config-custom-item-weights.json
 
-#### Initial setup
+### Initial setup
 
 rename the `example.images` file in `comparison_interface/static/` to `images`.
 rename the `example.flask.py` file in `comparison_interface/configuration/` to `flask.py`.
@@ -60,7 +60,7 @@ You should see the registration page of the website and all of the functions sho
 
 Any free port number can be used to host the website by changing the port number in the run command. 5001 is used in all of the examples because it is the port number that is open in the dev container setup mentioned above.
 
-#### Resetting the system
+### Resetting the system
 
 Once the setup command used above has been run and a databsae has been created it cannot be used again unless the database file is manually deleted.
 
