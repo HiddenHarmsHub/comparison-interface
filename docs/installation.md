@@ -56,7 +56,7 @@ flask --debug setup examples/[configuration_file_name]
 flask --debug run --port=5001
 ```
 
-In your browser navigate to <http://127.0.0.1:5001>
+In your browser navigate to <http://localhost:5001>
 
 You should see the registration page of the website and all of the functions should be working so you can test all of the features with a small set of images.
 
@@ -64,7 +64,7 @@ Any free port number can be used to host the website by changing the port number
 
 ### Resetting the system
 
-Once the setup command used above has been run and a databsae has been created it cannot be used again unless the database file is manually deleted.
+Once the setup command used above has been run and a database has been created it cannot be used again unless the database file is manually deleted.
 
 To reset the database and switch to a different configuration for testing the reset command should be used. This is a destructive process as it will delete the current database along with any data in it and also delete any exported files still in the export location.
 
