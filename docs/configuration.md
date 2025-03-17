@@ -5,7 +5,7 @@ title: Configuration
 
 Please follow the next step to make a custom configuration for a project.
 
-#### Requirements
+## Requirements
 
 1. The images of the items being compared.
     * These images must be at least 300x300 pixels.
@@ -17,7 +17,7 @@ Please follow the next step to make a custom configuration for a project.
 1. (optional) Create and [publish](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) your own introduction Google Document.
 1. (optional) Create and [publish](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) your own site policies Google Document.
 
-#### Steps
+## Steps
 
 1. Replace the contents of the folder ***static/images*** with your own images.
 1. Copy the ***example.flask.py*** in the ***comparison_interface/configuration*** directory to ***flask.py***, change the secret key and any other settings you want to change.
