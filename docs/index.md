@@ -33,7 +33,7 @@ This version of software expands over the initial application build by Bertrand 
 1. Ethics agreement can be written/formatted in Google docs and then rendered on the website keeping the original look and feel. (optional)
 1. Ethics agreement acceptance can be configured to be mandatory at registration. (This is an optional feature)
 1. Site Policies can be written/formatted in Google docs and then rendered on the website keeping the original look and feel. (optional).
-1. A Cookie banner can be rendered with a button to agree to their use. (optional).
+1. A Cookie banner can be rendered with a button to accept their use. (optional).
 1. The Website interface will render adequately on mobile devices as well as on larger screens.
 1. The website meets WCAG 2.2 AA accessibility guidelines.
 
