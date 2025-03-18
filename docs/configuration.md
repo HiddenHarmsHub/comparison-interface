@@ -153,3 +153,9 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 + **item name** - *optional* - A string which identifies the image and only contains lowercase alpha numeric characters, underscored and dashes. This will be generated from item display name if the column is not provided but if there are any characters (with the exception of spaces) in the item display name column then validation errors will be raised.
 + **group display name** - *optional* - A string with identified the group that this image belongs to. If this column is not provided then all of the images will be added to the single default group.
 + **group name** - *optional* - As with the item name this will be automatically generated from the group display name if that column is provided but if validation errors are raised due to special characters then this column may also be required.
+
+## Troubleshooting
+
+1. The configuration file requires a specific format. Try to follow one of the examples supplied with this project to avoid unexpected problems.
+2. When running the **setup** command, the software validates the format of the configuration file. The messages will help you to find any problems with the file.
+3. Error **RuntimeError: Application unhealthy state. Please contact the website administrator.**. This means that the website configuration file was modified after the website setup was executed. To fix this problem, run the **Reset command**.
