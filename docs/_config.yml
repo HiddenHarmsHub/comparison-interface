@@ -6,4 +6,5 @@ sidebar:
     - index
     - installation
     - configuration
+    - export-data
     - testing

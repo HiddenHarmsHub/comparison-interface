@@ -5,16 +5,16 @@ title: Running the Tests
 
 Three different kinds of tests are provided, Python tests, JavaScript tests and accessibility tests.
 
-To run the python tests you will need to install the dependencies in the requirements-test.txt.
+All of the dependencies needed to run the full suite of tests are included in the dev container.
 
-To run the JavaScript and accessibility tests you need to install Node and then the dependencies in the package.json file provided. In addition you need to install a chrome browser for puppeteer (this is used for the accessibility tests). The depencies can be installed as follows:
+If you are not using the dev container, to run the python tests you will need to install the dependencies in the requirements-test.txt.
+
+To run the JavaScript and accessibility tests you need to install Node and then the dependencies in the package.json file provided. In addition you need to install a chrome browser for puppeteer (this is used for the accessibility tests). The depencies can be installed as follows (run from the root of the repository):
 
 ```bash
 npm install
 npx puppeteer browsers install chrome
 ```
-
-All of the dependencies needed to run the full suite of tests are included in the dev container.
 
 ## Python tests
 
@@ -36,7 +36,16 @@ npx jest -- tests_javascript
 
 ## Accessibility tests
 
-The accessibility tests are written in Jest and use Pa11y. The flask application must be running at ```http://localhost:5001``` for these tests to run successfully. They are run as follows:
+The accessibility tests are written in Jest and use Pa11y. The flask application must be setup with the ```config-equal-item-weights.json``` configuration file from the ```test_python/test_configurations``` and running at ```http://localhost:5001``` for these tests to run successfully. 
+
+To setup the system (the setup may need to be replaced with reset command if you already have a database in use):
+
+```bash
+flask --debug setup ../tests_python/test_configurations/config-equal-item-weights.json
+flask --debug run ---port=5001
+```
+
+The tests can then be run as follows:
 
 ```bash
 npx jest -- tests_accessibility

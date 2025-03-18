@@ -17,7 +17,7 @@ The images presented to the user are selected in different ways depending on the
     * Two random images from those items the user has knowledge of (these are selected in a pre-judging step also provided in the interface).
 1. A pair of images selected in line with the weights assigned to the pair in the config file (the higher the weight the more likely the pair is to be presented).
 
-Example configuration files for each of these models are provided with the application along with a small set of images. The Boundary displays on the images are taken from the Office for National Statistics licensed under the Open Government Licence v.3.0 and Contains OS data © Crown copyright and database right 2024. The image tiles used for the maps are provided by ESRI's National Geographic World Map, full attribution is included in each image.
+Example configuration files for each of these models are provided with the application along with a small set of images.[^1]
 
 This version of software expands over the initial application build by Bertrand Perrat that can be found [here](https://github.com/BPerrat/BSBT-Interface). The code in this version of the interface was written by Fabián Hernández with additional features and general updates by Catherine Smith in the Research Software Group, part of Advanced Research Computing, University of Birmingham.
 
@@ -53,3 +53,5 @@ The development of this software was supported by a UKRI Future Leaders Fellowsh
 ## License
 <!--- https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[^1]: The Boundary displays on the images are taken from the Office for National Statistics licensed under the Open Government Licence v.3.0 and Contains OS data © Crown copyright and database right 2024. The image tiles used for the maps are provided by ESRI's National Geographic World Map, full attribution is included in each image.
