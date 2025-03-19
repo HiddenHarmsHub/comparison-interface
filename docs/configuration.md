@@ -3,7 +3,21 @@ id: configuration
 title: Configuration
 ---
 
-Please follow the next step to make a custom configuration for a project.
+The appearance and behaviour of the comparative judgement software can be configured in several ways. This includes
+the option to change every piece of text that appears on the website including the labels on the buttons, allowing the
+interface to appear in a language other than its default of English. There are two levels of configuration files, the
+first is the language file and the second is the project file. In order to keep the project file small the language
+file contains all of the strings that are less likely to need changing if the interface will be in English.
+The project configuration file controls the behaviour of the interface and sets the strings that are more likely to change
+from project to project. Any of the strings from the language configuration can be added to the project file if you
+want to change them for a project without changing the language file itself. Details of the images to be used can either
+be provided in the project configuration or, with the exception of the weighted pairs option, in a csv file. Up to
+three additional pages can be included in the interface, there are three ways each of these pages can be created:
+as a published google document; as a word file saved as HTML; as a fragment of HTML code.
+
+
+
+
 
 ## Requirements
 
@@ -31,6 +45,9 @@ Please follow the next step to make a custom configuration for a project.
 
 1. Navigate in you preferred browser to <http://127.0.0.1:5001>
 
+
+
+
 ## Language configuration
 
 All the the text that a user sees on the website can be configured. Any strings which are language rather than project specific are stored in the language file in the languages directory. The sample file is ```en.json``` and contains all of the non project specific strings in English. This file is a JSON file and can be copied and edited to be used for other languages. All of the keys in the JSON should be present for any additional languages generated and the iso code for the language used to name the file for example ```en.json``` or ```de.json```. Any string can actually be used for the file name as long as that same string is used in the language setting described below but using the iso code will help others understand the system.
@@ -44,6 +61,17 @@ To tell the system which file to use change the setting in the ```flask.py``` fi
 This will look for the display strings in ```languages/en.json```.
 
 If the language strings do need to be changed for a specfic project, then any of the keys in the language file can be included in the project configuration file described below and these will be displayed instead of the strings set in the language file.
+
+
+## Images
+
+The images to be used for the comparisons need to be put in the `comparison_interface/static/images` folder.
+
+The images must meet the following criteria:
+
++ be either png or jpg/jpeg files
++ be at least 300x300 pixels in size
++ have unique file names
 
 ## Creating your configuration file
 
