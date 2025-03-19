@@ -24,13 +24,18 @@ class Introduction(Request):
         # otherwise we are have html to inject instead
         user_instruction_html = WS.get_behaviour_conf(WS.BEHAVIOUR_USER_INSTRUCTION_HTML, self._app)
         with open(os.path.join(self._app.root_path, user_instruction_html)) as input_file:
-            html_fragment = input_file.read()
+            html = input_file.read()
 
+        if html.startswith('<html'):
+            fragment = False
+        else:
+            fragment = True
         return self._render_template(
             'pages/introduction.html',
             {
                 'google_doc': False,
-                'html_string': html_fragment,
+                'fragment': fragment,
+                'html_string': html,
                 'introduction_continue_button': WS.get_text(WS.INTRODUCTION_CONTINUE_BUTTON_LABEL, self._app),
             },
         )
