@@ -28,15 +28,15 @@ The images must meet the following criteria:
 
 ## Language Configuration
 
-All the the text that a user sees on the website can be configured. Any strings which are language rather than project specific are stored in the language file in the languages directory. The sample file is ```en.json``` and contains all of the non project specific strings in English. This file is a JSON file and can be copied and edited to be used for other languages. All of the keys in the JSON should be present for any additional languages generated and the iso code for the language used to name the file for example ```en.json``` or ```de.json```. Any string can actually be used for the file name as long as that same string is used in the language setting described below but using the iso code will help others understand the system.
+All the the text that a user sees on the website can be configured. Any strings which are language rather than project specific are stored in the language file in the languages directory. The sample file is `en.json` and contains all of the non project specific strings in English. This file is a JSON file and can be copied and edited to be used for other languages. All of the keys in the JSON should be present for any additional languages generated and the iso code for the language used to name the file for example `en.json` or `de.json`. Any string can actually be used for the file name as long as that same string is used in the language setting described below but using the iso code will help others understand the system.
 
-To tell the system which file to use change the setting in the ```flask.py``` file in the ```configuration``` directory. The configuration for English is as follows:
+To tell the system which file to use change the setting in the `flask.py` file in the `configuration` directory. The configuration for English is as follows:
 
 ```python
     LANGUAGE = 'en'
 ```
 
-This will look for the display strings in ```languages/en.json```.
+This will look for the display strings in `languages/en.json`.
 
 If the language strings do need to be changed for a specific project, then any of the keys in the language file can be included in the project configuration file and these will be displayed instead of the strings set in the language file.
 
@@ -51,30 +51,30 @@ The project configuration file is written in JSON and has four sections.
 
 When the system is started the configuration file requested will be validated and if there are any problems with the file the error message should help to fix them.
 
-The easiest way to create a configuration file is to start with one of the three existing examples and modify that to meet the requirements of the project. Each of the sections will be covered below.
+The easiest way to create a configuration file is to start with one of the existing examples and modify that to meet the requirements of the project. Each of the sections will be covered below.
 
 ### Behaviour configuration
 
 This section controls aspects of how the system works.
 
-The ```exportPathLocation``` is required and determines where exported data files are saved when the database is exported.
+The **exportPathLocation** is required and determines where exported data files are saved when the database is exported.
 
-There is also a required boolean key ```renderCookieBanner```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie banner is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
+There is also a required boolean key **renderCookieBanner**, which determines whether the user is asked to accept the website cookies when first opening the website. The title and text for the cookie banner is stored in the language file but it you want to customise it for a particular project then the **siteCookiesTitle** and **siteCookiesText** keys can be added to the project configuration with the strings you want to display.
 
 There are also three booleans which are required to determine which additional pages to include. The configuration of
 these pages is covered in the [Additional pages](#additional-pages) sub-section.
 
 Five further boolean keys are required.
 
-```renderUserItemPreferencePage``` determines whether the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
+**renderUserItemPreferencePage** determines whether the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
 
-```allowTies``` determines whether or not the system allows a user to select both images and record a tied result. Set this to true if you want to include ties in your study and to false if you do not.
+**allowTies** determines whether or not the system allows a user to select both images and record a tied result. Set this to true if you want to include ties in your study and to false if you do not.
 
-```allowSkip``` determines whether or not the system allows a user to skip a comparison.
+**allowSkip** determines whether or not the system allows a user to skip a comparison.
 
-```allowBack``` determines whether or not the system allows a user to go back and check or change a previously made judgement.
+**allowBack** determines whether or not the system allows a user to go back and check or change a previously made judgement.
 
-```offerEscapeRouteBetweenCycles``` determines whether a user can continue making judgements indefinitely or if they are offered an opportunity to either logout or continue making judgements after reaching a target number. If this is set to true then two further keys are required. ```cycleLength``` specifies how many comparisons should be made in each cycle and ```maximumCyclesPerUser``` determines how many cycles each user is permitted to complete before no more comparisons will be presented to them.
+**offerEscapeRouteBetweenCycles** determines whether a user can continue making judgements indefinitely or if they are offered an opportunity to either logout or continue making judgements after reaching a target number. If this is set to true then two further keys are required. **cycleLength** specifies how many comparisons should be made in each cycle and **maximumCyclesPerUser** determines how many cycles each user is permitted to complete before no more comparisons will be presented to them.
 
 #### Additional pages
 
