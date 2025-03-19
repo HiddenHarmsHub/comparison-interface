@@ -82,15 +82,15 @@ Three required boolean values in the behaviour configuration section determine w
 
 The keys and their corresponding link/html keys are listed below.
 
-* renderUserInstructionPage
-  * userInstructionLink
-  * userInstructionHtml
-* renderEthicsAgreementPage
-  * userEthicsAgreementLink
-  * userEthicsAgreementHtml
-* renderSitePoliciesPage
-  * sitePoliciesLink
-  * sitePoliciesHtml
+* renderUserInstructionPage [boolean]
+  * userInstructionLink [url]
+  * userInstructionHtml [filepath]
+* renderEthicsAgreementPage [boolean]
+  * userEthicsAgreementLink [url]
+  * userEthicsAgreementHtml [filepath]
+* renderSitePoliciesPage [boolean]
+  * sitePoliciesLink [url]
+  * sitePoliciesHtml [filepath]
 
 
 ### User fields configuration
