@@ -61,6 +61,23 @@ The ```exportPathLocation``` is required and determines where exported data file
 
 There is also a required boolean key ```renderCookieBanner```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie banner is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
 
+There are also three booleans which are required to determine which additional pages to include. The configuration of
+these pages is covered in the [Additional pages](#additional-pages) sub-section.
+
+Five further boolean keys are required.
+
+```renderUserItemPreferencePage``` determines whether the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
+
+```allowTies``` determines whether or not the system allows a user to select both images and record a tied result. Set this to true if you want to include ties in your study and to false if you do not.
+
+```allowSkip``` determines whether or not the system allows a user to skip a comparison.
+
+```allowBack``` determines whether or not the system allows a user to go back and check or change a previously made judgement.
+
+```offerEscapeRouteBetweenCycles``` determines whether a user can continue making judgements indefinitely or if they are offered an opportunity to either logout or continue making judgements after reaching a target number. If this is set to true then two further keys are required. ```cycleLength``` specifies how many comparisons should be made in each cycle and ```maximumCyclesPerUser``` determines how many cycles each user is permitted to complete before no more comparisons will be presented to them.
+
+#### Additional pages
+
 Three required boolean values determine which links appear in the header of the webpage. If any of these booleans are set to true either the corresponding link key or the corresponding html key is required. The key required depends on how you want to make the page available. If you want to point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) then the link key should be used. If you want to provide the page as HTML there are two options. If you can write your own HTML then you can provide a fragment of HTML rather than a whole page. The fragment should be wrapped in a ```<div>``` and contain the HTML you want to be displayed in the template. If you can't write your own HTML then you can create a word document and save it as 'web page, filtered' with the `.html` suffix. In both cases the template will take care of the header itself, the HTML just needs to contain the content you want to display. If you choose one of the HTML options then the html key should be used to give the path to the HTML file. If ensuring that the website is accessible is important to you then the best option would be to write your own HTML fragment and make sure that it follows the WCAG guidelines.
 
 The keys and their corresponding link/html keys are listed below.
@@ -75,17 +92,6 @@ The keys and their corresponding link/html keys are listed below.
   * sitePoliciesLink
   * sitePoliciesHtml
 
-Five further boolean keys are required.
-
-```renderUserItemPreferencePage``` determines whether the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
-
-```allowTies``` determines whether or not the system allows a user to select both images and record a tied result. Set this to true if you want to include ties in your study and to false if you do not.
-
-```allowSkip``` determines whether or not the system allows a user to skip a comparison.
-
-```allowBack``` determines whether or not the system allows a user to go back and check or change a previously made judgement.
-
-```offerEscapeRouteBetweenCycles``` determines whether a user can continue making judgements indefinitely or if they are offered an opportunity to either logout or continue making judgements after reaching a target number. If this is set to true then two further keys are required. ```cycleLength``` specifies how many comparisons should be made in each cycle and ```maximumCyclesPerUser``` determines how many cycles each user is permitted to complete before no more comparisons will be presented to them.
 
 ### User fields configuration
 
