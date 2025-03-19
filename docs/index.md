@@ -39,7 +39,7 @@ configuration can be found on the [configuration page](configuration.md) page.
 ### Testing
 
 A number of different tests are provided in the repository. They are all run in the CI workflow. If you also want to 
-run the tests locally you can fine information on the dependencies and how to run the test on the [testing](testing.md) page.
+run the tests locally you can find information on the dependencies and how to run the test on the [running the tests](testing.md) page.
 
 ## Authors and Acknowledgments
 

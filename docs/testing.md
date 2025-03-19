@@ -50,3 +50,4 @@ The tests can then be run as follows:
 ```bash
 npx jest -- tests_accessibility
 ```
+It is important to remember that automated accessibility tests cannot alone determine whether a website is fully accessible. Manual tests are also required several browser plugins are available to help with this, one of the most comprehensive is [Accessibility insights for web](https://accessibilityinsights.io/docs/web/overview/).

@@ -7,9 +7,9 @@ The software can be run on any operating system and requires python 3.9 or highe
 
 If you are working in an IDE which supports dev containers then the quickest way to get started with the software is to use the dev container configuration provided in the repository to create a dev container in your IDE. The dev container configuration contains all of the dependencies required to run the software as well as all of the test suites and the linters used in the CI.
 
-If you are not using the dev container you will need to install the dependencies in the requirements.txt file. Using a python virtual environment is recommended but it is not necessary. If you want to run the python linters and tests you will also need the dependencies in the requirements-test.txt file. The JavaScript and accessibility test requirements are covered in the testing section below.
+If you are not using the dev container you will need to install the dependencies in the requirements.txt file. Using a python virtual environment is recommended but it is not necessary. If you want to run the python linters and tests you will also need the dependencies in the requirements-test.txt file. The JavaScript and accessibility test requirements are covered in the [testing section](testing.md).
 
-To set up the virtual environment and install the python requirements ensure VirtualEnv is is available and use the following commands.
+To set up the virtual environment and install the python requirements use the following commands.
 
 ```bash
 python3 -m venv venv
@@ -35,7 +35,7 @@ Flask provides a development webserver which is good enough to evaluate the soft
 
 ## Running the provided examples
 
-This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction,the example files can be found in the examples directory inside the comparison_interface directory.
+This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction, the example files can be found in the `examples` directory inside the comparison_interface directory.
 
 1. equal item weight options
     + config-equal-item-weights.json
@@ -58,7 +58,7 @@ flask --debug run --port=5001
 
 In your browser navigate to <http://localhost:5001>
 
-You should see the registration page of the website and all of the functions should be working so you can test all of the features with a small set of images.
+You should see the registration page of the website and all of the functions should be working so you can test the features with a small set of images.
 
 Any free port number can be used to host the website by changing the port number in the run command. 5001 is used in all of the examples because it is the port number that is open in the dev container setup mentioned above.
 
@@ -66,7 +66,7 @@ Any free port number can be used to host the website by changing the port number
 
 Once the setup command used above has been run and a database has been created it cannot be used again unless the database file is manually deleted.
 
-To reset the database and switch to a different configuration for testing the reset command should be used. This is a destructive process as it will delete the current database along with any data in it and also delete any exported files still in the export location. Before the first of these commands actually does anything you will be given a warning that the operation is destructive and you will need to confirm that you want to go ahead with the database reset.
+To reset the database and switch to a different configuration the reset command should be used. This is a destructive process as it will delete the current database along with any data in it and also delete any exported files still in the export location. Before the first of these commands actually does anything you will be given a warning that the operation will delete these files and you will need to confirm that you want to go ahead with the database reset.
 
 ```bash
 flask --debug reset examples/[configuration_file_name]
