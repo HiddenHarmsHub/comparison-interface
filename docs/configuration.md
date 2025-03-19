@@ -26,7 +26,6 @@ The images must meet the following criteria:
 + be at least 300x300 pixels in size
 + have unique file names
 
-
 ## Language Configuration
 
 All the the text that a user sees on the website can be configured. Any strings which are language rather than project specific are stored in the language file in the languages directory. The sample file is ```en.json``` and contains all of the non project specific strings in English. This file is a JSON file and can be copied and edited to be used for other languages. All of the keys in the JSON should be present for any additional languages generated and the iso code for the language used to name the file for example ```en.json``` or ```de.json```. Any string can actually be used for the file name as long as that same string is used in the language setting described below but using the iso code will help others understand the system.
@@ -39,7 +38,7 @@ To tell the system which file to use change the setting in the ```flask.py``` fi
 
 This will look for the display strings in ```languages/en.json```.
 
-If the language strings do need to be changed for a specfic project, then any of the keys in the language file can be included in the project configuration file and these will be displayed instead of the strings set in the language file.
+If the language strings do need to be changed for a specific project, then any of the keys in the language file can be included in the project configuration file and these will be displayed instead of the strings set in the language file.
 
 ## Project Configuration
 
@@ -60,7 +59,9 @@ This section controls aspects of how the system works.
 
 The ```exportPathLocation``` is required and determines where exported data files are saved when the database is exported.
 
-Three required boolean values determine which links appear in the header of the webpage. If any of these booleans are set to true either the corresponding link key or the corresponding html key is required. If using the link key this should point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop). If using the html key then the HTML fragment should be wrapped in a ```<div>``` and contain the HTML you want to be displayed in the template. The template will take care of the header itself.
+There is also a required boolean key ```renderCookieBanner```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie banner is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
+
+Three required boolean values determine which links appear in the header of the webpage. If any of these booleans are set to true either the corresponding link key or the corresponding html key is required. The key required depends on how you want to make the page available. If you want to point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) then the link key should be used. If you want to provide the page as HTML there are two options. If you can write your own HTML then you can provide a fragment of HTML rather than a whole page. The fragment should be wrapped in a ```<div>``` and contain the HTML you want to be displayed in the template. If you can't write your own HTML then you can create a word document and save it as 'web page, filtered' with the `.html` suffix. In both cases the template will take care of the header itself, the HTML just needs to contain the content you want to display. If you choose one of the HTML options then the html key should be used to give the path to the HTML file. If ensuring that the website is accessible is important to you then the best option would be to write your own HTML fragment and make sure that it follows the WCAG guidelines.
 
 The keys and their corresponding link/html keys are listed below.
 
@@ -73,8 +74,6 @@ The keys and their corresponding link/html keys are listed below.
 * renderSitePoliciesPage
   * sitePoliciesLink
   * sitePoliciesHtml
-
-There is also a required boolean key ```renderCookieBanner```, which determines whether the user is asked to accept the website cookies when first opening the website. The text for the cookie banner is stored in the language file but it you want to customise if for a particular project then the ```siteCookiesText``` key can be added to the project configuration with the string you want to display.
 
 Five further boolean keys are required.
 
