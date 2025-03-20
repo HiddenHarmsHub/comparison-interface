@@ -390,8 +390,10 @@ class Configuration(Schema):
                 "If renderUserItemPreferencePage is true then itemSelectionQuestionLabel must be provided in the "
                 "websiteTextConfiguration section."
             )
-        if render_item_preference and ('itemSelectionYesButtonLabel' not in data['websiteTextConfiguration'] or
-                                       'itemSelectionNoButtonLabel' not in data['websiteTextConfiguration'] ):
+        if render_item_preference and (
+            'itemSelectionYesButtonLabel' not in data['websiteTextConfiguration']
+            or 'itemSelectionNoButtonLabel' not in data['websiteTextConfiguration']
+        ):
             raise ValidationError(
                 "If renderUserItemPreferencePage is true then itemSelectionYesButtonLabel and"
                 "itemSelectionYesButtonLabel must be provided in the websiteTextConfiguration section."
