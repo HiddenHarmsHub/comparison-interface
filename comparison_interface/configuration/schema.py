@@ -186,10 +186,10 @@ class WebsiteTextConfiguration(Schema):
     pageTitleItemPreference = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     pageTitleRank = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     pageTitleThankYou = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
-    userRegistrationGroupQuestionLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
+    userRegistrationGroupQuestionLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
     userRegistrationFormTitleLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     userRegistrationSummitButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
-    userRegistrationGroupSelectionErr = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
+    userRegistrationGroupSelectionErr = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
     userRegistrationEthicsAgreementLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
     userRegistrationEthicsAgreementLinkText = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
     itemSelectionQuestionLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
@@ -225,7 +225,7 @@ class WebsiteTextConfiguration(Schema):
     error404HomeLink = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
     error204Title = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     error204Message = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
-    additionalRegistrationPageText = fields.List(fields.Str(), required=True)
+    additionalRegistrationPageText = fields.List(fields.Str(), required=False)
 
 
 class UserField(Schema):

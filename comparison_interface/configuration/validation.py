@@ -34,6 +34,8 @@ class Validation:
         except ValidationError as err:
             self.__app.logger.critical(err)
             exit()
+        # now we have validated, reload the config so that we just have the project
+        conf = WS.get_configuration(self.__app, True)
         # now if we reference a csv file validate that
         if "csvFile" in conf["comparisonConfiguration"]:
             config_location = WS.get_configuration_location(self.__app)
