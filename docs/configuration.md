@@ -82,15 +82,15 @@ Three required boolean values in the behaviour configuration section determine w
 
 The keys and their corresponding link/html keys are listed below.
 
-* **renderUserInstructionPage** [boolean]
-  * **userInstructionLink** [url]
-  * **userInstructionHtml** [filepath]
-* **renderEthicsAgreementPage** [boolean]
-  * **userEthicsAgreementLink** [url]
-  * **userEthicsAgreementHtml** [filepath]
-* **renderSitePoliciesPage** [boolean]
-  * **sitePoliciesLink** [url]
-  * **sitePoliciesHtml** [filepath]
++ **renderUserInstructionPage** [boolean]
+  + **userInstructionLink** [url]
+  + **userInstructionHtml** [filepath]
++ **renderEthicsAgreementPage** [boolean]
+  + **userEthicsAgreementLink** [url]
+  + **userEthicsAgreementHtml** [filepath]
++ **renderSitePoliciesPage** [boolean]
+  + **sitePoliciesLink** [url]
+  + **sitePoliciesHtml** [filepath]
 
 
 ### User fields configuration
@@ -105,17 +105,17 @@ If no user registration questions are required then the userFieldsConfiguration 
 }
 ```
 
-If questions are required then the configuration for each question needs to be added to the list. Each question can be either required or optional. A user is not allowed to register until all required questions are answered.
+If questions are required then the configuration for each question needs to be added to the list. Each question can be either required or optional. A user is not allowed to register until all required questions are answered. Some fields such as email and integer also have additional validation on the data supplied. If the data does not meet the criteria, such as an invalid email address, then an error message will display on the screen. With the exception for group select which is covered in the [website text configuration section](#website-text-configuration), these error messages are not configurable as they are messages generated automatically by the browser. They will appear in the language which the user has set as their preferred browser/system language.
 
 The supported html widget types are:
 
-* text
-* int
-* radio
-* dropdown
-* email
++ text
++ int
++ radio
++ dropdown
++ email
 
-For example to configure a single question to as the user's first name which is required the following configuration can be used.
+For example, to configure a single question to as the user's first name which is required the following configuration can be used.
 
 ```json
 {
@@ -133,25 +133,25 @@ For example to configure a single question to as the user's first name which is 
 
 This will be rendered on the page as follows.
 
-
+![An image of the configuration above rendered in html](images/name_field.png)
 
 An example of the full configuration for each of these types is provided in all of the example files. These can be used as a basis to construct your own questions.
 
 ### Website text configuration
 
-There are up to four compusory keys (depending on the behaviour configuration) in the website configuration. There is one optional field. In addition, any of the fields in the language configuration file can be added into this section to override the language defaults should this be required.
+There are up to four compulsory keys (depending on the behaviour configuration) in the website text configuration. There is one optional field. In addition, any of the fields in the language configuration file can be added into this section to override the language defaults should this be required.
 
-All project configurations require the ```rankItemInstructionLabel``` key which is the text that is presented to the user along with the two images to make the judgement.
+All project configurations require the **rankItemInstructionLabel** key which is the text that is presented to the user along with the two images to make the judgement.
 
-If the behaviour configuration ```renderUserItemPreferencePage``` is set to ```true``` then the ```itemSelectionQuestionLabel``` key is also required. This is the text presented to the user when they are selecting which items they know and will be followed by the image display name.
+If the behaviour configuration **renderUserItemPreferencePage** is set to `true` then the **itemSelectionQuestionLabel** key is also required. This is the text presented to the user when they are selecting which items they know and will be followed by the image display name.
 
-If multiple groups are defined in the comparison configuration section then the keys ```userRegistrationGroupQuestionLabel``` and ```userRegistrationGroupSelectionErr``` are required. The first is the text put alongside the group selection section of the registration page, the second is the error text displayed if no group has been selected and a user tries to register.
+If multiple groups are defined in the comparison configuration section then the keys **userRegistrationGroupQuestionLabel** and **userRegistrationGroupSelectionErr** are required. The first is the text put alongside the group selection section on the registration page, the second is the error text displayed if no group has been selected and a user tries to register.
 
-There is also an optional key for all projects ```additionalRegistrationPageText``` which instead of containing a string should contain a list of strings. These strings will be displayed on the registration page below any user questions and above the ethics approval statement (if used) and the registration button. This section can be used to display any required information to the user, the initial motivation for this section was to provide the relevant licensing information for all of the images used on the website.
+There is also an optional key for all projects **additionalRegistrationPageText** which instead of containing a string should contain a list of strings. These strings will be displayed on the registration page below any user questions and above the ethics approval statement (if used) and the registration button. This section can be used to display any required information to the user, the initial motivation for this section was to provide the relevant licensing information for all of the images used on the website. It can also be useful to display a welcome message to users if no questions are being asked and the registration screen is just used as a login screen.
 
 ### Comparison configuration
 
-This section needs to define all of the images you want to use organised by groups and for weighted item pairs all of the weights. If you are not using weighted pairs this comparison configuration can be provided directly in the JSON or as a csv file. When using a csv file the csv file and the JSON configuration file should be put in the same directory and when running the setup and reset commands the path to the configuration file should instead be to the parent directory containing the two files.
+This section needs to define all of the images you want to use organised by groups and for weighted item pairs all of the pairs and their associated weights. If you are not using weighted pairs this comparison configuration can be provided directly in the JSON or as a csv file. When using a csv file the csv file and the JSON configuration file should be put in the same directory and when running the setup and reset commands the path to the configuration file should instead be to the parent directory containing the two files.
 
 To see how the JSON should be configured please refer to the examples provided.
 
@@ -177,33 +177,20 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 
 ## Troubleshooting
 
-1. The configuration file requires a specific format. Try to follow one of the examples supplied with this project to avoid unexpected problems.
-2. When running the **setup** command, the software validates the format of the configuration file. The messages will help you to find any problems with the file.
-3. Error **RuntimeError: Application unhealthy state. Please contact the website administrator.**. This means that the website configuration file was modified after the website setup was executed. To fix this problem, run the **Reset command**.
+1. The configuration file requires a specific format. Try to follow one of the examples supplied with this project to avoid problems.
+1. When running the `setup` command, the software validates the format of the configuration file, and if used the csv file. The messages will help you to find any problems with the file.
+1. If you get the error **RuntimeError: Application unhealthy state. Please contact the website administrator.**. This means that the website configuration file was modified after the website setup was executed. To fix this problem, run the `Reset` command.
 
+## Summary
 
-## Requirements
+1. Replace the images in `comparison_interface/static/images` with your own images
+1. Change any settings that need changing in the `flask.py` file and set your own secret key
+1. Change any strings required in the `en.json` file or supply your own language file
+1. Add your own configuration file(s) to a directory within the `comparison_interface` directory
+1. Run the following commands
 
-1. The images of the items being compared.
-    * These images must be at least 300x300 pixels.
-    * The file names of the images must be unique.
-    * Valid image formats: png, jpg or jpeg.
-1. Configure the language settings if not using English (see below for more guidance).
-1. Create your configuration file (see below for more guidance).
-1. (optional) Create and [publish](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) your own ethics agreement Google Document.
-1. (optional) Create and [publish](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) your own introduction Google Document.
-1. (optional) Create and [publish](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) your own site policies Google Document.
-
-## Steps
-
-1. Replace the contents of the folder ***static/images*** with your own images.
-1. Copy the ***example.flask.py*** in the ***comparison_interface/configuration*** directory to ***flask.py***, change the secret key and any other settings you want to change.
-1. Copy your configuration file (of files if using a csv file for the comparison configuration)to the folder ***examples/*** or another location within the comparison_interface directory.
-1. Open a terminal and run these commands.
-
-    ```bash
+    ``bash
     flask --debug setup [path_to_configuration_file_or_directory_if_using_a_csv_file]
     flask --debug run --port=5001
     ```
-
 1. Navigate in you preferred browser to <http://127.0.0.1:5001>

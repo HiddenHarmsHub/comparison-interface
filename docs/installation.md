@@ -35,7 +35,7 @@ Flask provides a development webserver which is good enough to evaluate the soft
 
 ## Running the provided examples
 
-This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction, the example files can be found in the `examples` directory inside the comparison_interface directory.
+This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction, the example files can be found in the `examples` directory inside the `comparison_interface` directory.
 
 1. equal item weight options
     + config-equal-item-weights.json
@@ -48,6 +48,8 @@ If you are not using the dev container provided then:
 
 + rename the `example.images` file in `comparison_interface/static/` to `images`.
 + rename the `example.flask.py` file in `comparison_interface/configuration/` to `flask.py`.
+
+When running in production the secret key in the flask.py should also be changed.
 
 Open a terminal and run these commands replacing ```[configuration_file_name]``` with the name of the configuration file you want to try.
 
