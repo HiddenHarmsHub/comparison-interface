@@ -75,10 +75,9 @@ a {
 
 .required-field-label.col-form-label::after,
 #group-ids-label::after,
-#ethics-label::before
-{
-    content:"*";
+#ethics-label::before {
+    content: "*";
+    color: red;
     padding-left: 2px;
     padding-right: 2px;
-    color:red;
 }
