@@ -13,7 +13,7 @@ previously on geospatial datasets to be processed with the [Bayesian Spatial Bra
 1. Custom weights can be defined for pairs of items.
 1. Multiple item groups can be defined to allow item selection at a higher level.
 1. The user registration page is configurable to collect the user data required for the study.
-1. The entire database can be dumped to a zip file containing either csv or tsv files.
+1. The entire database can be exported to a zip file containing either csv or tsv files.
 1. A limit can be set for the number of judgements that can be made by a single user. (optional)
 1. Ethics agreement acceptance can be configured to be mandatory at registration. (optional)
 1. Additional pages (such as user instructions) can be written/formatted as Google docs or in HTML and then rendered on the website. (optional).
@@ -21,30 +21,11 @@ previously on geospatial datasets to be processed with the [Bayesian Spatial Bra
 1. The website interface will render adequately on mobile devices as well as on larger screens.
 1. The website meets WCAG 2.2 AA accessibility guidelines.
 
-## Reset command
-
-The reset command reloads the website configuration and resets the database. This command can be used when:
-
-1. The website configuration file has been modified.
-2. The content of the database needs to be deleted and reset.
-
-**Note**: This is a destructive operation that will delete all the database content and any exported files in the original export location. You will be asked to confirm that you want to run the operation before the script will execute.
-
-The command can be executed by typing:
-
-```bash
-flask --debug reset [path_to_configuration_file]
-```
-
-**Note**: If the configuration file is edited while the system is running then the system will have to be reset and all data in the database will be deleted. Once a system is running do not change a configuration file unless you want to reset the database.
-
-
 ## Sample images
 
 A small set of sample images are included for the purposes of evaluating the software.
 
 The Boundary displays on the images are taken from the Office for National Statistics licensed under the Open Government Licence v.3.0 and Contains OS data © Crown copyright and database right 2024. The image tiles used for the maps are provided by ESRI's National Geographic World Map, full attribution is included in each image.
-
 
 ## Cookies used by the interface
 
