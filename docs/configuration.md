@@ -78,19 +78,19 @@ Five further boolean keys are required.
 
 #### Additional pages
 
-Three required boolean values in the behaviour configuration section determine which links appear in the header of the webpage. If any of these booleans are set to true either the corresponding link key or the corresponding html key is required. The key required depends on how you want to make the page available. If you want to point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) then the link key should be used. If you want to provide the page as HTML there are two options. If you can write your own HTML then you can provide a fragment of HTML rather than a whole page. The fragment should be wrapped in a ```<div>``` and contain the HTML you want to be displayed in the template. If you can't write your own HTML then you can create a word document and save it as 'web page, filtered' with the `.html` suffix. In both cases the template will take care of the header itself, the HTML just needs to contain the content you want to display. If you choose one of the HTML options then the html key should be used to give the path to the HTML file. If ensuring that the website is accessible is important to you then the best option would be to write your own HTML fragment and make sure that it follows the WCAG guidelines.
+Three required boolean values in the behaviour configuration section determine which links appear in the header of the webpage. If any of these booleans are set to true either the corresponding link key or the corresponding html key is required. The key required depends on how you want to make the page available. If you want to point to a [published google document](https://support.google.com/docs/answer/183965?hl=en&co=GENIE.Platform%3DDesktop) then the link key should be used. If you want to provide the page as HTML there are two options. If you can write your own HTML then you can provide a fragment of HTML rather than a whole page. The fragment should be wrapped in a `<div>` and contain the HTML you want to be displayed in the template. If you can't write your own HTML then you can create a word document and save it as 'web page, filtered' with the `.html` suffix. In both cases the template will take care of the header itself, the HTML just needs to contain the content you want to display. If you choose one of the HTML options then the html key should be used to give the path to the HTML file. If ensuring that the website is accessible is important to you then the best option would be to write your own HTML fragment and make sure that it follows the WCAG guidelines.
 
 The keys and their corresponding link/html keys are listed below.
 
-* renderUserInstructionPage [boolean]
-  * userInstructionLink [url]
-  * userInstructionHtml [filepath]
-* renderEthicsAgreementPage [boolean]
-  * userEthicsAgreementLink [url]
-  * userEthicsAgreementHtml [filepath]
-* renderSitePoliciesPage [boolean]
-  * sitePoliciesLink [url]
-  * sitePoliciesHtml [filepath]
+* **renderUserInstructionPage** [boolean]
+  * **userInstructionLink** [url]
+  * **userInstructionHtml** [filepath]
+* **renderEthicsAgreementPage** [boolean]
+  * **userEthicsAgreementLink** [url]
+  * **userEthicsAgreementHtml** [filepath]
+* **renderSitePoliciesPage** [boolean]
+  * **sitePoliciesLink** [url]
+  * **sitePoliciesHtml** [filepath]
 
 
 ### User fields configuration
@@ -101,11 +101,11 @@ If no user registration questions are required then the userFieldsConfiguration 
 
 ```json
 {
-    "userFieldsConfiguration": []
+  "userFieldsConfiguration": []
 }
 ```
 
-If questions are required then the configuration for each question needs to be added to the list.
+If questions are required then the configuration for each question needs to be added to the list. Each question can be either required or optional. A user is not allowed to register until all required questions are answered.
 
 The supported html widget types are:
 
@@ -114,6 +114,26 @@ The supported html widget types are:
 * radio
 * dropdown
 * email
+
+For example to configure a single question to as the user's first name which is required the following configuration can be used.
+
+```json
+{
+  "userFieldsConfiguration": [
+    {
+      "name": "name",
+      "displayName": "First Name",
+      "type": "text",
+      "maxLimit": 250,
+      "required": true
+    },
+  ]
+}
+```
+
+This will be rendered on the page as follows.
+
+
 
 An example of the full configuration for each of these types is provided in all of the example files. These can be used as a basis to construct your own questions.
 
