@@ -19,6 +19,15 @@ class Validation:
     def validate(self) -> list:
         """Validate the configuration file or directory."""
         conf = WS.get_configuration(self.__app)
+        # now add the keys from the language file if they are not in the project file so we can validate the full set
+        # all the keys have to be in at least one of them for the validation to pass
+        if "websiteTextConfiguration" in self.__app.language_config:
+            if "websiteTextConfiguration" in conf:
+                for key in self.__app.language_config["websiteTextConfiguration"]:
+                    if key not in conf["websiteTextConfiguration"]:
+                        conf["websiteTextConfiguration"][key] = self.__app.language_config["websiteTextConfiguration"][
+                            key
+                        ]
         schema = ConfigSchema()
         try:
             schema.load(conf)
