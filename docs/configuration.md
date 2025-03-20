@@ -155,9 +155,9 @@ This section needs to define all of the images you want to use organised by grou
 
 To see how the JSON should be configured please refer to the examples provided.
 
-Refer to **examples/config-equal-item-weights.json** or **examples/config-equal-item-weights-preference.json** to configure a scenario without any weighting for the item pairs and either with or without the item preference stage.
+Refer to `examples/config-equal-item-weights.json` or `examples/config-equal-item-weights-preference.json` to configure a scenario without any weighting for the item pairs and either with or without the item preference stage.
 
-Refer to **examples/config-custom-item-weights.json** to configure a scenario where custom weights will be defined for all item pairs.
+Refer to `examples/config-custom-item-weights.json` to configure a scenario where custom weights will be defined for all item pairs.
 
 If the configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
 
@@ -193,4 +193,4 @@ The csv file must contain a minimum of two columns and up to five columns. The c
     flask --debug setup [path_to_configuration_file_or_directory_if_using_a_csv_file]
     flask --debug run --port=5001
     ```
-1. Navigate in you preferred browser to <http://127.0.0.1:5001>
+1. Navigate in your preferred browser to <http://127.0.0.1:5001>
