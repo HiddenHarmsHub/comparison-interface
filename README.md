@@ -38,21 +38,6 @@ flask --debug reset [path_to_configuration_file]
 
 **Note**: If the configuration file is edited while the system is running then the system will have to be reset and all data in the database will be deleted. Once a system is running do not change a configuration file unless you want to reset the database.
 
-## Exporting the data
-
-The data in the database can be exported using the following command.
-
-```bash
-flask --debug export
-```
-
-This will export the database contents to a zip file containing one .csv file per database table, located at the location configured in the configuration json file. There is also an option to export the data to a zip file of .tsv files.
-
-```bash
-flask --debug export --format=tsv
-```
-
-There is also an option to expose the table containing the decisions made by users (no user details) and the table containing the item details via a secured api. This is enabled by setting the 'API_ACCESS' variable in the ```configuration/flask.py``` file to ```True```. In addition a ```.apikey``` file needs to be created at the top level of the repository. This should contain the secret key which will be used to authenticate api calls. The file name used to store the key can be changed in the ```configuration/flask.py``` file.
 
 ## Sample images
 

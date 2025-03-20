@@ -193,4 +193,4 @@ The csv file must contain a minimum of two columns and up to five columns. The c
     flask --debug setup [path_to_configuration_file_or_directory_if_using_a_csv_file]
     flask --debug run --port=5001
     ```
-1. Navigate in your preferred browser to <http://127.0.0.1:5001>
+1. Navigate in your preferred browser to <http://localhost:5001>
