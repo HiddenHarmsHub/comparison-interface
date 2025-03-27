@@ -19,7 +19,7 @@ flask --debug setup [path_to_configuration]
 
 ## Reset Command
 
-The reset command reloads the website configuration and resets the database after the setup command has been run.
+The `reset` command reloads the website configuration and resets the database after the `setup` command has been run.
 
 This command can be used when:
 
