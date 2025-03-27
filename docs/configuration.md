@@ -30,7 +30,7 @@ The images must meet the following criteria:
 
 All the the text that a user sees on the website can be configured. Any strings which are language rather than project specific are stored in the language file in the languages directory. The sample file is `en.json` and contains all of the non project specific strings in English. This file is a JSON file and can be copied and edited to be used for other languages. All of the keys in the JSON should be present for any additional languages generated and the ISO code for the language used to name the file for example `en.json` or `de.json`. Any string can actually be used for the file name as long as that same string is used in the language setting described below but using the iso code will help others understand the system.
 
-To tell the system which file to use change the setting in the `flask.py` file in the `configuration` directory. The configuration for English is as follows:
+To tell the system which file to use, change the setting in the `flask.py` file in the `configuration` directory. The configuration for English is as follows:
 
 ```python
     LANGUAGE = 'en'
