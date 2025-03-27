@@ -182,7 +182,7 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 
 1. The configuration file requires a specific format. Try to follow one of the examples supplied with this project to avoid problems.
 1. When running the `setup` command, the software validates the format of the configuration file, and if used the csv file. The messages will help you to find any problems with the file.
-1. If you get the error **RuntimeError: Application unhealthy state. Please contact the website administrator.**. This means that the website configuration file was modified after the website setup was executed. To fix this problem, run the `Reset` command.
+1. If you get the error **RuntimeError: Application unhealthy state. Please contact the website administrator.**. This means that the website configuration file was modified after the website setup was executed. To fix this problem, run the `reset` command.
 
 ## Summary
 
