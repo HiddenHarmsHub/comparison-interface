@@ -68,7 +68,7 @@ Any free port number can be used to host the website by changing the port number
 
 Once the setup command used above has been run and a database has been created it cannot be used again unless the database file is manually deleted.
 
-To reset the database and switch to a different configuration the reset command should be used. This is a destructive process as it will delete the current database along with any data in it and also delete any exported files still in the export location. Before the first of these commands actually does anything you will be given a warning that the operation will delete these files and you will need to confirm that you want to go ahead with the database reset.
+To reset the database and switch to a different configuration the `reset` command should be used. This is a destructive process as it will delete the current database along with any data in it and also delete any exported files still in the export location. Before the first of these commands actually does anything you will be given a warning that the operation will delete these files and you will need to confirm that you want to go ahead with the database reset.
 
 ```bash
 flask --debug reset examples/[configuration_file_name]
