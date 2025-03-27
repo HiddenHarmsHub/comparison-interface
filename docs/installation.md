@@ -3,7 +3,7 @@ id: installation
 title: Installation
 ---
 
-The software can be run on any operating system and requires python 3.9 or higher.
+The software can be run on any operating system and requires Python 3.9 or higher.
 
 If you are working in an IDE which supports dev containers then the quickest way to get started with the software is to use the dev container configuration provided in the repository to create a dev container in your IDE. The dev container configuration contains all of the dependencies required to run the software as well as all of the test suites and the linters used in the CI.
 
