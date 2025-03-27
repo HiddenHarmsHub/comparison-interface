@@ -33,7 +33,7 @@ For PowerShell:
 
 Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/).
 
-## Running the provided examples
+## Running the Provided Examples
 
 This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction, the example files can be found in the `examples` directory inside the `comparison_interface` directory.
 
