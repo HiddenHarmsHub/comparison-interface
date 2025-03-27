@@ -36,7 +36,7 @@ npx jest -- tests_javascript
 
 ## Accessibility tests
 
-The accessibility tests are written in Jest and use Pa11y. The flask application must be setup with the `config-equal-item-weights.json` configuration file from the `test_python/test_configurations` and running at `http://localhost:5001` for these tests to run successfully. 
+The accessibility tests are written in Jest and use Pa11y. The Flask application must be setup with the `config-equal-item-weights.json` configuration file from the `test_python/test_configurations` and running at `http://localhost:5001` for these tests to run successfully. 
 
 To setup the system (the setup may need to be replaced with reset command if you already have a database in use):
 
