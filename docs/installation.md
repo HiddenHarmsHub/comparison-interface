@@ -25,7 +25,7 @@ For CMD:
 .\venv\Scripts\activate.bat
 ```
 
-For Power shell:
+For PowerShell:
 
 ```ps
 .\venv\Scripts\activate.ps1
