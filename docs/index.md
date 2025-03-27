@@ -31,7 +31,7 @@ examples can be run to test an installation or evaluate the different modes avai
 serve as good starting points for your own configurations. The example files themselves can be found in in the
 comparison_interface/examples directory.
 
-### Configuring the System
+### Configuring the system
 
 There are a few different ways that the system can be configured depending on the behaviour you need. Instructions for 
 configuration can be found on the [configuration page](configuration.md) page.
