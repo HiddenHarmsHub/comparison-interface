@@ -51,7 +51,7 @@ The project configuration file is written in JSON and has four sections.
 
 When the system is started the configuration file requested will be validated and if there are any problems with the file the error message should help to fix them.
 
-The easiest way to create a configuration file is to start with one of the existing examples and modify that to meet the requirements of the project. Each of the sections will be covered below.
+The easiest way to create a configuration file is to start with one of the existing examples and modify it to meet the requirements of the project. Each of the sections will be covered below.
 
 **Note**: If the configuration file is edited while the system is running then the system will have to be reset and all
 data in the database will be deleted. Once a system is running do not change a configuration file unless you want to reset the database.
