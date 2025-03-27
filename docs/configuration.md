@@ -144,7 +144,7 @@ Full configuration for each of these types is provided in all of the example fil
 
 There are up to four compulsory keys (depending on the behaviour configuration) in the website text configuration. There is one optional field. In addition, any of the fields in the language configuration file can be added into this section to override the language defaults should this be required.
 
-All project configurations require the **rankItemInstructionLabel** key which is the text that is presented to the user along with the two images to make the judgement.
+All project configurations require the **rankItemInstructionLabel** key which is the text that is presented to the user along with the two images used to make the judgement.
 
 If the behaviour configuration **renderUserItemPreferencePage** is set to `true` then the **itemSelectionQuestionLabel** key is also required. This is the text presented to the user when they are selecting which items they know and will be followed by the image display name.
 
