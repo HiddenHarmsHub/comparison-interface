@@ -26,7 +26,7 @@ flask --debug export --format=tsv
 
 The database structure is shown in the diagram below. The key tables are user, item and comparison. The user table 
 stores information about the user, the item table contains information about the items (or images) being compared and
-the comparison table contains the information about the judgements. The other tables mostly server to make connections 
+the comparison table contains the information about the judgements. The other tables mostly serve to make connections 
 between these main tables. For example the item_group table contains information which shows which items belong in
 which group (the details of the group such as the name are in the group table) and the user_group table shows which 
 users know which groups.
