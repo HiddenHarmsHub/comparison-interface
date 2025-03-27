@@ -24,7 +24,7 @@ The images must meet the following criteria:
 
 + be either png or jpg/jpeg files
 + be at least 300x300 pixels in size
-+ have unique file names
++ unique file names
 
 ## Language Configuration
 
