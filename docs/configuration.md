@@ -138,7 +138,7 @@ This will be rendered on the page as follows.
 
 ![An image of the configuration above rendered in html](images/name_field.png)
 
-An example of the full configuration for each of these types is provided in all of the example files. These can be used as a basis to construct your own questions.
+Full configuration for each of these types is provided in all of the example files. These can be used as a basis to construct your own questions.
 
 ### Website text configuration
 
