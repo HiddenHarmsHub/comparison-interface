@@ -69,7 +69,7 @@ these pages is covered in the [Additional pages](#additional-pages) sub-section.
 
 Five further boolean keys are required.
 
-**renderUserItemPreferencePage** determines whether the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
+**renderUserItemPreferencePage** determines if the user is asked to specify whether they know each item in the set of items to be judged. For large item sets it is probably best to determine a users knowledge based on groups rather than individual items and set this value to false. However, it can be used in combination with the group preferences to add an extra level of selection if required. For weighted item configurations this boolean should be set to false.
 
 **allowTies** determines whether or not the system allows a user to select both images and record a tied result. Set this to true if you want to include ties in your study and to false if you do not.
 
