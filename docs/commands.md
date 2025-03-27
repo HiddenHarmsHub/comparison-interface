@@ -4,7 +4,7 @@ title: Command Line Interface Reference
 sidebar_label: CLI Reference
 ---
 
-This page is a quick reference for all of the command that are used to manage the application.
+This page is a quick reference for all of the commands that are used to manage the application.
 
 ## Setup Command
 
