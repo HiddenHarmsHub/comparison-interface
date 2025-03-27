@@ -22,7 +22,7 @@ The images to be used for the comparisons need to be put in the `comparison_inte
 
 The images must meet the following criteria:
 
-+ be either png or jpg/jpeg files
++ format png or jpg/jpeg files
 + be at least 300x300 pixels in size
 + unique file names
 
