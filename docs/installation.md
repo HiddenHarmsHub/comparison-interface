@@ -9,7 +9,7 @@ If you are working in an IDE which supports dev containers then the quickest way
 
 If you are not using the dev container you will need to install the dependencies in the requirements.txt file. Using a python virtual environment is recommended but it is not necessary. If you want to run the Python linters and tests you will also need the dependencies in the requirements-test.txt file. The JavaScript and accessibility test requirements are covered in the [testing section](testing.md).
 
-To set up the virtual environment and install the python requirements use the following commands.
+To set up the virtual environment and install the Python requirements use the following commands.
 
 ```bash
 python3 -m venv venv
