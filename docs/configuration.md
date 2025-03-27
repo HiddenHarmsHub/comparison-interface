@@ -5,7 +5,7 @@ title: Configuration
 
 The appearance and behaviour of the comparative judgement software can be changed in several ways. This includes
 the option to change all text that appears on the website including the labels on the buttons, allowing the
-interface to appear in a language other than its default of English. There are two levels of configuration files, the
+interface to appear in languages other than English (the default). There are two levels of configuration files, the
 first is the language file and the second is the project file. In order to keep the project file small the language
 file contains all of the strings that are less likely to need changing if the interface will be in English.
 The project configuration file controls the behaviour of the interface and sets the strings that are more likely to change
