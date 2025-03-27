@@ -41,7 +41,7 @@ configuration can be found on the [configuration page](configuration.md) page.
 A number of different tests are provided in the repository. They are all run in the CI workflow. If you also want to 
 run the tests locally you can find information on the dependencies and how to run the test on the [running the tests](testing.md) page.
 
-## Authors and Acknowledgments
+## Authors and acknowledgments
 
 * Rowland Seymour, The University of Birmingham: Project director.
 * Bertrand Perrat, The University of Nottingham: V1 main project contributor.
