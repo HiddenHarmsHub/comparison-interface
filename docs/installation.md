@@ -17,7 +17,7 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-If you are using windows then you may need to change the way the that you activate the virtual environment (the second line in the example above) and instead use one of the following two lines of code depending on the type of shell you are using.
+If you are using Windows then you may need to change the way the that you activate the virtual environment (the second line in the example above) and instead use one of the following two lines of code depending on the type of shell you are using.
 
 For CMD:
 
