@@ -9,7 +9,7 @@ All of the dependencies needed to run the full suite of tests are included in th
 
 If you are not using the dev container, to run the Python tests you will need to install the dependencies in the `requirements-test.txt`.
 
-To run the JavaScript and accessibility tests you need to install Node and then the dependencies in the `package.json` file provided. In addition you need to install a chrome browser for puppeteer (this is used for the accessibility tests). The dependencies can be installed as follows (run from the root of the repository):
+To run the JavaScript and accessibility tests you need to install Node and then the dependencies in the `package.json` file provided. In addition you need to install a Chrome browser for Puppeteer (this is used for the accessibility tests). The dependencies can be installed as follows (run from the root of the repository):
 
 ```bash
 npm install
