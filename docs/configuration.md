@@ -174,7 +174,7 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 
 + **image** - *required* - The file name of the image.
 + **item display name** - *required* - The string to be used to describe the image in the interface.
-+ **item name** - *optional* - A string which identifies the image and only contains lowercase alpha numeric characters, underscored and dashes. This will be generated from item display name if the column is not provided but if there are any characters (with the exception of spaces) in the item display name column then validation errors will be raised.
++ **item name** - *optional* - A string which identifies the image and only contains lowercase alpha numeric characters, underscores and dashes. This will be generated from the item display name if the column is not provided, but if there are any characters (with the exception of spaces) in the item display name column then validation errors will be raised.
 + **group display name** - *optional* - A string with identified the group that this image belongs to. If this column is not provided then all of the images will be added to the single default group.
 + **group name** - *optional* - As with the item name this will be automatically generated from the group display name if that column is provided but if validation errors are raised due to special characters then this column may also be required.
 
