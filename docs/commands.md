@@ -40,7 +40,7 @@ flask --debug reset [path_to_configuration]
 The `run` command starts a test server provided by flask. This should not be used in a production system. The Flask
 project provides guidance on [deploying the application in production](https://flask.palletsprojects.com/en/stable/deploying/).
 
-The run command is executed by typing (changing the port number to the port number you want to use):
+The `run` command is executed by typing (changing the port number to the port number you want to use):
 
 ```bash
 flask --debug run --port=5001
