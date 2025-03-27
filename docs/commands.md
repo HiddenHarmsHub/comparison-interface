@@ -9,7 +9,7 @@ This page is a quick reference for all of the commands that are used to manage t
 ## Setup Command
 
 The `setup` command loads the website configuration and creates the database. It can only be run once (unless the database
-is manually deleted). If you need to change a running system then you will need to use the reset command instead.
+is manually deleted). If you need to change a running system then you will need to use the `reset` command instead.
 
 The command is executed by typing:
 
