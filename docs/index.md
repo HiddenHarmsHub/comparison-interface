@@ -23,7 +23,7 @@ This version of software expands over the initial application build by Bertrand 
 
 ## Getting Started
 
-### Installation and Example Configurations
+### Installation and example configurations
 
 Instructions for installing the application and running the provided example configurations can be found on the
 [installation page](installation.md). A number of different configuration files are provided in the repository. These
