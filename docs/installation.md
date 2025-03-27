@@ -35,7 +35,7 @@ Flask provides a development webserver which is good enough to evaluate the soft
 
 ## Running the Provided Examples
 
-This sequence of commands will allow you setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction, the example files can be found in the `examples` directory inside the `comparison_interface` directory.
+This sequence of commands will allow you to setup and run one of the pre-configured examples. Examples are provided for each of the three types of item pair selection described in the introduction, the example files can be found in the `examples` directory inside the `comparison_interface` directory.
 
 1. equal item weight options
     + config-equal-item-weights.json
