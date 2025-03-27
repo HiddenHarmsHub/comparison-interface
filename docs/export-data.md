@@ -18,7 +18,7 @@ flask --debug export
 This will export the database contents to a zip file containing one .csv file per database table. The file will be saved
 at the location configured in the **exportPathLocation** key in the configuration file. 
 
-There is also an option to export the data to a zip file of .tsv files rather than .csv files.
+There is also an option to export the data to a zip file of tsv files rather than csv files.
 
 ```bash
 flask --debug export --format=tsv
