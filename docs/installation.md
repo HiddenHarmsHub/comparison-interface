@@ -7,7 +7,7 @@ The software can be run on any operating system and requires Python 3.9 or highe
 
 If you are working in an IDE which supports dev containers then the quickest way to get started with the software is to use the dev container configuration provided in the repository to create a dev container in your IDE. The dev container configuration contains all of the dependencies required to run the software as well as all of the test suites and the linters used in the CI.
 
-If you are not using the dev container you will need to install the dependencies in the requirements.txt file. Using a python virtual environment is recommended but it is not necessary. If you want to run the python linters and tests you will also need the dependencies in the requirements-test.txt file. The JavaScript and accessibility test requirements are covered in the [testing section](testing.md).
+If you are not using the dev container you will need to install the dependencies in the requirements.txt file. Using a python virtual environment is recommended but it is not necessary. If you want to run the Python linters and tests you will also need the dependencies in the requirements-test.txt file. The JavaScript and accessibility test requirements are covered in the [testing section](testing.md).
 
 To set up the virtual environment and install the python requirements use the following commands.
 
