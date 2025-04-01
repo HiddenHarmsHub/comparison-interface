@@ -118,7 +118,7 @@ The supported html widget types are:
 + dropdown
 + email
 
-For example, to configure a single question to as the user's first name which is required the following configuration can be used.
+For example, to add a single question which asks for the user's first name and which is required, use the following configuration.
 
 ```json
 {
