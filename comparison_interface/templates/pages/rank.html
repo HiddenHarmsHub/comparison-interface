@@ -20,14 +20,14 @@
         <p id="instructions" class="judgement-instructions fs-4">{{comparison_instruction_label}}</p>
         <p class="progress-counter fs-5">{{comparison_number_label}}:&nbsp;{{comparison_number}}{% if allow_skip %}.&nbsp;{{skipped_number_label}}:&nbsp;{{skipped_number}}{% endif %}</p>
       </div>
-      <div class="row pl-2 pr-2"  {% if allow_ties %}role="radiogroup"{% endif %}>
+      <div class="row pl-2 pr-2"  {% if allow_ties == True %}role="radiogroup"{% endif %}>
         <div class="col position-relative">
           <div class="text-center">
             <span aria-hidden="true" id="left-item-label" class="fs-3 fw-bold" for="left-item">{{ item_1.display_name }}</span>
           </div>
           <div class="text-center">
             <input type="hidden" id="item_1_id" name="item_1_id" value="{{ item_1.item_id }}">
-            <img id="left-item" tabindex="0" {% if allow_ties %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="left-item-label" src="{{ url_for('static', filename = 'images/' + item_1.image_path|string) }}" class="left-item img-fluid img-constraint" alt="A geographical image of {{ item_1.display_name }}">
+            <img id="left-item" tabindex="0" {% if allow_ties == True %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="left-item-label" src="{{ url_for('static', filename = 'images/' + item_1.image_path|string) }}" class="left-item img-fluid img-constraint" alt="A geographical image of {{ item_1.display_name }}">
           </div>
         </div>
         <div class="col position-relative">
@@ -36,7 +36,7 @@
           </div>
           <div class="text-center">
             <input type="hidden" id="item_2_id" name="item_2_id" value="{{ item_2.item_id }}">
-            <img id="right-item" tabindex="0" {% if allow_ties %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="right-item-label" src="{{ url_for('static', filename = 'images/' + item_2.image_path|string) }}" class="right-item img-fluid img-constraint" alt="A geographical image of {{ item_2.display_name }}">
+            <img id="right-item" tabindex="0" {% if allow_ties == True %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="right-item-label" src="{{ url_for('static', filename = 'images/' + item_2.image_path|string) }}" class="right-item img-fluid img-constraint" alt="A geographical image of {{ item_2.display_name }}">
           </div>
           </div>
       </div>
