@@ -210,7 +210,7 @@ function hintItem(clickedItem) {
         cleanVisualHint('selection-skipped', item1, item2);
         resetAriaChecked(item1, item2);
 
-        // Clean the seleted item id
+        // Clean the selected item id
         setSelectedItem("");
 
         return;
@@ -234,6 +234,7 @@ function addVisualHint(itemClass, item, type) {
     const span = document.createElement('span');
     span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-success text-success');
     span.textContent = selectedItemIndicator;
+    span.setAttribute('aria-hidden', true);
     if (type == 'tied') {
         span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-primary text-primary');
         span.textContent = tiedComparisonIndicator;

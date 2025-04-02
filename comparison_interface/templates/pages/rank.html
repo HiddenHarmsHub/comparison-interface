@@ -23,7 +23,7 @@
       <div class="row pl-2 pr-2">
         <div class="col position-relative">
           <div class="text-center">
-            <span id="left-item-label" class="fs-3 fw-bold" for="left-item">{{ item_1.display_name }}</span>
+            <span aria-hidden="true" id="left-item-label" class="fs-3 fw-bold" for="left-item">{{ item_1.display_name }}</span>
           </div>
           <div class="text-center">
             <input type="hidden" id="item_1_id" name="item_1_id" value="{{ item_1.item_id }}">
@@ -32,7 +32,7 @@
         </div>
         <div class="col position-relative">
           <div class="text-center">
-            <span id="right-item-label" class="fs-3 fw-bold" for="right-item">{{ item_2.display_name }}</span>
+            <span aria-hidden="true" id="right-item-label" class="fs-3 fw-bold" for="right-item">{{ item_2.display_name }}</span>
           </div>
           <div class="text-center">
             <input type="hidden" id="item_2_id" name="item_2_id" value="{{ item_2.item_id }}">
