@@ -27,7 +27,7 @@
           </div>
           <div class="text-center">
             <input type="hidden" id="item_1_id" name="item_1_id" value="{{ item_1.item_id }}">
-            <img id="left-item" tabindex="0" {% if allow_ties == True %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="left-item-label" src="{{ url_for('static', filename = 'images/' + item_1.image_path|string) }}" class="left-item img-fluid img-constraint">
+            <img id="left-item" tabindex="0" {% if allow_ties == True %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="left-item-label" src="{{ url_for('static', filename = 'images/' + item_1.image_path|string) }}" class="left-item img-fluid img-constraint" alt="">
           </div>
         </div>
         <div class="col position-relative">
@@ -36,7 +36,7 @@
           </div>
           <div class="text-center">
             <input type="hidden" id="item_2_id" name="item_2_id" value="{{ item_2.item_id }}">
-            <img id="right-item" tabindex="0" {% if allow_ties == True %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="right-item-label" src="{{ url_for('static', filename = 'images/' + item_2.image_path|string) }}" class="right-item img-fluid img-constraint">
+            <img id="right-item" tabindex="0" {% if allow_ties == True %}role="radio"{% else %}role="checkbox"{% endif %} aria-checked="false" aria-labelledby="right-item-label" src="{{ url_for('static', filename = 'images/' + item_2.image_path|string) }}" class="right-item img-fluid img-constraint" alt="">
           </div>
           </div>
       </div>
