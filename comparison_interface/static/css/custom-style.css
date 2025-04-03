@@ -72,3 +72,7 @@
 a {
     color: #046DDE;
 }
+
+progress-counter {
+    display: inline-block;
+}

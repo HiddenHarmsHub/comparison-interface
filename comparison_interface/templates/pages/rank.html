@@ -18,7 +18,7 @@
     <div class="form-group">
       <div class="text-center">
         <p id="instructions" class="judgement-instructions fs-4">{{comparison_instruction_label}}</p>
-        <p class="progress-counter fs-5">{{comparison_number_label}}:&nbsp;{{comparison_number}}{% if allow_skip %}.&nbsp;{{skipped_number_label}}:&nbsp;{{skipped_number}}{% endif %}</p>
+        <span class="progress-counter fs-5">{{comparison_number_label}}:&nbsp;{{comparison_number}}{% if allow_skip %}.<span class="progress-counter fs-5">&nbsp;{{skipped_number_label}}:&nbsp;{{skipped_number}}</span>{% endif %}</span>
       </div>
       <div class="row pl-2 pr-2"  {% if allow_ties == True %}role="radiogroup"{% endif %}>
         <div class="col position-relative">
