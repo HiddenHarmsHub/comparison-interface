@@ -230,11 +230,11 @@ function addVisualHint(itemClass, item, type) {
 
     const div = document.createElement('div');
     div.setAttribute('class', 'selected-hint');
+    div.setAttribute('aria-hidden', true);
     div.setAttribute('style', 'pointer-events:none;');
     const span = document.createElement('span');
     span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-success text-success');
     span.textContent = selectedItemIndicator;
-    span.setAttribute('aria-hidden', true);
     if (type == 'tied') {
         span.setAttribute('class', 'fs-1 fw-bold bg-white p-1 border border-primary text-primary');
         span.textContent = tiedComparisonIndicator;
