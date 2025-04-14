@@ -35,8 +35,8 @@ describe('unit tests for standalone functions in rank-control.js', () => {
                          '<input type="hidden" id="tied_items_indicator" value="EQUAL">' +
                          '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
                          '<img id="left-item" class="selected-item">' +
-                         '<div class="selected-hint" style="pointer-events:none;">' +
-                         '<span class="fs-1 fw-bold bg-white p-1 border border-success text-success" aria-hidden="true">HIGHER</span>' +
+                         '<div class="selected-hint" style="pointer-events:none;"  aria-hidden="true">' +
+                         '<span class="fs-1 fw-bold bg-white p-1 border border-success text-success">HIGHER</span>' +
                          '</div>' + 
                          '<img id="right-item">';
     expect(document.body.innerHTML).toBe(expectedHtml);
@@ -55,12 +55,12 @@ describe('unit tests for standalone functions in rank-control.js', () => {
                           '<input type="hidden" id="tied_items_indicator" value="EQUAL">' +
                           '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
                           '<img id="left-item" class="selection-tied">' +
-                          '<div class="selected-hint" style="pointer-events:none;">' +
-                          '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary" aria-hidden="true">EQUAL</span>' +
+                          '<div class="selected-hint" style="pointer-events:none;" aria-hidden="true">' +
+                          '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary">EQUAL</span>' +
                           '</div>' + 
                           '<img id="right-item" class="selection-tied">' +
-                          '<div class="selected-hint" style="pointer-events:none;">' +
-                          '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary" aria-hidden="true">EQUAL</span>' +
+                          '<div class="selected-hint" style="pointer-events:none;" aria-hidden="true">' +
+                          '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary">EQUAL</span>' +
                           '</div>';
     expect(document.body.innerHTML).toBe(expectedHtml);
   });
@@ -78,12 +78,12 @@ describe('unit tests for standalone functions in rank-control.js', () => {
                           '<input type="hidden" id="tied_items_indicator" value="EQUAL">' +
                           '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
                           '<img id="left-item" class="selection-skipped">' +
-                          '<div class="selected-hint" style="pointer-events:none;">' +
-                          '<span class="fs-1 fw-bold bg-white p-1 border border-black" aria-hidden="true">SKIPPED</span>' +
+                          '<div class="selected-hint" style="pointer-events:none;" aria-hidden="true">' +
+                          '<span class="fs-1 fw-bold bg-white p-1 border border-black">SKIPPED</span>' +
                           '</div>' + 
                           '<img id="right-item" class="selection-skipped">' +
-                          '<div class="selected-hint" style="pointer-events:none;">' +
-                          '<span class="fs-1 fw-bold bg-white p-1 border border-black" aria-hidden="true">SKIPPED</span>' +
+                          '<div class="selected-hint" style="pointer-events:none;" aria-hidden="true">' +
+                          '<span class="fs-1 fw-bold bg-white p-1 border border-black">SKIPPED</span>' +
                           '</div>';
     expect(document.body.innerHTML).toBe(expectedHtml);
 
