@@ -92,6 +92,8 @@ class Settings:
     CONFIRM_BUTTON_ERROR_MESSAGE_WITH_SKIP = "confirmButtonErrorMessageWithSkip"
     CONFIRM_BUTTON_ERROR_MESSAGE_WITHOUT_SKIP = "confirmButtonErrorMessageWithoutSkip"
     SKIP_BUTTON_ERROR_MESSAGE = "skipButtonErrorMessage"
+    ADDITIONAL_RADIO_BUTTON_INSTRUCTIONS = "additionalRadioButtonInstructions"
+    ADDITIONAL_CHECKBOX_INSTRUCTIONS = "additionalCheckboxInstructions"
     INTRODUCTION_CONTINUE_BUTTON_LABEL = "introductionContinueButtonLabel"
     THANK_YOU_CONTINUE_BUTTON_LABEL = "thankYouContinueButtonLabel"
     THANK_YOU_TITLE = "thankYouTitle"

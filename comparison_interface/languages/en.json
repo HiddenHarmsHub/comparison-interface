@@ -1,7 +1,7 @@
 {
     "websiteTextConfiguration": {
         "websiteTitle": "Comparison Software",
-        "pageTitleLogout": "Log out",
+        "pageTitleLogout": "Log Out",
         "pageTitleUserRegistration": "User Registration",
         "pageTitleEthicsAgreement": "Ethics Agreement",
         "pageTitlePolicies": "Policies",
@@ -23,9 +23,11 @@
         "rankItemSkippedButtonLabel": "Skip",
         "rankItemComparisonExecutedLabel": "Compared",
         "rankItemSkippedComparisonExecutedLabel": "Skipped",
-        "confirmButtonErrorMessageWithSkip": "You must select at least one of the images or skip this comparison by using the Skip button.",
-        "confirmButtonErrorMessageWithoutSkip": "You must select at least one of the images.",
+        "confirmButtonErrorMessageWithSkip": "You must select at least one of the items or skip this comparison by using the Skip button.",
+        "confirmButtonErrorMessageWithoutSkip": "You must select at least one of the items.",
         "skipButtonErrorMessage": "You cannot skip a comparison if any items are selected. Unselect the items to skip the comparison or use the Confirm button to confirm the current selection.",
+        "additionalCheckboxInstructions": "The two items in the group are checkboxes.",
+        "additionalRadioButtonInstructions": "The two items in the radio group function as radio buttons however, if a selected radio button is clicked again, then it will be unselected returning the group to an all-unselected state.",
         "introductionContinueButtonLabel": "Continue",
         "thankYouContinueButtonLabel": "Continue",
         "thankYouTitle": "Thank You",
