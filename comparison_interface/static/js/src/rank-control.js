@@ -80,8 +80,8 @@ function hintItem(clickedItem) {
     const clickedItem2 = clickedItem.hasClass("right-item");
     const item1 = document.getElementById("left-item");
     const item2 = document.getElementById("right-item");
-    const isItem1Selected = item1.classList.contains('selected-item');
-    const isItem2Selected = item2.classList.contains('selected-item');
+    const isItem1Selected = item1.classList.contains('selected-item') || item1.classList.contains('selection-tied');
+    const isItem2Selected = item2.classList.contains('selected-item') || item2.classList.contains('selection-tied');
     const idItem1 = document.getElementById('item_1_id').value;
     const idItem2 = document.getElementById('item_2_id').value;
     const allowTiesSetting = document.getElementById('allow-ties').value;
@@ -99,7 +99,6 @@ function hintItem(clickedItem) {
 
     // Case 1: No item is already selected. Result: One item is selected
     if (!isItem1Selected && !isItem2Selected) {
-
         // Clean the all visual hints
         cleanVisualHint('selected-item', item1, item2);
         cleanVisualHint('selection-tied', item1, item2);
@@ -195,7 +194,6 @@ function hintItem(clickedItem) {
             itemId = idItem1;
         }
         setSelectedItem(itemId);
-
         return;
     }
 
