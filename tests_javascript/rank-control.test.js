@@ -35,7 +35,7 @@ describe('unit tests for standalone functions in rank-control.js', () => {
                          '<input type="hidden" id="tied_items_indicator" value="EQUAL">' +
                          '<input type="hidden" id="skipped_items_indicator" value="SKIPPED">' +
                          '<img id="left-item" class="selected-item">' +
-                         '<div class="selected-hint" style="pointer-events:none;"  aria-hidden="true">' +
+                         '<div class="selected-hint" aria-hidden="true" style="pointer-events:none;">' +
                          '<span class="fs-1 fw-bold bg-white p-1 border border-success text-success">HIGHER</span>' +
                          '</div>' + 
                          '<img id="right-item">';
