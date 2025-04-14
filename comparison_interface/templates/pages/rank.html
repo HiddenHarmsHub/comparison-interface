@@ -18,10 +18,10 @@
     <div class="form-group">
       <div class="text-center">
         <p id="instructions" class="judgement-instructions fs-4">{{comparison_instruction_label}}</p>
-        <p id="additional-instructions" class="visually-hidden">{{ additional_screen_reader_instructions }}</p>
         <p class="progress-counter fs-5">{{comparison_number_label}}:&nbsp;{{comparison_number}}{% if allow_skip %};&nbsp;{{skipped_number_label}}:&nbsp;{{skipped_number}}{% endif %}</p>
       </div>
-      <div class="row pl-2 pr-2"  {% if allow_ties == 'false' %}role="radiogroup" {% else %}role="group"{% endif %} aria-labelledby="additional-instructions">
+      <div class="row pl-2 pr-2"  {% if allow_ties == 'false' %}role="radiogroup" {% else %}role="group"{% endif %} aria-label="{{ item_group_selection_label }}">
+        {% if allow_ties == 'false' %}<p id="additional-instructions" class="visually-hidden">{{ additional_screen_reader_instructions }}</p>{% endif %}
         <div class="col position-relative">
           <div class="text-center">
             <span aria-hidden="true" id="left-item-label" class="fs-3 fw-bold" for="left-item">{{ item_1.display_name }}</span>

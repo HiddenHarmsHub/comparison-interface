@@ -73,7 +73,7 @@ class Rank(Request):
                 return self._redirect('.thankyou')
 
         if allow_ties:
-            additional_screen_reader_instructions = WS.get_text(WS.ADDITIONAL_CHECKBOX_INSTRUCTIONS, self._app)
+            additional_screen_reader_instructions = ""
         else:
             additional_screen_reader_instructions = WS.get_text(WS.ADDITIONAL_RADIO_BUTTON_INSTRUCTIONS, self._app)
 
@@ -110,6 +110,7 @@ class Rank(Request):
                 'allow_skip': allow_skip,
                 'allow_back': allow_back,
                 'additional_screen_reader_instructions': additional_screen_reader_instructions,
+                'item_group_selection_label': WS.get_text(WS.ITEM_SELECTION_GROUP_LABEL, self._app),
             },
         )
 

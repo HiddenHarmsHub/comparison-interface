@@ -94,6 +94,7 @@ class Settings:
     SKIP_BUTTON_ERROR_MESSAGE = "skipButtonErrorMessage"
     ADDITIONAL_RADIO_BUTTON_INSTRUCTIONS = "additionalRadioButtonInstructions"
     ADDITIONAL_CHECKBOX_INSTRUCTIONS = "additionalCheckboxInstructions"
+    ITEM_SELECTION_GROUP_LABEL = "itemSelectionGroupLabel"
     INTRODUCTION_CONTINUE_BUTTON_LABEL = "introductionContinueButtonLabel"
     THANK_YOU_CONTINUE_BUTTON_LABEL = "thankYouContinueButtonLabel"
     THANK_YOU_TITLE = "thankYouTitle"
