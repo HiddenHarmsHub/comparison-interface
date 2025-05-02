@@ -207,6 +207,8 @@ class WebsiteTextConfiguration(Schema):
     confirmButtonErrorMessageWithSkip = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
     confirmButtonErrorMessageWithoutSkip = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
     skipButtonErrorMessage = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    additionalRadioButtonInstructions = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    itemSelectionGroupLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=100)])
     introductionContinueButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     thankYouContinueButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     thankYouTitle = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
