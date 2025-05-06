@@ -162,7 +162,7 @@ Refer to `examples/config-equal-item-weights.json` or `examples/config-equal-ite
 
 Refer to `examples/config-custom-item-weights.json` to configure a scenario where custom weights will be defined for all item pairs.
 
-If the configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
+If the image configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
 
 ```json
 "comparisonConfiguration" : {
@@ -177,6 +177,8 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 + **item name** - *optional* - A string which identifies the image and only contains lowercase alpha numeric characters, underscores and dashes. This will be generated from the item display name if the column is not provided, but if there are any characters (with the exception of spaces) in the item display name column then validation errors will be raised.
 + **group display name** - *optional* - A string that identifies the group that this image belongs to. If this column is not provided then all of the images will be added to the single default group.
 + **group name** - *optional* - As with the item name this will be automatically generated from the group display name if that column is provided but if validation errors are raised due to special characters then this column may also be required.
+
+An example of a configuration using a csv file can be found in ```examples/csv_example```.
 
 ## Troubleshooting
 
