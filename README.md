@@ -7,6 +7,8 @@ The data is stored in an SQLite database which is part of the standard python li
 There is no restriction regarding the nature of the items that can be compared in the software but it has been used 
 previously on geospatial datasets to be processed with the [Bayesian Spatial Bradley--Terry model BSBT](https://github.com/rowlandseymour/BSBT).
 
+Full documentation can be found at [https://hiddenharmshub.github.io/comparison-interface/](https://hiddenharmshub.github.io/comparison-interface/).
+
 ## Main features.
 
 1. The entire text of the website can be changed in configuration files.
