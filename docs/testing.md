@@ -7,7 +7,7 @@ Three different kinds of tests are provided, Python tests, JavaScript tests and 
 
 All of the dependencies needed to run the full suite of tests are included in the dev container.
 
-If you are not using the dev container, to run the Python tests you will need to install the dependencies in the `requirements-test.txt`.
+If you are not using the dev container, to run the Python tests you will need to install the dependencies in the `test` section of the pyproject.toml.
 
 To run the JavaScript and accessibility tests you need to install Node and then the dependencies in the `package.json` file provided. In addition you need to install a Chrome browser for Puppeteer (this is used for the accessibility tests). The dependencies can be installed as follows (run from the root of the repository):
 
