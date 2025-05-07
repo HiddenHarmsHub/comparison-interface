@@ -23,7 +23,7 @@ If you are using Windows then you may need to change the way the that you activa
 .\venv\Scripts\activate
 ```
 
-Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/). If you are deploying in a multi-process uwsgi environment you will also need the requirements in the requirements-server.txt file, these ensure the random number generators are not the same in each thread. Depending on the environment this may in turn need the python3-dev or python3-devel package installed in the operating system.
+Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/). If you are deploying in a multi-process uwsgi environment you will also need the requirements in the server section of the pyproject.toml, this ensures the random number generators are not the same in each thread. Depending on the environment this may in turn need the python3-dev or python3-devel package installed in the operating system.
 
 ## Running the Provided Examples
 
