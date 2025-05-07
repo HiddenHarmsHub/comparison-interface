@@ -39,8 +39,8 @@ The Boundary displays on the images are taken from the Office for National Stati
 ## Authors and acknowledgment
 
 * Rowland Seymour, The University of Birmingham: Project director.
-* Bertrand Perrat, The University of Nottingham: V1 main project contributor.
-* Fabián Hernández, The University of Nottingham: V2 main project contributor.
+* Bertrand Perrat, Independent Software Engineer: V1 main project contributor.
+* Fabián Hernández, Independent Software Engineer: V2 main project contributor.
 * Catherine Smith, The Research Software Group, part of Advanced Research Computing, University of Birmingham.
 
 The development of this software was supported by a UKRI Future Leaders Fellowship [MR/X034992/1].
