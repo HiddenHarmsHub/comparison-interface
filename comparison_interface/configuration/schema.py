@@ -21,7 +21,7 @@ class Item(Schema):
     MIN_HEIGHT = 300
 
     @validates('name')
-    def _validate_name(self, name):
+    def _validate_name(self, name, data_key):
         match = re.match(r'^[a-zA-Z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -32,7 +32,7 @@ class Item(Schema):
             )
 
     @validates('imageName')
-    def _validate_image_path(self, image_name):
+    def _validate_image_path(self, image_name, data_key):
         path = os.path.abspath(os.path.dirname(__file__)) + "/../static/images/" + image_name
         if not os.path.exists(path):
             raise ValidationError(f"Image {image_name} not found on static/images/ folder.")
@@ -53,9 +53,8 @@ class Weight(Schema):
     item_2 = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     weight = fields.Float(required=True, validate=[validate.Range(min=0.0, max=1.0)])
 
-    @validates('item_1')
-    @validates('item_2')
-    def _validate_item_name(self, name):
+    @validates('item_1', 'item_2')
+    def _validate_item_name(self, name, data_key):
         match = re.match(r'^[a-z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -73,7 +72,7 @@ class Group(Schema):
     weight = fields.List(fields.Nested(Weight()), required=False, validate=[validate.Length(min=1, max=499500)])
 
     @validates('items')
-    def _validate_unique_names(self, items):
+    def _validate_unique_names(self, items, data_key):
         names = []
         for f in items:
             if "name" not in f:
@@ -87,7 +86,7 @@ class Group(Schema):
                 names.append(f['name'])
 
     @validates('weight')
-    def _validate_weight_sum(self, weights):
+    def _validate_weight_sum(self, weights, data_key):
         w = 0
         for g in weights:
             w += g['weight']
@@ -123,7 +122,7 @@ class Group(Schema):
         return data
 
     @validates('name')
-    def _validate_group_name(self, name):
+    def _validate_group_name(self, name, data_key):
         match = re.match(r'^[a-z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -254,7 +253,7 @@ class UserField(Schema):
     option = fields.List(fields.Str(), validate=[validate.Length(min=1, max=20)])
 
     @validates('name')
-    def _validate_name(self, name):
+    def _validate_name(self, name, data_key):
         match = re.match(r'^[a-z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -362,7 +361,7 @@ class Configuration(Schema):
     )
 
     @validates('userFieldsConfiguration')
-    def _validate_unique_names(self, fields):
+    def _validate_unique_names(self, fields, data_key):
         names = []
         for f in fields:
             if f['name'] in names:
