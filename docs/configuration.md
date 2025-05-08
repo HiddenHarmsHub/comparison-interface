@@ -11,8 +11,13 @@ file contains all of the strings that are less likely to need changing if the in
 The project configuration file controls the behaviour of the interface and sets the strings that are more likely to change
 from project to project. Any of the strings from the language configuration can be added to the project file if you
 want to change them for a project without changing the language file itself, they can also be changed in the language file.
+For the purposes of validation the language and project configuration files are merged ensuring that the required data
+are available in at least one of the files.
+
 Details of the images to be used can either be provided in the project configuration or, with the exception of the
-weighted pairs option, in a csv file. Up to three additional pages can be included in the interface. There are three
+weighted pairs option, in a csv file. 
+
+Up to three additional pages can be included in the interface. There are three
 ways each of these pages can be created: as a published google document; a full HTML file (for example a word file
 saved as HTML); as a fragment of HTML code.
 
