@@ -4,13 +4,20 @@
 <div>
     {% if google_doc %}
         <div class="full-height-iframe">
-            <iframe title="Introduction" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" src="{{user_instruction_link}}"></iframe>
+            <iframe title="Introduction" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" src="{{ user_instruction_link }}"></iframe>
         </div>
     {% else %}
-        <div class="inner-page">
-            {{ html_string|safe }}
-        </div>
+        {% if fragment %}
+            <div class="inner-page">
+                {{ html_string|safe }}
+            </div>
+        {% else %}
+            <div class="full-height-iframe">
+                <iframe title="Introduction" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" srcdoc="{{ html_string}}"></iframe>
+            </div>
+        {% endif %}
     {% endif %}
+
     <div class="text-center">
         <a role="button" class="btn btn-primary" href="{{ url_for('.user_registration') }}">{{introduction_continue_button}}</a>
     </div>

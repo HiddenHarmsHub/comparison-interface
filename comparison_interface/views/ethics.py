@@ -24,13 +24,18 @@ class Ethics(Request):
         # otherwise we are have html to inject instead
         ethics_agreement_html = WS.get_behaviour_conf(WS.BEHAVIOUR_ETHICS_AGREEMENT_HTML, self._app)
         with open(os.path.join(self._app.root_path, ethics_agreement_html)) as input_file:
-            html_fragment = input_file.read()
+            html = input_file.read()
 
+        if html.startswith('<html'):
+            fragment = False
+        else:
+            fragment = True
         return self._render_template(
             'pages/ethics.html',
             {
                 'google_doc': False,
-                'html_string': html_fragment,
+                'fragment': fragment,
+                'html_string': html,
                 'ethics_agreement_back_button': WS.get_text(WS.ETHICS_AGREEMENT_BACK_BUTTON_LABEL, self._app),
             },
         )
