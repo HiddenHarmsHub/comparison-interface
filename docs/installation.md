@@ -34,6 +34,10 @@ This sequence of commands will allow you to setup and run one of the pre-configu
     + config-equal-item-weights-preference.json
 1. config-custom-item-weights.json
 
+In addition to the full JSON configurations listed above there is an example of a configuration of the first of them
+with the images configured with a csv file. This configuration can be found in the ```examples/csv_example``` directory.
+
+
 ### Initial setup
 
 If you are not using the dev container provided then:
@@ -43,7 +47,8 @@ If you are not using the dev container provided then:
 
 When running in production the secret key in the flask.py should also be changed.
 
-Open a terminal and run these commands replacing ```[configuration_file_name]``` with the name of the configuration file you want to try.
+Open a terminal and run these commands replacing ```[configuration_file_name]``` with the name of the configuration file you want to try. To try
+the csv file options replace with the the directory containing the JSON file and CSV file (```examples/csv_example```).
 
 ```bash
 flask --debug setup examples/[configuration_file_name]
