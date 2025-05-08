@@ -7,14 +7,14 @@ The software can be run on any operating system and requires Python 3.9 or highe
 
 If you are working in an IDE which supports dev containers then the quickest way to get started with the software is to use the dev container configuration provided in the repository to create a dev container in your IDE. The dev container configuration contains all of the dependencies required to run the software as well as all of the test suites and the linters used in the CI.
 
-If you are not using the dev container you will need to install the dependencies in the requirements.txt file. Using a python virtual environment is recommended but it is not necessary. If you want to run the Python linters and tests you will also need the dependencies in the requirements-test.txt file. The JavaScript and accessibility test requirements are covered in the [testing section](testing.md).
+If you are not using the dev container you will need to install the dependencies in the pyproject.toml file. Using a python virtual environment is recommended but it is not necessary.
 
 To set up the virtual environment and install the Python requirements use the following commands.
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip3 install -r requirements.txt
+pip3 install -e .
 ```
 
 If you are using Windows then you may need to change the way the that you activate the virtual environment (the second line in the example above) and instead use the following command.
@@ -23,7 +23,16 @@ If you are using Windows then you may need to change the way the that you activa
 .\venv\Scripts\activate
 ```
 
-Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/). If you are deploying in a multi-process uwsgi environment you will also need the requirements in the server section of the pyproject.toml, this ensures the random number generators are not the same in each thread. Depending on the environment this may in turn need the python3-dev or python3-devel package installed in the operating system.
+If you want to run the Python linters and tests you will also need the dependencies in the lint and test sections. 
+
+```bash
+pip3 install -e ".[lint,test]"
+```
+
+The JavaScript and accessibility test requirements are covered in the [testing section](testing.md).
+
+Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/). 
+If you are deploying in a multi-process uwsgi environment you will also need the requirements in the server section of the pyproject.toml, this ensures the random number generators are not the same in each thread. Depending on the environment this may in turn need the python3-dev or python3-devel package installed in the operating system.
 
 ## Running the Provided Examples
 

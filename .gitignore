@@ -7,6 +7,8 @@ view/__pycache__/
 .idea
 .vscode/
 .pytest_cache
+*.egg-info/
+*.egg
 instance/
 data/
 htmlcov/
