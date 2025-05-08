@@ -17,21 +17,13 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-If you are using Windows then you may need to change the way the that you activate the virtual environment (the second line in the example above) and instead use one of the following two lines of code depending on the type of shell you are using.
-
-For CMD:
+If you are using Windows then you may need to change the way the that you activate the virtual environment (the second line in the example above) and instead use the following command.
 
 ```ps
-.\venv\Scripts\activate.bat
+.\venv\Scripts\activate
 ```
 
-For PowerShell:
-
-```ps
-.\venv\Scripts\activate.ps1
-```
-
-Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/).
+Flask provides a development webserver which is good enough to evaluate the software and for local testing/development. For use in production follow the advice provided in the [Flask documentation](https://flask.palletsprojects.com/en/3.0.x/deploying/). If you are deploying in a multi-process uwsgi environment you will also need the requirements in the server section of the pyproject.toml, this ensures the random number generators are not the same in each thread. Depending on the environment this may in turn need the python3-dev or python3-devel package installed in the operating system.
 
 ## Running the Provided Examples
 
