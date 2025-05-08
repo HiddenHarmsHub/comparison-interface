@@ -11,8 +11,13 @@ file contains all of the strings that are less likely to need changing if the in
 The project configuration file controls the behaviour of the interface and sets the strings that are more likely to change
 from project to project. Any of the strings from the language configuration can be added to the project file if you
 want to change them for a project without changing the language file itself, they can also be changed in the language file.
+For the purposes of validation the language and project configuration files are merged ensuring that the required data
+are available in at least one of the files.
+
 Details of the images to be used can either be provided in the project configuration or, with the exception of the
-weighted pairs option, in a csv file. Up to three additional pages can be included in the interface. There are three
+weighted pairs option, in a csv file. 
+
+Up to three additional pages can be included in the interface. There are three
 ways each of these pages can be created: as a published google document; a full HTML file (for example a word file
 saved as HTML); as a fragment of HTML code.
 
@@ -162,7 +167,7 @@ Refer to `examples/config-equal-item-weights.json` or `examples/config-equal-ite
 
 Refer to `examples/config-custom-item-weights.json` to configure a scenario where custom weights will be defined for all item pairs.
 
-If the configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
+If the image configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
 
 ```json
 "comparisonConfiguration" : {
@@ -177,6 +182,8 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 + **item name** - *optional* - A string which identifies the image and only contains lowercase alpha numeric characters, underscores and dashes. This will be generated from the item display name if the column is not provided, but if there are any characters (with the exception of spaces) in the item display name column then validation errors will be raised.
 + **group display name** - *optional* - A string that identifies the group that this image belongs to. If this column is not provided then all of the images will be added to the single default group.
 + **group name** - *optional* - As with the item name this will be automatically generated from the group display name if that column is provided but if validation errors are raised due to special characters then this column may also be required.
+
+An example of a configuration using a csv file can be found in ```examples/csv_example```.
 
 ## Troubleshooting
 

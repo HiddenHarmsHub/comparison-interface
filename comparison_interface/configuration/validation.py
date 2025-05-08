@@ -19,12 +19,23 @@ class Validation:
     def validate(self) -> list:
         """Validate the configuration file or directory."""
         conf = WS.get_configuration(self.__app)
+        # now add the keys from the language file if they are not in the project file so we can validate the full set
+        # all the keys have to be in at least one of them for the validation to pass
+        if "websiteTextConfiguration" in self.__app.language_config:
+            if "websiteTextConfiguration" in conf:
+                for key in self.__app.language_config["websiteTextConfiguration"]:
+                    if key not in conf["websiteTextConfiguration"]:
+                        conf["websiteTextConfiguration"][key] = self.__app.language_config["websiteTextConfiguration"][
+                            key
+                        ]
         schema = ConfigSchema()
         try:
             schema.load(conf)
         except ValidationError as err:
             self.__app.logger.critical(err)
             exit()
+        # now we have validated, reload the config so that we just have the project
+        conf = WS.get_configuration(self.__app, True)
         # now if we reference a csv file validate that
         if "csvFile" in conf["comparisonConfiguration"]:
             config_location = WS.get_configuration_location(self.__app)

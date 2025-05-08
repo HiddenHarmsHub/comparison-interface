@@ -387,10 +387,8 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items from the user's item preferences
-        # with a check to make sure the items are unique
         selected_items_id = [None, None]
-        while selected_items_id[0] == selected_items_id[1]:
-            selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
+        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]
 
@@ -426,9 +424,7 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items using the user's group preferences
-        # with a check to make sure the items are unique
         selected_items_id = [None, None]
-        while selected_items_id[0] == selected_items_id[1]:
-            selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
+        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]

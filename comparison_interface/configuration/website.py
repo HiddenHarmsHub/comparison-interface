@@ -163,7 +163,7 @@ class Settings:
         return False
 
     @classmethod
-    def get_configuration(cls, app):
+    def get_configuration(cls, app, force_reload=False):
         """Get the website configuration.
 
         Args:
@@ -176,7 +176,7 @@ class Settings:
             app.logger.critical("Configuration location not set in the application yet")
             exit()
 
-        if cls.configuration is None:
+        if cls.configuration is None or force_reload:
             app.logger.info("Loading website configuration")
             cls.configuration = cls._unmarshall(app)
 

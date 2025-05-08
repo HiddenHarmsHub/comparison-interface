@@ -205,11 +205,11 @@ describe('tests for hintItem', () => {
                               '<input type="hidden" id="item_1_id" value="1"/>' +
                               '<input type="hidden" id="item_2_id" value="2"/>' +
                               '<input type="hidden" id="allow-ties" value="true"/>' +
-                              '<img id="left-item" class="left-item selected-item" aria-checked="true"/>' +
+                              '<img id="left-item" class="left-item selection-tied" aria-checked="true"/>' +
                               '<div class="selected-hint" style="pointer-events:none;">' +
                               '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary">EQUAL</span>' +
                               '</div>' + 
-                              '<img id="right-item" class="right-item selected-item" aria-checked="true"/>' +
+                              '<img id="right-item" class="right-item selection-tied" aria-checked="true"/>' +
                               '<div class="selected-hint" style="pointer-events:none;">' +
                               '<span class="fs-1 fw-bold bg-white p-1 border border-primary text-primary">EQUAL</span>' +
                               '</div>';

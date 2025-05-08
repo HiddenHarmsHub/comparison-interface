@@ -7,6 +7,8 @@ The data is stored in an SQLite database which is part of the standard python li
 There is no restriction regarding the nature of the items that can be compared in the software but it has been used 
 previously on geospatial datasets to be processed with the [Bayesian Spatial Bradley--Terry model BSBT](https://github.com/rowlandseymour/BSBT).
 
+Full documentation can be found at [https://hiddenharmshub.github.io/comparison-interface/](https://hiddenharmshub.github.io/comparison-interface/).
+
 ## Main features.
 
 1. The entire text of the website can be changed in configuration files.
@@ -37,8 +39,8 @@ The Boundary displays on the images are taken from the Office for National Stati
 ## Authors and acknowledgment
 
 * Rowland Seymour, The University of Birmingham: Project director.
-* Bertrand Perrat, The University of Nottingham: V1 main project contributor.
-* Fabián Hernández, The University of Nottingham: V2 main project contributor.
+* Bertrand Perrat, Independent Software Engineer: V1 main project contributor.
+* Fabián Hernández, Independent Software Engineer: V2 main project contributor.
 * Catherine Smith, The Research Software Group, part of Advanced Research Computing, University of Birmingham.
 
 The development of this software was supported by a UKRI Future Leaders Fellowship [MR/X034992/1].
