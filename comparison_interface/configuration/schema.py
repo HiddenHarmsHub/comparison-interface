@@ -21,7 +21,7 @@ class Item(Schema):
     MIN_HEIGHT = 300
 
     @validates('name')
-    def _validate_name(self, name):
+    def _validate_name(self, name, data_key):
         match = re.match(r'^[a-zA-Z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -32,7 +32,7 @@ class Item(Schema):
             )
 
     @validates('imageName')
-    def _validate_image_path(self, image_name):
+    def _validate_image_path(self, image_name, data_key):
         path = os.path.abspath(os.path.dirname(__file__)) + "/../static/images/" + image_name
         if not os.path.exists(path):
             raise ValidationError(f"Image {image_name} not found on static/images/ folder.")
@@ -53,9 +53,8 @@ class Weight(Schema):
     item_2 = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     weight = fields.Float(required=True, validate=[validate.Range(min=0.0, max=1.0)])
 
-    @validates('item_1')
-    @validates('item_2')
-    def _validate_item_name(self, name):
+    @validates('item_1', 'item_2')
+    def _validate_item_name(self, name, data_key):
         match = re.match(r'^[a-z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -73,7 +72,7 @@ class Group(Schema):
     weight = fields.List(fields.Nested(Weight()), required=False, validate=[validate.Length(min=1, max=499500)])
 
     @validates('items')
-    def _validate_unique_names(self, items):
+    def _validate_unique_names(self, items, data_key):
         names = []
         for f in items:
             if "name" not in f:
@@ -87,7 +86,7 @@ class Group(Schema):
                 names.append(f['name'])
 
     @validates('weight')
-    def _validate_weight_sum(self, weights):
+    def _validate_weight_sum(self, weights, data_key):
         w = 0
         for g in weights:
             w += g['weight']
@@ -123,7 +122,7 @@ class Group(Schema):
         return data
 
     @validates('name')
-    def _validate_group_name(self, name):
+    def _validate_group_name(self, name, data_key):
         match = re.match(r'^[a-z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -177,53 +176,56 @@ class ComparisonConfiguration(Schema):
 class WebsiteTextConfiguration(Schema):
     """The schema for the website text configuration."""
 
-    websiteTitle = fields.Str(required=False, validate=[validate.Length(min=1, max=100)])
-    pageTitleLogout = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitleUserRegistration = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitleEthicsAgreement = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitlePolicies = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitleIntroduction = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitleItemPreference = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitleRank = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    pageTitleThankYou = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
+    websiteTitle = fields.Str(required=True, validate=[validate.Length(min=1, max=100)])
+    pageTitleLogout = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitleUserRegistration = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitleEthicsAgreement = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitlePolicies = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitleIntroduction = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitleItemPreference = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitleRank = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    pageTitleThankYou = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     userRegistrationGroupQuestionLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
-    userRegistrationFormTitleLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    userRegistrationSummitButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
+    userRegistrationFormTitleLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    userRegistrationSummitButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     userRegistrationGroupSelectionErr = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
-    userRegistrationEthicsAgreementLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
-    userRegistrationEthicsAgreementLinkText = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
+    userRegistrationEthicsAgreementLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
+    userRegistrationEthicsAgreementLinkText = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
     itemSelectionQuestionLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=500)])
     itemSelectionYesButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
     itemSelectionNoButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    itemSelectedIndicatorLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    rankItemTiedSelectionIndicatorLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    rankItemSkippedIndicatorLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    rankItemItemRejudgeButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    rankItemConfirmedButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    rankItemSkippedButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
+    itemSelectedIndicatorLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    rankItemTiedSelectionIndicatorLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    rankItemSkippedIndicatorLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    rankItemItemRejudgeButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    rankItemConfirmedButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    rankItemSkippedButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
     rankItemInstructionLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
-    rankItemComparisonExecutedLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    rankItemSkippedComparisonExecutedLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    confirmButtonErrorMessage = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    skipButtonErrorMessage = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    introductionContinueButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    thankYouContinueButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    thankYouTitle = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    thankYouOpeningText = fields.Str(required=False, validate=[validate.Length(min=0, max=500)])
-    thankYouContinueText = fields.Str(required=False, validate=[validate.Length(min=0, max=500)])
-    thankYouStopText = fields.Str(required=False, validate=[validate.Length(min=0, max=500)])
-    ethicsAgreementBackButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    sitePoliciesBackButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    siteCookiesAcceptButtonLabel = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    siteCookiesTitle = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    siteCookiesText = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    error500Title = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    error500Message = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    error404Title = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    error404Message = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    error404HomeLink = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
-    error204Title = fields.Str(required=False, validate=[validate.Length(min=1, max=50)])
-    error204Message = fields.Str(required=False, validate=[validate.Length(min=1, max=1000)])
+    rankItemComparisonExecutedLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    rankItemSkippedComparisonExecutedLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    confirmButtonErrorMessageWithSkip = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    confirmButtonErrorMessageWithoutSkip = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    skipButtonErrorMessage = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    additionalRadioButtonInstructions = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    itemSelectionGroupLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=100)])
+    introductionContinueButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    thankYouContinueButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    thankYouTitle = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    thankYouOpeningText = fields.Str(required=True, validate=[validate.Length(min=0, max=500)])
+    thankYouContinueText = fields.Str(required=True, validate=[validate.Length(min=0, max=500)])
+    thankYouStopText = fields.Str(required=True, validate=[validate.Length(min=0, max=500)])
+    ethicsAgreementBackButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    sitePoliciesBackButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    siteCookiesAcceptButtonLabel = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    siteCookiesTitle = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    siteCookiesText = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    error500Title = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    error500Message = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    error404Title = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    error404Message = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    error404HomeLink = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
+    error204Title = fields.Str(required=True, validate=[validate.Length(min=1, max=50)])
+    error204Message = fields.Str(required=True, validate=[validate.Length(min=1, max=1000)])
     additionalRegistrationPageText = fields.List(fields.Str(), required=False)
 
 
@@ -252,7 +254,7 @@ class UserField(Schema):
     option = fields.List(fields.Str(), validate=[validate.Length(min=1, max=20)])
 
     @validates('name')
-    def _validate_name(self, name):
+    def _validate_name(self, name, data_key):
         match = re.match(r'^[a-z0-9_-]+$', name)
         if not match:
             raise ValidationError(
@@ -350,7 +352,7 @@ class Configuration(Schema):
     )
 
     @validates('userFieldsConfiguration')
-    def _validate_unique_names(self, fields):
+    def _validate_unique_names(self, fields, data_key):
         names = []
         for f in fields:
             if f['name'] in names:
@@ -378,6 +380,14 @@ class Configuration(Schema):
             raise ValidationError(
                 "If renderUserItemPreferencePage is true then itemSelectionQuestionLabel must be provided in the "
                 "websiteTextConfiguration section."
+            )
+        if render_item_preference and (
+            'itemSelectionYesButtonLabel' not in data['websiteTextConfiguration']
+            or 'itemSelectionNoButtonLabel' not in data['websiteTextConfiguration']
+        ):
+            raise ValidationError(
+                "If renderUserItemPreferencePage is true then itemSelectionYesButtonLabel and"
+                "itemSelectionYesButtonLabel must be provided in the websiteTextConfiguration section."
             )
 
         # Check that if we have defined multiple groups then we have the relevant selection/error text available

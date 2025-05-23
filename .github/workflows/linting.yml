@@ -17,7 +17,7 @@ jobs:
           run: |
             python -m venv venv
             source venv/bin/activate
-            pip install -r requirements-test.txt
+            pip install ".[lint]"
         - name: Run Ruff
           run: |
             source venv/bin/activate
@@ -38,8 +38,8 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          pip install -r requirements-test.txt
-      - name: Run Ruff
+          pip install ".[lint]"
+      - name: Run curlylint
         run: |
           source venv/bin/activate
           curlylint --verbose .

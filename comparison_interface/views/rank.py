@@ -72,6 +72,11 @@ class Rank(Request):
                 self._increment_cycle_count()
                 return self._redirect('.thankyou')
 
+        if allow_ties:
+            additional_screen_reader_instructions = ""
+        else:
+            additional_screen_reader_instructions = WS.get_text(WS.ADDITIONAL_RADIO_BUTTON_INSTRUCTIONS, self._app)
+
         if allow_skip:
             confirm_button_error_message = WS.get_text(WS.CONFIRM_BUTTON_ERROR_MESSAGE_WITH_SKIP, self._app)
         else:
@@ -104,6 +109,8 @@ class Rank(Request):
                 'allow_ties': str(allow_ties).lower(),
                 'allow_skip': allow_skip,
                 'allow_back': allow_back,
+                'additional_screen_reader_instructions': additional_screen_reader_instructions,
+                'item_group_selection_label': WS.get_text(WS.ITEM_SELECTION_GROUP_LABEL, self._app),
             },
         )
 
@@ -380,10 +387,8 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items from the user's item preferences
-        # with a check to make sure the items are unique
         selected_items_id = [None, None]
-        while selected_items_id[0] == selected_items_id[1]:
-            selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
+        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]
 
@@ -419,9 +424,7 @@ class Rank(Request):
             return None, None
 
         # 2. Select randomly two items using the user's group preferences
-        # with a check to make sure the items are unique
         selected_items_id = [None, None]
-        while selected_items_id[0] == selected_items_id[1]:
-            selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
+        selected_items_id = self._app.rng.choice(items_id, 2, replace=False)
 
         return items[selected_items_id[0]], items[selected_items_id[1]]

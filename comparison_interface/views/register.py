@@ -136,7 +136,6 @@ class Register(Request):
             user_components (list): Components render in the user registry view
         """
         additional_list = WS.get_optional_text(WS.ADDITIONAL_REGISTRATION_TEXT, self._app)
-        print(additional_list)
         if additional_list is not None:
             if len(additional_list) > 0:
                 user_components.append('<hr/>')
