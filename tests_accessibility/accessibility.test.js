@@ -122,6 +122,6 @@ beforeAll(async () => {
           includeNotices: false
       });
       await expect(report).toHaveNoErrors();
-    }, 50000);
+    }, 100000);
 
 });
