@@ -2,20 +2,14 @@
 {% block title %}: {{introduction_page_title}}{% endblock %}
 {% block content %}
 <div>
-    {% if google_doc %}
-        <div class="full-height-iframe">
-            <iframe title="Introduction" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" src="{{ user_instruction_link }}"></iframe>
+    {% if fragment %}
+        <div class="inner-page">
+            {{ html_string|safe }}
         </div>
     {% else %}
-        {% if fragment %}
-            <div class="inner-page">
-                {{ html_string|safe }}
-            </div>
-        {% else %}
-            <div class="full-height-iframe">
-                <iframe title="Introduction" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" srcdoc="{{ html_string}}"></iframe>
-            </div>
-        {% endif %}
+        <div class="full-height-iframe">
+            <iframe title="Introduction" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" srcdoc="{{ html_string}}"></iframe>
+        </div>
     {% endif %}
 
     <div class="text-center">
