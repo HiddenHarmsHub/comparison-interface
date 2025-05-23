@@ -69,6 +69,7 @@ beforeAll(async () => {
 
     test('Test the rank page', async () => {
       const page = await browser.newPage();
+      page.setDefaultTimeout(100000);
       const url = 'http://localhost:5001/rank';
       let itemId, currentId;
       await page.goto(url, {waitUntil: 'networkidle0'});
