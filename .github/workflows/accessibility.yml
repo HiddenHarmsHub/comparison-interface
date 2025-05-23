@@ -26,6 +26,7 @@ jobs:
           run: |
             npm install jest jest-environment-node puppeteer pa11y
             npx puppeteer browsers install chrome
+            npm list
         - name: Setup app and run tests
           run: |
             source venv/bin/activate
