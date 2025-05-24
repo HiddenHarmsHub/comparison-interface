@@ -16,12 +16,13 @@ afterAll(async () => {
 });
 
 test('Test all the simple pages', async () => {
-  const urls = ['http://localhost:5001/introduction',
-                'http://localhost:5001/ethics-agreement',
-                'http://localhost:5001/policies',
-                'http://localhost:5001/register',
-                'http://localhost:5001/does-not-exist',  // to test 404  
-                ];
+  const urls = [
+    'http://localhost:5001/introduction',
+    'http://localhost:5001/ethics-agreement',
+    'http://localhost:5001/policies',
+    'http://localhost:5001/register',
+    'http://localhost:5001/does-not-exist',  // to test 404
+  ];
   await expect(urls).allToBeAccessible();
 }, 5000 * 5);
 
