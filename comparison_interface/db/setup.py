@@ -110,9 +110,15 @@ class Setup:
 
             # Insert the item in the database if it doesn't exists
             if item is None:
-                item = Item(
-                    name=i[WS.ITEM_NAME], display_name=i[WS.ITEM_DISPLAY_NAME], image_path=i[WS.ITEM_IMAGE_NAME]
-                )
+                if WS.ITEM_ID in i:
+                    item = Item(
+                        item_id=i[WS.ITEM_ID], name=i[WS.ITEM_NAME], display_name=i[WS.ITEM_DISPLAY_NAME], image_path=i[WS.ITEM_IMAGE_NAME]
+                    )
+                else:
+                    # this uses the implicit auto increment
+                    item = Item(
+                        name=i[WS.ITEM_NAME], display_name=i[WS.ITEM_DISPLAY_NAME], image_path=i[WS.ITEM_IMAGE_NAME]
+                    )
                 persist(db, item)
             else:
                 self.app.logger.info("Reusing item {} information.".format(item.name))
