@@ -112,7 +112,10 @@ class Setup:
             if item is None:
                 if WS.ITEM_ID in i:
                     item = Item(
-                        item_id=i[WS.ITEM_ID], name=i[WS.ITEM_NAME], display_name=i[WS.ITEM_DISPLAY_NAME], image_path=i[WS.ITEM_IMAGE_NAME]
+                        item_id=i[WS.ITEM_ID],
+                        name=i[WS.ITEM_NAME],
+                        display_name=i[WS.ITEM_DISPLAY_NAME],
+                        image_path=i[WS.ITEM_IMAGE_NAME],
                     )
                 else:
                     # this uses the implicit auto increment

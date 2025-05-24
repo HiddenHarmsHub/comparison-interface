@@ -11,6 +11,7 @@ from .website import Settings as WS
 
 class Item(Schema):
     """The schema for an item (image plus metadata)."""
+
     id = fields.Int(required=False)
     name = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     displayName = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
