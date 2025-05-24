@@ -4,13 +4,13 @@
 
 {% block content %}
 <div>
-    {% if google_doc %}
-        <div class="full-height-iframe">
-            <iframe title="Site policies" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" src="{{site_policies_link}}"></iframe>
-        </div>
-    {% else %}
+    {% if fragment %}
         <div class="inner-page">
             {{ html_string|safe }}
+        </div>
+    {% else %}
+        <div class="full-height-iframe">
+            <iframe title="Site policies" style="height:100%;width:100%;" scrolling="yes" class="embed-responsive" srcdoc="{{ html_string }}"></iframe>
         </div>
     {% endif %}
 

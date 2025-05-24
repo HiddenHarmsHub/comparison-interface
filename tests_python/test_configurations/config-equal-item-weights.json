@@ -12,9 +12,9 @@
         "allowTies": true,
         "allowSkip": true,
         "allowBack": true,
-        "userInstructionLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
-        "userEthicsAgreementLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
-        "sitePoliciesLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true"
+        "userInstructionHtml": "examples/html/instructions.html",
+        "userEthicsAgreementHtml": "examples/html/ethics-agreement.html",
+        "sitePoliciesHtml": "examples/html/site-policies.html"
     },
     "comparisonConfiguration" : {
         "weightConfiguration": "equal",
