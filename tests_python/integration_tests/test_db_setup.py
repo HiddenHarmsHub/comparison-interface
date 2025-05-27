@@ -136,4 +136,3 @@ def test_setup_items_without_ids(equal_weight_app):
         items = db.session.execute(text(item_count_sql)).all()
         assert len(items) == 1
         assert items[0].name == "northern_ireland"
-

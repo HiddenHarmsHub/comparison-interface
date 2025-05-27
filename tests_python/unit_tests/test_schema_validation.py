@@ -104,18 +104,9 @@ def test_group_configuration_with_inconsistent_item_ids():
         "name": "group1",
         "displayName": "Group 1",
         "items": [
-            {
-                "name": "north_east",
-                "displayName": "North East",
-                "imageName": "item_1.png"
-            },
-            {
-                "id": 1,
-                "name": "north_west",
-                "displayName": "North West",
-                "imageName": "item_2.png"
-            }
-        ]
+            {"name": "north_east", "displayName": "North East", "imageName": "item_1.png"},
+            {"id": 1, "name": "north_west", "displayName": "North West", "imageName": "item_2.png"},
+        ],
     }
     with pytest.raises(ValidationError):
         group_schema = Group()
