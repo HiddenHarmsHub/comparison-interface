@@ -1,6 +1,7 @@
 from sqlalchemy import text
 
 from comparison_interface.db.connection import db
+from tests_python.conftest import execute_setup
 
 
 def test_user_setup(equal_weight_app):
@@ -88,3 +89,51 @@ def test_setup_items_custom_weights(custom_weight_app):
         user_sql = 'SELECT * FROM "user"'
         users = db.session.execute(text(user_sql)).all()
         assert len(users) == 0
+
+
+def test_setup_items_with_ids():
+    """
+    GIVEN a flask app configured for testing and equal weights with ids provided
+    WHEN the database is initialised
+    THEN the items are given the ids in the configuration file
+    """
+    app = execute_setup("../tests_python/test_configurations/config-equal-item-weights-2.json")
+    with app.app_context():
+        item_count_sql = 'SELECT * FROM "item" WHERE "item_id"=12'
+        items = db.session.execute(text(item_count_sql)).all()
+        assert len(items) == 1
+        assert items[0].name == "north_east"
+
+        item_count_sql = 'SELECT * FROM "item" WHERE "item_id"=11'
+        items = db.session.execute(text(item_count_sql)).all()
+        assert len(items) == 1
+        assert items[0].name == "north_west"
+
+        item_count_sql = 'SELECT * FROM "item" WHERE "item_id"=1'
+        items = db.session.execute(text(item_count_sql)).all()
+        assert len(items) == 1
+        assert items[0].name == "northern_ireland"
+
+
+def test_setup_items_without_ids(equal_weight_app):
+    """
+    GIVEN a flask app configured for testing and equal weights with no ids provided
+    WHEN the database is initialised
+    THEN the items are given sequential ids in the order of the configuration file
+    """
+    with equal_weight_app.app_context():
+        item_count_sql = 'SELECT * FROM "item" WHERE "item_id"=1'
+        items = db.session.execute(text(item_count_sql)).all()
+        assert len(items) == 1
+        assert items[0].name == "north_east"
+
+        item_count_sql = 'SELECT * FROM "item" WHERE "item_id"=2'
+        items = db.session.execute(text(item_count_sql)).all()
+        assert len(items) == 1
+        assert items[0].name == "north_west"
+
+        item_count_sql = 'SELECT * FROM "item" WHERE "item_id"=12'
+        items = db.session.execute(text(item_count_sql)).all()
+        assert len(items) == 1
+        assert items[0].name == "northern_ireland"
+
