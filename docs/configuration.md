@@ -167,6 +167,8 @@ Refer to `examples/config-equal-item-weights.json` or `examples/config-equal-ite
 
 Refer to `examples/config-custom-item-weights.json` to configure a scenario where custom weights will be defined for all item pairs.
 
+There is an option to provide a numerical identifier for each item in your configuration which will be used as its primary key in the database. If provided then each item must have an id provided and, if for any reason you list items twice in the configuration file (for example if a single item belongs to multiple groups), then the id must be consistent across all of the entries. If the id does not matter to you then it is best not to provide them and they will be assigned an id in the order the are processed in the configuration file, the option is included for those who need consistency with artefacts used for analysis that are created outside the flask database.
+
 If the image configuration is being provided in a csv file, then the JSON file must provide the name of the csv file as follows:
 
 ```json
@@ -184,6 +186,7 @@ The csv file must contain a minimum of two columns and up to five columns. The c
 + **group name** - *optional* - As with the item name this will be automatically generated from the group display name if that column is provided but if validation errors are raised due to special characters then this column may also be required.
 
 An example of a configuration using a csv file can be found in ```examples/csv_example```.
+
 
 ## Troubleshooting
 
