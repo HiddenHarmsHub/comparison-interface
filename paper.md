@@ -12,7 +12,7 @@ authors:
     corresponding: true 
     affiliation: 1
   - name: Fabián Hernández
-    affiliation: 3
+    affiliation: 2
   - name: Bertrand Perrat
     affiliation: 3
   - name: Rowland G. Seymour
@@ -21,15 +21,17 @@ authors:
 affiliations:
  - name: University of Birmingham, United Kingdom
    index: 1
- - name: Independent Software Engineer, United Kingdom
+ - name: Independent Software Engineer, Costa Rica
    index: 2
+ - name: Independent Software Engineer, United Kingdom
+   index: 3
 date: TODO
 bibliography: paper.bib
 ---
 
 # Summary
 
-Comparative judgement is a research method which asks participants (refered to as judges) to make pairwise judgements of items based on a given criteria, for example which of two areas has the higher rate of deprivation, or which of two student assignments show a better understanding of a particular topic. These pairwise judgements can then be used to rank all the items in the study based on the criteria. Pairwise judgements have been shown to be easier for people to make than alternatives such as making a absolute judgement based on a scale or putting a whole series of items in order based on a criteria [@Jones2023]. These models are gaining popularity in social sciences but the options for data collection remain limited. The comparison-interface is a Flask app that provides a specialist interface for comparative judgement which is domain agnostic and highly configurable in terms of its behaviour and the text presented to the judge. This means that the same code can be configured to collect comparative judgement data on different topics using different languages making it applicable to a wide range of research projects. The website complies with WCAG 2.2 level AA and works on smaller screens such as phones and tablets as well as larger screens. It can be configured without any programming knowledge using JSON, or a combination of JSON and a CSV file. Any set of images can be used in the app. All of the data collected is stored in a SQLite3 database and an export to CSV files is provided. Example configurations are provided as a starting point for users. The interface has been used to collect data for a number of studies, for example [@Seymour2022; @Seymour2024; @Seymour2025] and has now been deployed in partnership with seven councils and local authorities in the UK. 
+Comparative judgement is a research method where participants (refered to as judges) are asked to make pairwise judgements of items based on a given criteria, for example which of two areas has the higher rate of deprivation, or which of two student assignments shows a better understanding of a particular topic. These pairwise judgements can then be used to rank all the items in the study based on the criteria. Pairwise judgements have been shown to be easier for people to make than alternatives such as making a absolute judgement based on a scale or putting a whole series of items in order based on a criteria [@Jones2023]. These models are gaining popularity in social sciences but the options for data collection remain limited. The comparison-interface is a Flask app that provides a specialist interface for comparative judgement which is domain agnostic and highly configurable in terms of its behaviour and the text presented to the judge. This means that the same code can be configured to collect comparative judgement data on different topics using different languages making it applicable to a wide range of research projects. The website complies with WCAG 2.2 level AA and works on smaller screens such as phones and tablets as well as larger screens. It can be configured without any programming knowledge using JSON, or a combination of JSON and a CSV file. Any set of images can be used in the app. All of the data collected is stored in a SQLite3 database and an export to CSV files is provided. Example configurations are provided as a starting point for users. The interface has been used to collect data for a number of studies, for example [@Seymour2022; @Seymour2024; @Seymour2025] and has now been deployed in partnership with seven councils and local authorities in the UK. 
 
 # Statement of Need
 
