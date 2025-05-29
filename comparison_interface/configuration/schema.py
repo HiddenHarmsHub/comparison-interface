@@ -12,6 +12,7 @@ from .website import Settings as WS
 class Item(Schema):
     """The schema for an item (image plus metadata)."""
 
+    id = fields.Int(required=False)
     name = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     displayName = fields.Str(required=True, validate=[validate.Length(min=1, max=200)])
     imageName = fields.Str(required=True, validate=[validate.Length(min=1, max=500)])
@@ -84,6 +85,16 @@ class Group(Schema):
                 )
             else:
                 names.append(f['name'])
+
+    @validates('items')
+    def _validate_consistent_ids(self, items, data_key):
+        if "id" not in items[0]:
+            ids_specified = False
+        else:
+            ids_specified = True
+        for f in items:
+            if ("id" not in f and ids_specified) or ("id" in f and not ids_specified):
+                raise ValidationError("If any ids are specified for items then all items must have an id.")
 
     @validates('weight')
     def _validate_weight_sum(self, weights, data_key):

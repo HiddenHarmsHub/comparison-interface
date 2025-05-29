@@ -41,6 +41,7 @@ class Settings:
     GROUP_ITEMS = "items"
     GROUP_ITEMS_WEIGHT = "weight"
     # Items related configuration keys
+    ITEM_ID = "id"
     ITEM_NAME = "name"
     ITEM_GROUP_ID = "group_id"
     ITEM_DISPLAY_NAME = "displayName"
