@@ -1,7 +1,7 @@
 {
     "behaviourConfiguration": {
         "exportPathLocation": "../exports",
-        "renderUserItemPreferencePage": "false",
+        "renderUserItemPreferencePage": false,
         "renderUserInstructionPage":  true,
         "renderEthicsAgreementPage":  true,
         "renderSitePoliciesPage":  true,

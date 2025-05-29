@@ -36,18 +36,36 @@ npx jest -- tests_javascript
 
 ## Accessibility tests
 
-The accessibility tests are written in Jest and use Pa11y. The Flask application must be setup with the `config-equal-item-weights.json` configuration file from the `test_python/test_configurations` and running at `http://localhost:5001` for these tests to run successfully. 
+The accessibility tests are written in Jest and use Pa11y. Because of the multiple configuration options available the tests are split and need to be run against two different configurations on the flask app.
 
-To setup the system (the setup may need to be replaced with the `reset` command if you already have a database in use):
+The Flask application must be setup with the correct configuration file from the `tests_python/test_configurations` and be running at `http://localhost:5001` for these tests to run successfully. Most of the tests run with the `/tests_python/test_configurations/config-equal-item-weights-2.json` configuration file.
+
+To setup the system for the main test file (the setup may need to be replaced with the `reset` command if you already have a database in use):
 
 ```bash
-flask --debug setup ../tests_python/test_configurations/config-equal-item-weights.json
+flask --debug setup ../tests_python/test_configurations/config-equal-item-weights-2.json
 flask --debug run ---port=5001
 ```
 
 The tests can then be run as follows:
 
 ```bash
-npx jest -- tests_accessibility
+npx jest -- tests_accessibility/accessibility.test.js
 ```
+
+To run the additional test file:
+
+```bash
+flask --debug reset ../tests_python/test_configurations/config-equal-item-weights.json
+flask --debug run ---port=5001
+```
+
+The tests can then be run as follows:
+
+```bash
+npx jest -- tests_accessibility/accessibility-item-select.test.js
+```
+
+The first set of tests will probably be enough for most changes to the system. The second test only tests the item select page used when the `renderUserItemPreferencePage` key in the configuration file is set to `true`.
+
 It is important to remember that automated accessibility tests cannot alone determine whether a website is fully accessible. Manual tests are also required; several browser plugins are available to help with this, one of the most comprehensive is [Accessibility insights for web](https://accessibilityinsights.io/docs/web/overview/).
