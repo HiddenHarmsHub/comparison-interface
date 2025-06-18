@@ -49,7 +49,7 @@ class Item(db.Model, BaseModel):
 
     __tablename__ = 'item'
 
-    item_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    item_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     display_name = db.Column(db.String(255), nullable=False)
     image_path = db.Column(db.String(1000), nullable=False)

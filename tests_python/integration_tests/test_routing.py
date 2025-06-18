@@ -38,7 +38,7 @@ def test_render_introduction(equal_weight_client):
     """
     response = equal_weight_client.get("/introduction")
     assert response.status_code == 200
-    assert b'<iframe title="Introduction"' in response.data
+    assert b'<h1>User Instructions</h1>' in response.data
 
 
 def test_render_ethics_agreement(equal_weight_client):
@@ -49,7 +49,7 @@ def test_render_ethics_agreement(equal_weight_client):
     """
     response = equal_weight_client.get("/ethics-agreement")
     assert response.status_code == 200
-    assert b'<iframe title="Ethics agreement"' in response.data
+    assert b'<h1>Ethics Agreement</h1>' in response.data
 
 
 def test_render_policies(equal_weight_client):
@@ -60,7 +60,7 @@ def test_render_policies(equal_weight_client):
     """
     response = equal_weight_client.get("/policies")
     assert response.status_code == 200
-    assert b'<iframe title="Site policies"' in response.data
+    assert b'<h1>Site Policies</h1>' in response.data
 
 
 def test_render_logout(equal_weight_client):

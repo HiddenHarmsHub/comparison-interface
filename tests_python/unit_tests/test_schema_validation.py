@@ -1,7 +1,7 @@
 import pytest
 from marshmallow import ValidationError
 
-from comparison_interface.configuration.schema import BehaviourConfiguration, Weight
+from comparison_interface.configuration.schema import BehaviourConfiguration, Group, Weight
 
 
 def test_empty_weight_schema_raises_error():
@@ -92,3 +92,22 @@ def test_behaviour_configuration_for_escape_route_true_with_missing_requirements
         behaviour_schema = BehaviourConfiguration()
         behaviour_schema.load(test_behaviour_schema)
     assert len(err.value.messages_dict.keys()) == 1
+
+
+def test_group_configuration_with_inconsistent_item_ids():
+    """
+    GIVEN an group chunk of a JSON schema with some items containing ids
+    WHEN the group chunk is validated using the Group schema class
+    THEN a Validation Error is raised
+    """
+    test_group_schema = {
+        "name": "group1",
+        "displayName": "Group 1",
+        "items": [
+            {"name": "north_east", "displayName": "North East", "imageName": "item_1.png"},
+            {"id": 1, "name": "north_west", "displayName": "North West", "imageName": "item_2.png"},
+        ],
+    }
+    with pytest.raises(ValidationError):
+        group_schema = Group()
+        group_schema.load(test_group_schema)

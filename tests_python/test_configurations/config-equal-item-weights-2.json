@@ -1,7 +1,7 @@
 {
     "behaviourConfiguration": {
         "exportPathLocation": "../exports",
-        "renderUserItemPreferencePage": "false",
+        "renderUserItemPreferencePage": false,
         "renderUserInstructionPage":  true,
         "renderEthicsAgreementPage":  true,
         "renderSitePoliciesPage":  true,
@@ -12,9 +12,9 @@
         "allowTies": true,
         "allowSkip": false,
         "allowBack": false,
-        "userInstructionLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
-        "userEthicsAgreementLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true",
-        "sitePoliciesLink": "https://docs.google.com/document/d/e/2PACX-1vT2yGXStletU0XGL6DaA45tSr3skJLIi2u-m5T9t3gNEjjXdN__c4yJhhN0CyzuDsFltKUFfBDt2qEJ/pub?embedded=true"
+        "userInstructionHtml": "examples/html/instructions.html",
+        "userEthicsAgreementHtml": "examples/html/ethics-agreement.html",
+        "sitePoliciesHtml": "examples/html/site-policies.html"
     },
     "comparisonConfiguration" : {
         "weightConfiguration": "equal",
@@ -24,46 +24,55 @@
                 "displayName": "England",
                 "items":[
                     {
+                        "id": 12,
                         "name": "north_east",
                         "displayName": "North East",
                         "imageName": "item_1.png"
                     },
                     {
+                        "id": 11,
                         "name": "north_west",
                         "displayName": "North West",
                         "imageName": "item_2.png"
                     },
                     {
+                        "id": 10,
                         "name": "yorkshire",
                         "displayName": "Yorkshire & Humberside",
                         "imageName": "item_3.png"
                     },
                     {
+                        "id": 9,
                         "name": "east_midlands",
                         "displayName": "East Midlands",
                         "imageName": "item_4.png"
                     },
                     {
+                        "id": 8,
                         "name": "west_midlands",
                         "displayName": "West Midlands",
                         "imageName": "item_5.png"
                     },
                     {
+                        "id": 7,
                         "name": "eastern",
                         "displayName": "Eastern",
                         "imageName": "item_6.png"
                     },
                     {
+                        "id": 6,
                         "name": "london",
                         "displayName": "London",
                         "imageName": "item_7.png"
                     },
                     {
+                        "id": 5,
                         "name": "south_east",
                         "displayName": "South East",
                         "imageName": "item_8.png"
                     },
                     {
+                        "id": 4,
                         "name": "south_west",
                         "displayName": "South West",
                         "imageName": "item_9.png"
@@ -75,16 +84,19 @@
                 "displayName": "Wales, Scotland, Northern Ireland",
                 "items":[
                     {
+                        "id": 3,
                         "name": "wales",
                         "displayName": "Wales",
                         "imageName": "item_10.png"
                     },
                     {
+                        "id": 2,
                         "name": "scotland",
                         "displayName": "Scotland",
                         "imageName": "item_11.png"
                     },
                     {
+                        "id": 1,
                         "name": "northern_ireland",
                         "displayName": "Northern Ireland",
                         "imageName": "item_12.png"
